@@ -47,9 +47,6 @@ get_header(); ?>
 			$query = new WP_Query( $args );
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				
-				// echo get_the_ID() . '<br>';
-				
 				$catterms = wp_get_post_terms( $query->post->ID, 'epkb_post_type_1_category' );
 				if ( ! empty( $catterms ) ) {
 					foreach ( $catterms as $catterm ) {
@@ -58,8 +55,7 @@ get_header(); ?>
 							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 							<?php
 						}
-					}
-					
+					}	
 				}
 			}
 			wp_reset_postdata();
@@ -75,7 +71,7 @@ get_header(); ?>
 					'parent'   => $current_cat,
 				),
 			);
-			// Build array of cats to exclude from top level list, if we ever want
+			// Build array of cats to exclude from top level list, if we ever want more subcats
 			// $categories_to_exclude = array();
 			// foreach ( $sub_cats as $sub_cat ) {
 			//	$categories_to_exclude[] = $sub_cat->term_id;
