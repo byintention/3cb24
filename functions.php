@@ -246,6 +246,20 @@ function tcb24_comment( $comment, $args, $depth ) {
 
 
 /**
+ * Remove username, edit profile and log out as we use custom profile edit page
+ */
+function wpdocs_comment_form_defaults( $defaults ) {
+	//global $user_identity;
+	//$required_text      = ' ' . wp_required_field_message();
+	$defaults['logged_in_as'] = '';
+	return $defaults;
+}
+add_filter( 'comment_form_defaults', 'wpdocs_comment_form_defaults' );
+
+
+
+
+/**
  * Remove emoji junk.
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

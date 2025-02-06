@@ -22,14 +22,14 @@
 		jQuery(document).ready(function() {
 			
 			jQuery(document).mouseup(function(e){
-				var container = jQuery("#datafetch.show");
+				var container = jQuery(".blogBanner #datafetch.show");
 				// If the target of the click isn't the container
 				if(!container.is(e.target) && container.has(e.target).length === 0){
-					jQuery("#datafetch").removeClass( 'show' );
+					jQuery(".blogBanner #datafetch").removeClass( 'show' );
 				}
 			});
 			
-			jQuery('#searchsubmit').click(function() {
+			jQuery('.blogBanner #searchsubmit').click(function() {
 				event.preventDefault();
 				jQuery("#datafetch").addClass( 'show' );
 				jQuery('#datafetch').html( '<ul><li>Please wait..</li></ul>' );

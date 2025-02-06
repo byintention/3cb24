@@ -47,15 +47,22 @@ get_header(); ?>
 			$query = new WP_Query( $args );
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				$catterms = wp_get_post_terms( $query->post->ID, 'epkb_post_type_1_category' );
+				$catterms = wp_get_post_terms(
+					$query->post->ID,
+					'epkb_post_type_1_category',
+					array(
+						'fields' => 'ids',
+					),
+				);
 				if ( ! empty( $catterms ) ) {
 					foreach ( $catterms as $catterm ) {
-						if ( $current_cat === $catterm->term_id ) {
+						if ( $current_cat === $catterm ) {
 							?>
 							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 							<?php
+							break;
 						}
-					}	
+					}
 				}
 			}
 			wp_reset_postdata();
@@ -74,7 +81,7 @@ get_header(); ?>
 			// Build array of cats to exclude from top level list, if we ever want more subcats
 			// $categories_to_exclude = array();
 			// foreach ( $sub_cats as $sub_cat ) {
-			//	$categories_to_exclude[] = $sub_cat->term_id;
+			// $categories_to_exclude[] = $sub_cat->term_id;
 			// }
 			// $excludes = implode( ', ', $categories_to_exclude );
 			if ( ! empty( $sub_cats ) ) {

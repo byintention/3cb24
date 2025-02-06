@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.46
+Version: 1.47
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -178,7 +178,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.46
+Version: 1.47
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -2005,6 +2005,7 @@ body.mobilenavopen {
 }
 
 .navigation {
+  margin-bottom: 60px;
   text-align: center;
 }
 .navigation .navlink {
@@ -2119,40 +2120,31 @@ body.mobilenavopen {
   height: 46px;
   padding: 0 12px;
 }
-
-#search {
+#searchform #search {
   position: absolute;
   left: 0;
   right: 75px;
 }
-
-#s {
+#searchform #s {
   border: none;
   border-radius: 0;
 }
-
-#search input[type=text] {
+#searchform #search input[type=text] {
   width: 100%;
 }
-
-#searchsubmit {
-  width: 60px;
-}
-
-#submit {
+#searchform #submit {
   float: left;
   margin-left: 5px;
 }
-
-#s {
+#searchform #s {
   border: 1px solid #ccc;
 }
-
-#searchsubmit {
+#searchform #searchsubmit {
   background: #2271b1;
   color: #fff;
+  width: 60px;
 }
-#searchsubmit:hover {
+#searchform #searchsubmit:hover {
   background: rgb(46.9620853081, 139.8151658768, 215.0379146919);
   border-color: rgb(46.9620853081, 139.8151658768, 215.0379146919);
 }
@@ -2177,6 +2169,13 @@ body.mobilenavopen {
   max-width: 600px;
   padding: 40px 20px 100px 20px;
   text-align: center;
+}
+
+.searchResults {
+  max-width: 800px;
+}
+.searchResults .postmetadata {
+  display: none;
 }
 
 /* Footer */
@@ -2786,7 +2785,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.46
+Version: 1.47
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html

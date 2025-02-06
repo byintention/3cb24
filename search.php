@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div class="blogBanner banners">
-<?php
+	<?php
 	$page_for_posts = get_option( 'page_for_posts' );
 	echo get_the_post_thumbnail( $page_for_posts, 'large' );
-?>
+	?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
@@ -11,11 +11,10 @@
 			</div>
 		</div>
 	</div>
-</div> 
-
-<div class="container">
+</div>
+<div class="container searchResults">
 	<div class="twelve columns">
-	<?php get_template_part('includes/postloop'); ?>
+	<?php get_template_part( 'includes/postloop' ); ?>
 	</div>
 </div>
 <?php get_footer(); ?>
