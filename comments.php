@@ -35,7 +35,7 @@ if ( post_password_required() ) {
 						'%1$s comments on &ldquo;%2$s&rdquo;',
 						$arch_comment_count,
 						'Comments Title',
-						'archetype'
+						'tcb24'
 					),
 					number_format_i18n( $arch_comment_count ),
 					get_the_title()
