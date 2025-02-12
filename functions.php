@@ -67,6 +67,13 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( is_singular( 'tribe_events' ) ) {
 		$classes[] = 'darkHeader';
 	}
+	// If we're in a single event post.
+	if ( is_singular( 'service-record' ) ) {
+		$classes[] = 'darkHeader';
+	}
+	
+	
+	
 	// If we're in search results page.
 	if ( is_search() ) {
 		$classes[] = 'darkHeader';
@@ -361,6 +368,28 @@ add_action(
 );
 
 
+
+
+/**
+ * Remove register link from WP login page.
+ */
+function my_theme_login_filters() {
+	add_filter( 'login_site_html_link' , 'set_login_backtohtml' ); //This is for the "Go back to Your Blog" link
+	add_filter( 'register' , 'set_login_registerhtml' ); //For the register link
+
+ 
+	//Repeat this function for each of the elements you want to suppress, OR
+	//just change the names above to the same thing.
+	function set_login_backtohtml( $url ) {
+		$url = '';
+		return $url;
+	}
+	
+	function set_login_register( $url ) {
+		$url = '';
+		return $url;
+	}
+}
 
 
 

@@ -814,6 +814,22 @@
       "oAP" : "\/single-epkb_post_type_1.php",
       "oF" : 0
     },
+    "\/single-interview copy.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-interview copy.php",
+      "oF" : 0
+    },
+    "\/single-interview.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-interview.php",
+      "oF" : 0
+    },
     "\/single-service-record.php" : {
       "cB" : 0,
       "ft" : 8192,

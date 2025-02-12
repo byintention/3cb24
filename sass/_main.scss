@@ -1,8 +1,8 @@
 @use 'vars' as *;
 
 * {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -869,16 +869,15 @@ input[type="checkbox"] {
 }
 
 .container .container {
-	margin: 0;
-	width: 100%;
+	//margin: 0;
+	//width: 100%;
 }
 
 .container .one,
-.container .one,
-.container .two,
+.container .two.columns,
 .container .three,
 .container .four,
-.container .five,
+.container .five.columns,
 .container .six,
 .container .seven,
 .container .eight,
@@ -1973,6 +1972,7 @@ body.mobilenavopen {
 
 #comments {
 	margin: 0 0 40px 0;
+	width: 100%;
 	h3 {
 		margin-bottom: 40px;
 	}
@@ -2780,4 +2780,38 @@ ul.acf-radio-list li,
 ul.acf-checkbox-list li {
 	font-size: inherit;
 	line-height: inherit;
+}
+
+.serviceRecord {
+	width:100%;
+}
+
+.tcb_user_info {
+	.one-third {
+		margin-bottom: 30px;
+	}
+	table {
+		border:0;
+		border-top: 1px solid #ccc;
+		margin-bottom: 50px;
+		td {
+			border:0;
+			border-bottom: 1px solid #ccc;
+			padding: 10px ;
+		}
+		td:first-child {
+			font-weight: bold;
+			padding-left:0;
+		}
+	}
+}
+
+.tcb_user_ribbons {
+	p {
+		margin-bottom: 5px;
+	}
+	img {
+		max-width: 200px;
+		width: 200px;
+	}
 }
