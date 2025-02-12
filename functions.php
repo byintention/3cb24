@@ -370,26 +370,26 @@ add_action(
 
 
 
-/**
- * Remove register link from WP login page.
- */
-function my_theme_login_filters() {
-	add_filter( 'login_site_html_link' , 'set_login_backtohtml' ); //This is for the "Go back to Your Blog" link
-	add_filter( 'register' , 'set_login_registerhtml' ); //For the register link
 
- 
-	//Repeat this function for each of the elements you want to suppress, OR
-	//just change the names above to the same thing.
-	function set_login_backtohtml( $url ) {
-		$url = '';
-		return $url;
-	}
-	
-	function set_login_register( $url ) {
-		$url = '';
-		return $url;
-	}
+// Add the custom columns to the book post type:
+add_filter( 'manage_epkb_post_type_1_posts_columns', 'set_custom_edit_book_columns' );
+function set_custom_edit_book_columns( $columns ) {
+	unset( $columns['author'] );
+	$columns['last_edit'] = __( 'Last edited', 'tcb24' );
+	return $columns;
 }
+
+// Add the data to the custom columns for the book post type:
+add_action( 'manage_epkb_post_type_1_posts_custom_column' , 'custom_book_column', 10, 2 );
+function custom_book_column() {
+
+	if ( get_the_modified_date() !== get_the_date() ) { 
+		//echo 'publish: ' . get_the_date('Y/m/d') . ' - ';
+		echo get_the_modified_date( 'Y/m/d' ) . ' at ' . get_the_modified_time();
+	}
+
+}
+
 
 
 
