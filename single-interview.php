@@ -80,7 +80,8 @@ if (
 
 			</div>
 			<?php
-			comments_template();
+                $args = array( 'role' => array ('training_admin', 'recruit_admin', 'administrator'), 'duration' => 30 );
+                get_template_part( 'includes/conditional-comments', null, $args );
 			?>
 		</div>
 		<?php 
