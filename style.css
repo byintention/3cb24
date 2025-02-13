@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.54
+Version: 1.55
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -178,7 +178,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.54
+Version: 1.55
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -2781,6 +2781,9 @@ ul.acf-checkbox-list li {
 .tcb_user_info .one-third {
   margin-bottom: 30px;
 }
+.tcb_user_info img {
+  width: auto;
+}
 .tcb_user_info table {
   border: 0;
   border-top: 1px solid #ccc;
@@ -2810,7 +2813,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.54
+Version: 1.55
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
