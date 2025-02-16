@@ -1,4 +1,12 @@
-<?php get_header();  /* phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar.*/ ?>
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar.
+/**
+ * Single interview template, used to display a single interview.
+ *
+ * @package 3cb24
+ */
+get_header();
+?>
+
 <div class="blogBanner banners">
 	<?php
 	$page_for_posts = get_option( 'page_for_posts' );
