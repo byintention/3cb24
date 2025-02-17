@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Single service record template for 3cb24 theme
+ *
+ * @package tcb24
+ */
+
+get_header(); ?>
 <div class="blogBanner banners">
 	<?php
 	$page_for_posts = get_option( 'page_for_posts' );

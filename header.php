@@ -18,7 +18,7 @@
 </head>
 <body <?php body_class(); ?>>
 	<?php acf_form_head(); ?>
-	<div id="wrap" class="wrap">	
+	<div id="wrap" class="wrap">
 		<header id="header">
 			<div class="container">
 				<div id="headerMenuMobile"><button class="menu-trigger navclosed"><span>Menu</span></button></div>
@@ -39,11 +39,11 @@
 					</div>
 				</nav>
 				<div id="headerLogin">
-					<?php if ( ! is_user_logged_in() ) { ?>	
+					<?php if ( ! is_user_logged_in() ) { ?>
 					<?php } else { ?>
-						<strong>Welcome: </strong>Logged in as <span class="username"><?php echo esc_html( wp_get_current_user()->user_login ); ?></span> &nbsp; <a href="/edit-user-profile/">Edit profile</a> &nbsp; 
+						<strong>Welcome: </strong>Logged in as <span class="username"><?php echo esc_html( wp_get_current_user()->user_login ); ?></span> &nbsp; <a href="/edit-user-profile/">Edit profile</a> &nbsp;
 						<a href="/wp-login.php?action=logout">Log out</a>
-					<?php } ?>	
+					<?php } ?>
 				</div>
 			</div>
 		</header>

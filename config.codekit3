@@ -73,12 +73,28 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/archive-application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-application.php",
+      "oF" : 0
+    },
     "\/archive-epkb_post_type_1.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/archive-epkb_post_type_1.php",
+      "oF" : 0
+    },
+    "\/archive-interview.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-interview.php",
       "oF" : 0
     },
     "\/archive-service-record.php" : {
@@ -103,6 +119,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/category.php",
+      "oF" : 0
+    },
+    "\/comments-application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/comments-application.php",
+      "oF" : 0
+    },
+    "\/comments-interview.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/comments-interview.php",
       "oF" : 0
     },
     "\/comments.php" : {
@@ -176,56 +208,6 @@
       "oA" : 0,
       "oAP" : "\/header.php",
       "oF" : 0
-    },
-    "\/holding\/bg-desktop-min.jpg" : {
-      "ft" : 16384,
-      "iS" : 35268,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/holding\/bg-desktop-min.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/holding\/bg-mob-min.jpg" : {
-      "ft" : 16384,
-      "iS" : 22955,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/holding\/bg-mob-min.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/holding\/style-min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/holding\/style-min-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/holding\/style.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/holding\/style-min.css",
-      "oF" : 0,
-      "pg" : 0
     },
     "\/images\/icon-chev-down-grey.svg" : {
       "ft" : 2097152,
@@ -407,6 +389,22 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/includes\/application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/application.php",
+      "oF" : 0
+    },
+    "\/includes\/archive-post.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/archive-post.php",
+      "oF" : 0
+    },
     "\/includes\/conditional-comments.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -421,6 +419,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/flexible-content.php",
+      "oF" : 0
+    },
+    "\/includes\/interview.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/interview.php",
       "oF" : 0
     },
     "\/includes\/postloop.php" : {
@@ -814,6 +820,14 @@
       "oAP" : "\/sidebar.php",
       "oF" : 0
     },
+    "\/single-application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-application.php",
+      "oF" : 0
+    },
     "\/single-epkb_post_type_1.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -920,14 +934,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/template-flexible.php",
-      "oF" : 0
-    },
-    "\/template-holdingpage.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/template-holdingpage.php",
       "oF" : 0
     },
     "\/template-homepage.php" : {

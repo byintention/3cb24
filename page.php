@@ -17,8 +17,6 @@ get_header(); ?>
 					the_content();
 				}
 			}
-			
-			comments_template();
 			?>
 			</div>
 		</div>

@@ -58,7 +58,7 @@ if ( post_password_required() ) {
 		</ol><!-- .comment-list -->
 		<?php
 		the_comments_navigation();
-		// If comments are closed and there are comments, let's leave a little note, shall we?
+		// If comments are closed and there are comments, let's leave a little note, shall we?.
 		if ( ! comments_open() ) {
 			?>
 			<p class="no-comments"><?php echo esc_html__( 'Comments are closed.', 'tcb24' ); ?></p>

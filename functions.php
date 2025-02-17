@@ -71,9 +71,6 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( is_singular( 'service-record' ) ) {
 		$classes[] = 'darkHeader';
 	}
-	
-	
-	
 	// If we're in search results page.
 	if ( is_search() ) {
 		$classes[] = 'darkHeader';
@@ -126,11 +123,9 @@ show_admin_bar( false );
  * AJAX search.
  */
 function data_fetch() {
-	
-	// if ( ! wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) ) {
-	//	 die ( 'Busted!');
-	// }
-	
+	// if ( ! wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) ) {.
+	// die ( 'Busted!');.
+	// }.
 	if ( isset( $_POST['keyword'] ) ) {
 		$searchterm = sanitize_text_field( wp_unslash( $_POST['keyword'] ) );
 	}
@@ -197,18 +192,18 @@ function tcb24_comment( $comment, $args, $depth ) {
 	}
 	?>
 			<div class="comment-author vcard">
-		<?php
-		if ( 0 !== $args['avatar_size'] ) {
-			echo get_avatar( $comment, $args['avatar_size'] );
-		}
-		?>
+			<?php
+			if ( 0 !== $args['avatar_size'] ) {
+				echo get_avatar( $comment, $args['avatar_size'] );
+			}
+			?>
 			</div>
 			<div class="comment-content">
 				<?php
 				printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>' ), get_comment_author_link() );
 				if ( '0' === $comment->comment_approved ) {
 					?>
-						<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br/>
+					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br/>
 					<?php
 				}
 				?>
@@ -256,8 +251,8 @@ function tcb24_comment( $comment, $args, $depth ) {
  * Remove username, edit profile and log out as we use custom profile edit page
  */
 function wpdocs_comment_form_defaults( $defaults ) {
-	//global $user_identity;
-	//$required_text      = ' ' . wp_required_field_message();
+	// global $user_identity;.
+	// $required_text      = ' ' . wp_required_field_message();.
 	$defaults['logged_in_as'] = '';
 	return $defaults;
 }
@@ -370,26 +365,26 @@ add_action(
 
 
 
-
-// Add the custom columns to the book post type:
-add_filter( 'manage_epkb_post_type_1_posts_columns', 'set_custom_edit_book_columns' );
+/**
+ * Add the custom columns to the book post type.
+ */
 function set_custom_edit_book_columns( $columns ) {
 	unset( $columns['author'] );
 	$columns['last_edit'] = __( 'Last edited', 'tcb24' );
 	return $columns;
 }
+add_filter( 'manage_epkb_post_type_1_posts_columns', 'set_custom_edit_book_columns' );
 
-// Add the data to the custom columns for the book post type:
-add_action( 'manage_epkb_post_type_1_posts_custom_column' , 'custom_book_column', 10, 2 );
+/**
+ * Add the data to the custom columns for the book post type.
+ */
 function custom_book_column() {
-
-	if ( get_the_modified_date() !== get_the_date() ) { 
-		//echo 'publish: ' . get_the_date('Y/m/d') . ' - ';
+	if ( get_the_modified_date() !== get_the_date() ) {
+		// echo 'publish: ' . get_the_date('Y/m/d') . ' - ';.
 		echo get_the_modified_date( 'Y/m/d' ) . ' at ' . get_the_modified_time();
 	}
-
 }
-
+add_action( 'manage_epkb_post_type_1_posts_custom_column', 'custom_book_column', 10, 2 );
 
 
 

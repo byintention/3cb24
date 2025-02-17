@@ -23,7 +23,7 @@ get_header(); ?>
 <?php } ?>
 <div class="container">
 	<div class="eight columns">
-	<?php get_template_part('includes/postloop'); ?>
+	<?php get_template_part( 'includes/postloop' ); ?>
 	</div>
 	<?php get_sidebar(); ?> 
 </div>

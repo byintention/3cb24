@@ -83,7 +83,7 @@ get_header(); ?>
 			// foreach ( $sub_cats as $sub_cat ) {
 			// $categories_to_exclude[] = $sub_cat->term_id;
 			// }
-			// $excludes = implode( ', ', $categories_to_exclude );
+			// $excludes = implode( ', ', $categories_to_exclude );.
 			if ( ! empty( $sub_cats ) ) {
 				?>
 				<ul class="wiki-subcats">
