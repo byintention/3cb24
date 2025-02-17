@@ -5,11 +5,10 @@
  * @package 3cb24
  */
 
-$role_list     = $args['role'];
-$status_       = $args['status'];
-$type_         = $args['type'];
-$display_field = $args['display_field'];
-$type_lower    = strtolower( $type_ );
+$role_list  = $args['role'];
+$status_    = $args['status'];
+$type_      = $args['type'];
+$type_lower = strtolower( $type_ );
 
 echo '<h2>' . esc_html( $status_ ) . '</h2>';
 
@@ -52,10 +51,8 @@ if ( ! $posts_->have_posts() ) {
 echo '<ul>';
 while ( $posts_->have_posts() ) {
 	$posts_->the_post();
-	$post_id_     = get_the_ID();
-	$user_data    = get_field( $display_field, $post_id_ );
-	$display_name = $user_data['display_name'];
-	echo '<li><a href="' . esc_url( home_url() ) . '/' . esc_html( $type_lower ) . '/' . esc_html( strtolower( $display_name ) ) . '">' . esc_html( $display_name ) . '</a>, posted on ' . esc_html( get_the_date( 'd-m-Y', $post_id_ ) ) . '</li>';
+	$post_id_ = get_the_ID();
+	echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a>, posted on ' . esc_html( get_the_date( 'd-m-Y', $post_id_ ) ) . '</li>';
 }
 echo '</ul>';
 wp_reset_postdata();

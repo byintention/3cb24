@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
  * Blog archive for 3cb24 theme
  *

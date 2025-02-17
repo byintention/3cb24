@@ -1,6 +1,6 @@
 <?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
- * Interview archive, used to display a list of interviews.
+ * Application archive, used to display a list of applications.
  *
  * @package tcb24
  */
@@ -15,7 +15,7 @@ get_header(); ?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Interviews</h1>
+				<h1>Applications</h1>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@ get_header(); ?>
 				<?php
 				$args = array(
 					'role'   => array( 'training_admin', 'recruit_admin', 'administrator' ),
-					'type'   => 'Interview',
+					'type'   => 'Application',
 					'status' => 'Pending',
 				);
 				get_template_part( 'includes/archive-post', null, $args );

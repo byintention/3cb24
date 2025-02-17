@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
  * The template for displaying comments
  *
