@@ -1,6 +1,6 @@
 <?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
- * View an application
+ * View of generic post
  *
  * @package 3cb24
  */
