@@ -97,6 +97,22 @@
       "oAP" : "\/archive-interview.php",
       "oF" : 0
     },
+    "\/archive-loa.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-loa.php",
+      "oF" : 0
+    },
+    "\/archive-report.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-report.php",
+      "oF" : 0
+    },
     "\/archive-service-record.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -389,14 +405,6 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
-    "\/includes\/application.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/includes\/application.php",
-      "oF" : 0
-    },
     "\/includes\/archive-post.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -411,6 +419,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/conditional-comments.php",
+      "oF" : 0
+    },
+    "\/includes\/content.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/content.php",
       "oF" : 0
     },
     "\/includes\/flexible-content.php" : {
@@ -435,6 +451,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/postloop.php",
+      "oF" : 0
+    },
+    "\/includes\/service-record.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/service-record.php",
       "oF" : 0
     },
     "\/includes\/social.php" : {
@@ -842,6 +866,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/single-interview.php",
+      "oF" : 0
+    },
+    "\/single-loa.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-loa.php",
+      "oF" : 0
+    },
+    "\/single-report.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-report.php",
       "oF" : 0
     },
     "\/single-service-record.php" : {
