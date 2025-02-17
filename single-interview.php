@@ -48,10 +48,12 @@ get_header();
 					<div>
 					<?php
 					$args = array(
-						'role'     => array( 'training_admin', 'recruit_admin', 'administrator' ),
-						'duration' => 30,
+						'role'        => array( 'training_admin', 'recruit_admin', 'administrator' ),
+						'comment_php' => '/comments-interview.php',
+						'duration'    => 30,
 					);
 					get_template_part( 'includes/conditional-comments', null, $args );
+					echo '<div><strong>pre-Recruit phase only</strong></div>';
 					?>
 					</div>
 				</div>

@@ -5,8 +5,9 @@
  * @package 3cb24
  */
 
-$role_list = $args['role'];
-$duration  = $args['duration'];
+$role_list   = $args['role'];
+$comment_php = $args['comment_php'];
+$duration    = $args['duration'];
 
 // Check if the user has the required role.
 if ( ! empty( $role_list ) ) {
@@ -36,4 +37,4 @@ if ( '' !== $duration && 0 < $duration ) {
 	}
 }
 
-comments_template();
+comments_template( $comment_php );

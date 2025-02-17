@@ -48,8 +48,9 @@ get_header();
 					<div>
 					<?php
 					$args = array(
-						'role'     => array( 'training_admin', 'recruit_admin', 'administrator' ),
-						'duration' => 30,
+						'role'        => array( 'training_admin', 'recruit_admin', 'administrator' ),
+						'comment_php' => '/comments-application.php',
+						'duration'    => 30,
 					);
 					get_template_part( 'includes/conditional-comments', null, $args );
 					?>
