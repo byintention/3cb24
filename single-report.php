@@ -1,6 +1,6 @@
 <?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar.
 /**
- * Single interview template, used to display a single interview.
+ * Single LOA template, used to display a single LOA.
  *
  * @package 3cb24
  */
@@ -15,7 +15,7 @@ get_header();
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Application: <?php the_title(); ?></h1>
+				<h1>Report: <?php the_title(); ?></h1>
 			</div>
 		</div>
 	</div>
@@ -50,8 +50,8 @@ get_header();
 					<?php
 					$args = array(
 						'role'        => array( 'training_admin', 'recruit_admin', 'administrator' ),
-						'comment_php' => '/comments-application.php',
-						'duration'    => 30,
+						'duration'    => '',
+						'comment_php' => '/comments.php',
 					);
 					get_template_part( 'includes/conditional-comments', null, $args );
 					?>

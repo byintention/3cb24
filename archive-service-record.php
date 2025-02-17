@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
  * Blog archive for 3cb24 theme
  *
@@ -6,11 +6,12 @@
  */
 
 get_header(); ?>
+
 <div class="blogBanner banners">
-<?php
+	<?php
 	$page_for_posts = get_option( 'page_for_posts' );
 	echo get_the_post_thumbnail( $page_for_posts, 'large' );
-?>
+	?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
@@ -18,7 +19,8 @@ get_header(); ?>
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
+
 <div class="container">
 	<div class="twelve columns">
 	<?php

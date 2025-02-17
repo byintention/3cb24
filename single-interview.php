@@ -20,6 +20,7 @@ get_header();
 		</div>
 	</div>
 </div>
+
 <div class="container">
 	<div class="twelve columns">
 		<?php
@@ -53,7 +54,6 @@ get_header();
 						'duration'    => 30,
 					);
 					get_template_part( 'includes/conditional-comments', null, $args );
-					echo '<div><strong>pre-Recruit phase only</strong></div>';
 					?>
 					</div>
 				</div>
