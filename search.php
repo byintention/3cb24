@@ -1,4 +1,13 @@
-<?php get_header(); ?>
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
+/**
+ * The 404 error page
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package 3cb24
+ */
+get_header(); ?>
+
 <div class="blogBanner banners">
 	<?php
 	$page_for_posts = get_option( 'page_for_posts' );

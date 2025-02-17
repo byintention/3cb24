@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
 /**
  * The 404 error page
  *
@@ -6,8 +6,8 @@
  *
  * @package 3cb24
  */
-
 get_header(); ?>
+
 <div class="blogBanner banners">
 <?php
 	$page_for_posts = get_option( 'page_for_posts' );
@@ -28,6 +28,5 @@ get_header(); ?>
 			<?php get_search_form(); ?>
 		</div>
 	</div>
-	
 </div>
 <?php get_footer(); ?>

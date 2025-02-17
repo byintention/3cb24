@@ -1,3 +1,11 @@
+<?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar
+/**
+ * Template for footer
+ *
+ * @package tcb24
+ */
+?>
+
 </div> <!-- end content wrap -->
 		<footer id="footer" class="clear">
 			<div class="container">
