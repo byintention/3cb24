@@ -116,8 +116,18 @@ define( 'DISALLOW_FILE_EDIT', true );
  */
 show_admin_bar( false );
 
+/**
+ * Removes Top Level Menu - Comments, from all but admins and officers.
+ */
+function prefix_remove_comments_tl() {
+	$user = wp_get_current_user();
+	if ( ( in_array( 'officer', $user->roles, true ) ) || ( in_array( 'administrator', $user->roles, true ) ) ) {
+		return;
+	}
+	remove_menu_page( 'edit-comments.php' );
+}
 
-
+add_action( 'admin_menu', 'prefix_remove_comments_tl' );
 
 /**
  * AJAX search.
