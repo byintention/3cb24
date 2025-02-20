@@ -32,6 +32,8 @@ add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-
 
 /**
  * Add body class for dark header.
+ *
+ * @param array $classes An array of body class names.
  */
 function tcb24_custom_body_classes( $classes ) {
 	// If custom field is set for dark header.
@@ -117,6 +119,24 @@ define( 'DISALLOW_FILE_EDIT', true );
 show_admin_bar( false );
 
 
+/**
+ * Removes Top Level Menu - Comments, from all but admins and officers.
+ */
+function prefix_remove_comments_tl() {
+	$user = wp_get_current_user();
+	if ( in_array( 'administrator', $user->roles, true ) ) {
+		return;
+	}
+	remove_menu_page( 'profile.php' );
+	remove_menu_page( 'tools.php' );
+
+	if ( in_array( 'officer', $user->roles, true ) ) {
+		return;
+	}
+	remove_menu_page( 'edit-comments.php' );
+}
+
+add_action( 'admin_menu', 'prefix_remove_comments_tl' );
 
 /**
  * Custom events post type.
@@ -318,10 +338,10 @@ function tcb24_comment( $comment, $args, $depth ) {
 
 /**
  * Remove username, edit profile and log out as we use custom profile edit page
+ *
+ * @param array $defaults Description of the $defaults parameter.
  */
 function wpdocs_comment_form_defaults( $defaults ) {
-	// global $user_identity;.
-	// $required_text      = ' ' . wp_required_field_message();.
 	$defaults['logged_in_as'] = '';
 	return $defaults;
 }
@@ -449,8 +469,7 @@ add_filter( 'manage_epkb_post_type_1_posts_columns', 'set_custom_edit_book_colum
  */
 function custom_book_column() {
 	if ( get_the_modified_date() !== get_the_date() ) {
-		// echo 'publish: ' . get_the_date('Y/m/d') . ' - ';.
-		echo get_the_modified_date( 'Y/m/d' ) . ' at ' . get_the_modified_time();
+		echo esc_html( get_the_modified_date( 'Y/m/d' ) . ' at ' . get_the_modified_time() );
 	}
 }
 add_action( 'manage_epkb_post_type_1_posts_custom_column', 'custom_book_column', 10, 2 );

@@ -224,8 +224,13 @@ if (
 			</div>
 		</div>
 			<?php
-			comments_template();
-			?>
+				$args = array(
+					'role'        => array( 'officer', 'administrator' ),
+					'duration'    => '',
+					'comment_php' => '/comments-service-record.php',
+				);
+				get_template_part( 'includes/conditional-comments', null, $args );
+				?>
 			<?php
 			endwhile;
 		endif;

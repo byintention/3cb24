@@ -1,6 +1,6 @@
 <?php // phpcs:ignore Generic.Files.LineEndings.InvalidEOLChar.
 /**
- * Single interview template, used to display a single interview.
+ * Single transfer template, used to display a transfer interview.
  *
  * @package 3cb24
  */
@@ -15,7 +15,7 @@ get_header();
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Application: <?php the_title(); ?></h1>
+				<h1>Transfer: <?php the_title(); ?></h1>
 			</div>
 		</div>
 	</div>
@@ -43,17 +43,6 @@ get_header();
 						'role' => array( 'training_admin', 'recruit_admin', 'administrator' ),
 					);
 					get_template_part( 'includes/content', null, $args );
-					?>
-					</div>
-
-					<div>
-					<?php
-					$args = array(
-						'role'        => array( 'training_admin', 'recruit_admin', 'administrator' ),
-						'comment_php' => '/comments-application.php',
-						'duration'    => 356,
-					);
-					get_template_part( 'includes/conditional-comments', null, $args );
 					?>
 					</div>
 				</div>
