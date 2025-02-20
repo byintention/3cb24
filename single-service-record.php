@@ -20,7 +20,6 @@ get_header(); ?>
 	</div>
 </div>
 <div class="container">
-	
 
 <?php
 if (

@@ -32,14 +32,14 @@ get_header(); ?>
 				?>
 			<div class="news-thumb">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-					<img src="<?php the_post_thumbnail_url( 'large' ); ?>" alt="<?php the_title(); ?>"> 
+					<img src="<?php the_post_thumbnail_url( 'large' ); ?>" alt="<?php the_title(); ?>">
 				</a>
 			</div>
 				<?php
 			}
 			?>
 			<div class="padded">
-				<h3 class="blog-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>  
+				<h3 class="blog-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
 				<?php the_excerpt(); ?>
 				<p class="postmetadata clear">
 					<span class="blogcat">Posted in <?php the_category( ', ' ); ?></span>
@@ -64,6 +64,6 @@ get_header(); ?>
 		get_search_form();
 	}
 	?>
-	<?php get_sidebar(); ?> 
+	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

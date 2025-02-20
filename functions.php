@@ -118,6 +118,75 @@ show_admin_bar( false );
 
 
 
+/**
+ * Custom events post type.
+ */
+ 
+// Display 5 posts on event archive page.
+function sv_cpt_page( $query ) {
+	if ( !is_admin() &&  is_post_type_archive( 'tribe_events' ) ) {
+		$query->set( 'posts_per_page', '2' );
+	}
+}
+add_action( 'pre_get_posts', 'sv_cpt_page' );
+
+
+/**
+ * Pagination for archive, taxonomy, category, tag and search results pages
+ *
+ * @global $wp_query http://codex.wordpress.org/Class_Reference/WP_Query
+ * @return Prints the HTML for the pagination if a template is $paged
+ */
+function sv_pagination( $event_direction ) {
+
+	$next_arrow = is_rtl() ? esc_html( '<' ) : esc_html( '&laquo; Older events' );
+	$prev_arrow = is_rtl() ? esc_html( '>' ) : esc_html( 'Newer events &raquo;' );
+
+	global $wp_query, $event_query;
+	if ( $event_query ) {
+		$total = $event_query->max_num_pages;
+	} 
+	else {
+		$total = $wp_query->max_num_pages;
+	}
+
+	$big = 999999999; // This needs to be an unlikely integer
+
+	// For more options and info view the docs for paginate_links()
+	// http://codex.wordpress.org/Function_Reference/paginate_links
+
+	if ( $event_direction === 'future' ) {
+		$paginate_links = paginate_links(
+			array(
+				'base'        => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'current'     => max( 1, get_query_var( 'paged' ) ),
+				'total'       => $total,
+				'show_all'    => true,
+				'prev_text'	  => $next_arrow,
+				'next_text'	  => $prev_arrow,
+				'prev_next'   => 'true',
+			)
+		);
+	} else {
+		$paginate_links = paginate_links(
+			array(
+				'base'        => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'current'     => max( 1, get_query_var( 'paged' ) ),
+				'total'       => $total,
+				'show_all'    => true,
+				'prev_text'	  => $prev_arrow,
+				'next_text'	  => $next_arrow,
+				'prev_next'   => 'true',
+			)
+		);
+	}
+	// Display the pagination if more than one page is found
+	if ( $paginate_links ) {
+		print_r ( $paginate_links );
+	}
+}
+
+
 
 /**
  * AJAX search.

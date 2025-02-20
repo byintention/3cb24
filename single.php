@@ -27,11 +27,13 @@ get_header(); ?>
 			the_post();
 			?>
 		<div class="post white" id="post-<?php the_ID(); ?>">
+			<div class="bread has-small-font-size">
 			<?php
 			if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
 				seopress_display_breadcrumbs();
 			}
 			?>
+			</div>
 			<?php
 			if ( has_post_thumbnail() ) {
 				?>

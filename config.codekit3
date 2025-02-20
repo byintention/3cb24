@@ -121,6 +121,14 @@
       "oAP" : "\/archive-service-record.php",
       "oF" : 0
     },
+    "\/archive-tribe_events.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-tribe_events.php",
+      "oF" : 0
+    },
     "\/archive.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -429,6 +437,14 @@
       "oAP" : "\/includes\/content.php",
       "oF" : 0
     },
+    "\/includes\/event-info.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/event-info.php",
+      "oF" : 0
+    },
     "\/includes\/flexible-content.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -671,6 +687,19 @@
       "rFN" : 0,
       "uCM" : 0
     },
+    "\/sass\/_events.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/sass\/_events.css",
+      "oF" : 0,
+      "oS" : 1,
+      "pg" : 0
+    },
     "\/sass\/_main.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -745,6 +774,19 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/sass\/_wikiEKCB.css",
+      "oF" : 0,
+      "oS" : 1,
+      "pg" : 0
+    },
+    "\/sass\/events-old.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/sass\/events-old.css",
       "oF" : 0,
       "oS" : 1,
       "pg" : 0
@@ -892,6 +934,14 @@
       "oAP" : "\/single-service-record.php",
       "oF" : 0
     },
+    "\/single-tribe_events.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-tribe_events.php",
+      "oF" : 0
+    },
     "\/single.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -974,14 +1024,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/template-flexible.php",
-      "oF" : 0
-    },
-    "\/template-homepage.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/template-homepage.php",
       "oF" : 0
     },
     "\/template-testpage.php" : {
