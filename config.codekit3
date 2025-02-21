@@ -121,6 +121,14 @@
       "oAP" : "\/archive-service-record.php",
       "oF" : 0
     },
+    "\/archive-transfer.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/archive-transfer.php",
+      "oF" : 0
+    },
     "\/archive-tribe_events.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -159,6 +167,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/comments-interview.php",
+      "oF" : 0
+    },
+    "\/comments-service-record.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/comments-service-record.php",
       "oF" : 0
     },
     "\/comments.php" : {
@@ -412,6 +428,14 @@
       "opt" : 0,
       "plM" : 52780316221407,
       "prP" : 0
+    },
+    "\/includes\/application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/application.php",
+      "oF" : 0
     },
     "\/includes\/archive-post.php" : {
       "cB" : 0,
@@ -778,6 +802,18 @@
       "oS" : 1,
       "pg" : 0
     },
+    "\/sass\/events-old.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/sass\/events-old-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/sass\/events-old.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -932,6 +968,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/single-service-record.php",
+      "oF" : 0
+    },
+    "\/single-transfer.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/single-transfer.php",
       "oF" : 0
     },
     "\/single-tribe_events.php" : {
