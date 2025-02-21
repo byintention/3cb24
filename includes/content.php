@@ -50,25 +50,3 @@ foreach ( $fields as $field ) {
 echo '</ol>';
 
 echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
-
-// Get the user ID of the author.
-$applicant_id = get_the_author_meta( 'ID' );
-$applicant    = get_user_by( 'id', $applicant_id );
-
-// Early out for no applicant.
-if ( ! $applicant->exists() ) {
-	return;
-}
-
-$profile_id   = 'user_' . $applicant_id;
-$interview_id = get_field( 'interview', $profile_id );
-
-if ( $interview_id > 0 ) {
-	$interview_post = get_post( $interview_id );
-	if ( ! $interview_post ) {
-		return;
-	}
-	echo '<p><a href="/interview/' . esc_attr( $interview_post->post_name ) . '" class="button button-secondary">View Interview</a></p>';
-} else {
-	echo '<p><a href="/hidden/interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
-}
