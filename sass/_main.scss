@@ -1886,7 +1886,7 @@ body.mobilenavopen {
 }
 
 .bread {
-	padding-bottom:30px;	
+	padding-bottom:30px;
 }
 
 .error404,
@@ -2408,7 +2408,7 @@ html .wcpt-product-form select {
 #attendanceRoster {
 	background: #fff;
 	margin-bottom: 30px;
-	padding: 40px;
+	padding: 30px;
 	transition: all 0.2s linear;
 	a,
 	input,
@@ -2454,7 +2454,7 @@ html .wcpt-product-form select {
 
 @media only screen and (min-width: 1200px) {
 	#attendanceRoster {
-		padding: 30px;
+		padding: 40px;
 		.wrap {
 			display: flex;
 		}

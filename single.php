@@ -27,13 +27,6 @@ get_header(); ?>
 			the_post();
 			?>
 		<div class="post white" id="post-<?php the_ID(); ?>">
-			<div class="bread has-small-font-size">
-			<?php
-			if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
-				seopress_display_breadcrumbs();
-			}
-			?>
-			</div>
 			<?php
 			if ( has_post_thumbnail() ) {
 				?>
@@ -44,9 +37,17 @@ get_header(); ?>
 			}
 			?>
 			<div class="entry padded">
+				<div class="bread has-small-font-size">
+				<?php
+				if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
+					seopress_display_breadcrumbs();
+				}
+				?>
+				</div>
 				<?php the_content(); ?>
+				<hr>
 				<p class="postmetadata clear">
-					<span class="blogcat">Posted in <?php the_category( ', ' ); ?></span><span class="blogdate">
+					<span class="blogcat">Posted in <?php the_category( ', ' ); ?></span> &bull; <span class="blogdate">
 					<?php the_time( 'F jS, Y' ); ?> </span>
 				</p>
 			</div>

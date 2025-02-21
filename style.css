@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.65
+Version: 1.66
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -178,7 +178,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.65
+Version: 1.66
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -2419,7 +2419,7 @@ html .wcpt-product-form select {
 #attendanceRoster {
   background: #fff;
   margin-bottom: 30px;
-  padding: 40px;
+  padding: 30px;
   transition: all 0.2s linear;
 }
 #attendanceRoster a,
@@ -2465,7 +2465,7 @@ html .wcpt-product-form select {
 
 @media only screen and (min-width: 1200px) {
   #attendanceRoster {
-    padding: 30px;
+    padding: 40px;
   }
   #attendanceRoster .wrap {
     display: flex;
@@ -2619,7 +2619,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.65
+Version: 1.66
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -3196,7 +3196,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.65
+Version: 1.66
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
