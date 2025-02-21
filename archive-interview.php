@@ -16,6 +16,7 @@ get_header(); ?>
 		<div class="container">
 			<div class="twelve columns centre">
 				<h1>Interviews</h1>
+				<h2>Candidate phase</h2>
 			</div>
 		</div>
 	</div>
@@ -39,6 +40,7 @@ get_header(); ?>
 					'role'   => array( 'training_admin', 'recruit_admin', 'administrator' ),
 					'type'   => 'Interview',
 					'status' => 'Pending',
+					'info'   => 'Being processed and interviewed',
 				);
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
@@ -48,6 +50,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Approved';
+				$args['info']   = 'Candidate phase: basic training, trial operation (with buddy), awaiting decision on attestation';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>
@@ -56,6 +59,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Rejected';
+				$args['info']   = 'Candidate phase unsuccessful, rejected';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>
@@ -64,6 +68,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Archived';
+				$args['info']   = 'Candidate phase successful, progressed to Recruit';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>

@@ -8,9 +8,11 @@
 $role_list  = $args['role'];
 $status_    = $args['status'];
 $type_      = $args['type'];
+$info_      = $args['info'];
 $type_lower = strtolower( $type_ );
 
 echo '<h2>' . esc_html( $status_ ) . '</h2>';
+echo '<p>' . esc_html( $info_ ) . '</p>';
 
 // Check if the user has the required role.
 if ( ! empty( $role_list ) ) {

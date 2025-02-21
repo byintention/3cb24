@@ -66,7 +66,7 @@ if ( post_password_required() ) {
 		}
 	} // Check for have_comments().
 	$args = array(
-		'title_reply' => __( 'pre-Recruit phase feedback', 'textdomain' ),
+		'title_reply' => __( 'Candidate phase feedback', 'textdomain' ),
 	);
 	comment_form( $args );
 	?>

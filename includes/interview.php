@@ -35,11 +35,11 @@ echo '<ol>';
 foreach ( $fields as $field ) {
 	switch ( $field['name'] ) {
 		case 'applicant':
-			$user_data = get_field( 'applicant' );
-			if ( ! $user_data ) {
+			$applicant = get_field( 'applicant' );
+			if ( ! $applicant ) {
 				break;
 			}
-			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $user_data['display_name'] ) . '</li><br>';
+			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $applicant->display_name ) . '</li><br>';
 			break;
 		case 'interviewers':
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>';
@@ -73,3 +73,19 @@ foreach ( $fields as $field ) {
 echo '</ol>';
 
 echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
+
+// Early out for no applicant.
+if ( ! $applicant->exists() ) {
+	return;
+}
+
+$profile_id     = 'user_' . $applicant->ID;
+$application_id = get_field( 'application', $profile_id );
+
+if ( $application_id > 0 ) {
+	$application_post = get_post( $application_id );
+	if ( ! $application_post ) {
+		return;
+	}
+	echo '<p><a href="/application/' . esc_attr( $application_post->post_name ) . '" class="button button-secondary">View Application</a></p>';
+}

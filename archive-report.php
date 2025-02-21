@@ -39,6 +39,7 @@ get_header(); ?>
 					'role'   => array( 'training_admin', 'recruit_admin', 'administrator' ),
 					'type'   => 'Report',
 					'status' => 'Pending',
+					'info'   => 'Yet to be processed',
 				);
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
@@ -48,6 +49,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Approved';
+				$args['info']   = 'Report under investigation, awaiting decision or action';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>
@@ -56,6 +58,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Rejected';
+				$args['info']   = 'Report rejected';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>
@@ -64,6 +67,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args['status'] = 'Archived';
+				$args['info']   = 'Report concluded';
 				get_template_part( 'includes/archive-post', null, $args );
 				?>
 			</div>

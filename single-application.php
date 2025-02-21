@@ -42,7 +42,7 @@ get_header();
 					$args = array(
 						'role' => array( 'training_admin', 'recruit_admin', 'administrator' ),
 					);
-					get_template_part( 'includes/content', null, $args );
+					get_template_part( 'includes/application', null, $args );
 					?>
 					</div>
 
