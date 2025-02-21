@@ -827,26 +827,6 @@
       "oS" : 1,
       "pg" : 0
     },
-    "\/sass\/style.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/sass\/style-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/sass\/style.css.map" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/sass\/style.css.map",
-      "oF" : 0
-    },
     "\/sass\/style.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -857,31 +837,6 @@
       "oA" : 0,
       "oAP" : "\/style.css",
       "oF" : 2,
-      "oS" : 1,
-      "pg" : 0
-    },
-    "\/sass\/tiny-slider.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/sass\/tiny-slider-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/sass\/tiny-slider.scss" : {
-      "aP" : 0,
-      "bl" : 0,
-      "co" : 0,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/sass\/tiny-slider.css",
-      "oF" : 0,
       "oS" : 1,
       "pg" : 0
     },
@@ -1076,30 +1031,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/template-testpage.php",
-      "oF" : 0
-    },
-    "\/template-wiki.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/template-wiki.php",
-      "oF" : 0
-    },
-    "\/tribe-events\/single-event.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/tribe-events\/single-event.php",
-      "oF" : 0
-    },
-    "\/tribe\/events\/v2\/list\/event.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/tribe\/events\/v2\/list\/event.php",
       "oF" : 0
     }
   },

@@ -26,8 +26,15 @@ get_header(); ?>
 		<div class="inner">
 			<h1><?php the_title(); ?></h1>
 			<h4 class="intention-event-metadata clear has-large-text">
-				<span class="event-date"><?php echo $date->format( $format_out ); ?></span> | 
-				<span class="event-time"><?php the_field( 'event_start_time' ); ?> - <?php the_field( 'event_end_time' ); ?></span>
+				<?php
+					echo $date->format( $format_out ); 
+				if ( !empty ( get_field( 'event_start_time' ) ) ) { ?>
+				&bull;
+					<?php the_field( 'event_start_time' ); ?> - <?php the_field( 'event_end_time' );
+				} else {
+					echo " &bull; Time TBC";
+				}
+				?>
 			</h4>
 		</div>
 		<div class="tint"></div>
