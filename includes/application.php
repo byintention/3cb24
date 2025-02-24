@@ -8,15 +8,9 @@
 $role_list = $args['role'];
 
 // Check if the user has the required role.
+$roles = wp_get_current_user()->roles;
 if ( ! empty( $role_list ) ) {
-	$allow_entry = false;
-	foreach ( $role_list as $role_ ) {
-		if ( in_array( $role_, wp_get_current_user()->roles, true ) ) {
-			$allow_entry = true;
-			break;
-		}
-	}
-	if ( ! $allow_entry ) {
+	if ( ! array_intersect( $role_list, $roles ) ) {
 		echo '<p class="negative">Not authorised</p>';
 		return;
 	}
@@ -38,7 +32,8 @@ foreach ( $fields as $field ) {
 		$terms = get_the_terms( $post_id_, 'tcb-status' );
 		if ( $terms ) {
 			foreach ( $terms as $term_ ) {
-				echo esc_html( $term_->name );
+				$applicant_status = $term_->name;
+				echo esc_html( $applicant_status );
 			}
 		}
 		echo '</li><br>';
@@ -71,4 +66,23 @@ if ( $interview_id > 0 ) {
 	echo '<p><a href="/interview/' . esc_attr( $interview_post->post_name ) . '" class="button button-secondary">View Interview</a></p>';
 } else {
 	echo '<p><a href="/hidden/interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
+}
+
+// Early out for applicant status not set to Archive.
+if ( 'Archived' !== $applicant_status ) {
+	return;
+}
+
+$service_record_id = get_field( 'service_record', $profile_id );
+
+if ( $service_record_id > 0 ) {
+	$service_record_post = get_post( $service_record_id );
+	if ( ! $service_record_post ) {
+		return;
+	}
+	echo '<p><a href="/service-records/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
+
+	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
+} else {
+	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Service Record</a></p>';
 }

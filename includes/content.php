@@ -8,15 +8,9 @@
 $role_list = $args['role'];
 
 // Check if the user has the required role.
+$roles = wp_get_current_user()->roles;
 if ( ! empty( $role_list ) ) {
-	$allow_entry = false;
-	foreach ( $role_list as $role_ ) {
-		if ( in_array( $role_, wp_get_current_user()->roles, true ) ) {
-			$allow_entry = true;
-			break;
-		}
-	}
-	if ( ! $allow_entry ) {
+	if ( ! array_intersect( $role_list, $roles ) ) {
 		echo '<p class="negative">Not authorised</p>';
 		return;
 	}
