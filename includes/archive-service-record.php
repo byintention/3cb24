@@ -7,10 +7,11 @@
 
 $role_list = $args['role'];
 $rank      = $args['rank'];
-$info_     = $args['info'];
 
 echo '<h2>' . esc_html( $rank ) . '</h2>';
-echo '<p>' . esc_html( $info_ ) . '</p>';
+
+$term_ = get_term_by( 'name', $rank, 'tcb-rank' );
+echo '<p>' . esc_html( $term_->description ) . '</p>';
 
 // Check if the user has the required role.
 $roles = wp_get_current_user()->roles;
