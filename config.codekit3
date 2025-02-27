@@ -447,12 +447,28 @@
       "oAP" : "\/includes\/application.php",
       "oF" : 0
     },
+    "\/includes\/archive-admin_duty.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/archive-admin_duty.php",
+      "oF" : 0
+    },
     "\/includes\/archive-post.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/archive-post.php",
+      "oF" : 0
+    },
+    "\/includes\/archive-service-record.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/archive-service-record.php",
       "oF" : 0
     },
     "\/includes\/conditional-comments.php" : {
@@ -501,6 +517,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/postloop.php",
+      "oF" : 0
+    },
+    "\/includes\/service-record-commendation.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/service-record-commendation.php",
+      "oF" : 0
+    },
+    "\/includes\/service-record-training.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/service-record-training.php",
       "oF" : 0
     },
     "\/includes\/service-record.php" : {
