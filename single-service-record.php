@@ -63,15 +63,19 @@ get_header(); ?>
 							?>
 						</div>
 					</div>
+					<div>
+					<?php
+						$args = array(
+							'role'        => array( 'officer', 'administrator' ),
+							'duration'    => '',
+							'comment_php' => '/comments-service-record.php',
+						);
+						get_template_part( 'includes/conditional-comments', null, $args );
+						?>
+					</div>
 				</div>
 			</div>
 			<?php
-			$args = array(
-				'role'        => array( 'officer', 'administrator' ),
-				'duration'    => '',
-				'comment_php' => '/comments-service-record.php',
-			);
-			get_template_part( 'includes/conditional-comments', null, $args );
 		endwhile;
 	endif;
 	?>
