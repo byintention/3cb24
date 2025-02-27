@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.71
+Version: 1.72
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -178,7 +178,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.71
+Version: 1.72
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -2480,7 +2480,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.71
+Version: 1.72
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -3057,7 +3057,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.71
+Version: 1.72
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -3281,7 +3281,7 @@ Primary Branch: main
 @media only screen and (min-width: 1200px) {
   #attendanceRoster {
     float: right;
-    margin-right: 1%;
+    margin-left: 1%;
     padding: 40px;
     width: 59%;
   }
@@ -3299,7 +3299,7 @@ Primary Branch: main
 #slotTool {
   background: #fff;
   float: left;
-  margin-left: 1%;
+  margin-right: 1%;
   margin-bottom: 30px;
   padding: 40px;
   width: 39%;
