@@ -15,14 +15,14 @@ if ( have_rows( 'flexible_content' ) ) {
 		the_row();
 		++$counter;
 
-		if ( get_row_layout() === 'full' ) { ?>
+		if ( get_row_layout() === 'full' ) {
+			?>
 		<section class="full clearfix">
 			<div class="text">
 				<?php the_sub_field( 'content' ); ?>
 			</div>
 		</section>
 			<?php
-			// end full row.
 
 
 		} elseif ( get_row_layout() === 'filler' ) {
@@ -35,7 +35,7 @@ if ( have_rows( 'flexible_content' ) ) {
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="banners clear">
 			<picture>
-			<source media="(max-width:599px)" srcset="<?php the_sub_field( 'mobile_banner' ); ?>">
+				<source media="(max-width:599px)" srcset="<?php the_sub_field( 'mobile_banner' ); ?>">
 				<source media="(min-width:600px)" srcset="<?php the_sub_field( 'desktop_banner' ); ?>">
 				<img src="<?php the_sub_field( 'mobile_banner' ); ?>" alt="<?php the_title(); ?>">
 			</picture>
@@ -72,7 +72,6 @@ if ( have_rows( 'flexible_content' ) ) {
 								</cite>
 							</blockquote>
 						</div>
-			
 						<?php
 					}
 				} else {
@@ -159,7 +158,7 @@ if ( have_rows( 'flexible_content' ) ) {
 				if ( $images ) {
 					foreach ( $images as $image ) {
 						?>
-				<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="galleryImage">			
+				<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="galleryImage">
 					<a href="<?php echo esc_url( $image['sizes']['large'] ); ?>" itemprop="contentUrl" data-pswp-width="<?php echo esc_attr( $image['width'] ); ?>" data-pswp-height="<?php echo esc_attr( $image['height'] ); ?>" data-cropped="true" >
 						<img src="<?php echo esc_url( $image['sizes']['large'] ); ?>" itemprop="thumbnail" alt="<?php echo esc_attr( $image['alt'] ); ?>">
 						<div class="overlay">
@@ -172,7 +171,6 @@ if ( have_rows( 'flexible_content' ) ) {
 				}
 				?>
 				</div>
-			
 		</section>
 			<?php
 			// End Gallery Row.
@@ -193,6 +191,8 @@ if ( have_rows( 'flexible_content' ) ) {
 			</div>
 		</section>
 			<?php
+
+
 		} elseif ( get_row_layout() === 'two_column' ) {
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="clearfix twoColumn">
@@ -206,6 +206,8 @@ if ( have_rows( 'flexible_content' ) ) {
 			</div>
 		</section>
 			<?php
+
+
 		} elseif ( get_row_layout() === 'fifty_fifty' ) {
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="clearfix fiftyFifty">

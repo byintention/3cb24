@@ -51,14 +51,22 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( is_singular( 'post' ) ) {
 		$classes[] = 'darkHeader';
 	}
+	// If we're on service record archive
+	//if ( is_page_template( 'archive-service-record.php' ) ) {
+	//	$classes[] = 'darkHeader';
+	//}
+	if ( get_post_type() === 'service-record' && ! is_single() ) {
+		$classes[] = 'darkHeader';
+	}
+	// If we're in a single service record post.
+	if ( is_singular( 'service-record' ) ) {
+		$classes[] = 'darkHeader';
+	}
 	// If we're in the wiki section.
 	if ( is_page_template( 'page-template-template-wiki.php' ) ) {
 		$classes[] = 'darkHeader';
 	}
 	if ( is_page_template( 'archive-epkb_post_type_1.php' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	if ( is_page_template( 'archive-archive-service-record.php' ) ) {
 		$classes[] = 'darkHeader';
 	}
 	if ( get_post_type() === 'epkb_post_type_1' && ! is_single() ) {
@@ -72,10 +80,6 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( is_singular( 'tribe_events' ) ) {
 		$classes[] = 'darkHeader';
 	}
-	// If we're in a single event post.
-	if ( is_singular( 'service-record' ) ) {
-		$classes[] = 'darkHeader';
-	}
 	// If we're in search results page.
 	if ( is_search() ) {
 		$classes[] = 'darkHeader';
@@ -87,7 +91,7 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( get_post_type() === 'post' && ! is_single() ) {
 		$classes[] = 'darkHeader';
 	}
-	// if ( is_category() ) {}.
+	
 	return $classes;
 }
 

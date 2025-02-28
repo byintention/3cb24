@@ -18,7 +18,11 @@ get_header(); ?>
 		if ( has_post_thumbnail() ) {
 			?>
 		<div class="event-image">
-			<img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
+			<picture>
+				<source media="(max-width:599px)" srcset="<?php the_post_thumbnail_url('large'); ?>">
+				<source media="(min-width:600px)" srcset="<?php the_post_thumbnail_url(); ?>">
+				<img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
+			</picture>
 		</div>
 			<?php
 		}

@@ -74,15 +74,24 @@
 			z-index: 200;
 		}
 		.event-image {
+			height: 400px;
 			margin: 0;
 			position: relative;
 			z-index: 100;
-			img {
-				display: block;
+			picture {
+				display: flex;
+				height: 100%;
 				width: 100%;
+			}
+			img {
+				height: 100%;
+				max-width: 9999px;
+				width: 100%;
+				object-fit: cover;
 			}
 		}
 		.inner {
+			padding: 0 20px;
 			position: absolute;
 				top: 60%;
 				left: 0;
@@ -107,6 +116,21 @@
 		}	
 	}
 }
+
+	@media only screen and (min-width: 1200px) {
+		#intention-events-single-event {
+			.event-banner {
+				.event-image {
+					height: auto;
+					img {
+						display: block;
+						max-width: 100%;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
 
 .intention-events-listing-navigation {
 	display: table;
@@ -158,6 +182,7 @@
 		padding-bottom: 20px;
 	}
 	h3 {
+		padding-top: 15px;
 		margin-bottom: 10px;
 	}
 }
@@ -181,7 +206,7 @@
 	.attendanceCol {
 		border: 1px solid #ccc;
 		margin-bottom: 20px;
-		padding: 10px 10px 80px 10px;
+		padding: 15px 15px 80px 15px;
 		position: relative;
 		&:nth-child(2) {
 			border-left: 0;
@@ -300,6 +325,7 @@ input[type="submit"].slotIcon {
 }
 
 #slotToolButtons {
+	clear: both;
 	padding: 30px;
 	text-align: center;
 	a {

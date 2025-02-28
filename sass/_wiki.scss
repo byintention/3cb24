@@ -8,15 +8,20 @@
 	.wrapper {
 		background: #fff;
 	}
-	#s {
-		padding-left: 15px;
+	#searchform {
+		#search {
+			right: 60px;
+		}
+		#s {
+			border: none;
+			padding-left: 15px;
+		}
 	}
 	#datafetch {
 		background: #fff;
 		color: $colour-button;
 		max-height:0;
 		opacity: 0;
-		
 		padding: 0;
 		position: absolute;
 		text-align: left;
@@ -38,9 +43,8 @@
 			li a {
 				color: $colour-button;
 			}	
-		} 
+		}
 	}
-	
 	label {
 		display: none;
 	}
@@ -57,7 +61,6 @@
 }
 
 #tcbWikiListing {
-	
 	#tcbWikiContent {
 		padding-bottom: 50px;
 		max-width: 800px;
@@ -86,7 +89,6 @@
 			text-decoration: none;
 		}
 	}
-		
 }
 
 .wiki-docs {
@@ -143,7 +145,6 @@
 		position: -webkit-sticky;
 		position: sticky;
 		top: 110px;
-		
 		#toclist {
 			list-style: none;
 			margin: 0;

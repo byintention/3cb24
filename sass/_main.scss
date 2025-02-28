@@ -354,7 +354,7 @@ a:visited {
 
 a:hover,
 a:focus {
-	color: $colour-link-hover;
+	color: $colour-text;
 	transition: all 0.2s linear;
 }
 
@@ -663,6 +663,7 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
+button,
 .button,
 .button:visited,
 .btn,
@@ -678,6 +679,7 @@ input[type="button"] {
 	display: inline-block;
 	font-family: $base-font-family;
 	font-size: $base-font-size*.75;
+	font-weight: 400;
 	line-height: 1.2;
 	overflow: visible;
 	padding: 15px 30px;
@@ -686,6 +688,7 @@ input[type="button"] {
 	-webkit-appearance: none;
 }
 
+button:hover,
 .button:hover,
 .btn:hover,
 input[type="submit"]:hover,
@@ -696,6 +699,7 @@ input[type="button"]:hover {
 	transition: all 0.2s linear;
 }
 
+button:active,
 .button:active,
 .button:focus,
 .btn:active,
@@ -764,7 +768,7 @@ select {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	color: #777;
+	color: #333;
 	display: block;
 	font-family: $base-font-family;
 	font-size: $base-font-size*.75;
@@ -872,10 +876,10 @@ input[type="checkbox"] {
 }
 
 .container .one,
-.container .two.columns,
+.container .two,
 .container .three,
 .container .four,
-.container .five.columns,
+.container .five,
 .container .six,
 .container .seven,
 .container .eight,
@@ -889,30 +893,29 @@ input[type="checkbox"] {
 .container .one-third,
 .container .two-thirds {
 	margin: 0;
-	width: 100%;
+	flex: 0 0 100%;
 }
 
 .row {
 	margin: 0 0 2% 0;
 }
 
-/* Grid > 600px */
+/* Grid > 800px */
 
 @media only screen and (min-width: 800px) {
 
 	.container {
 		background: transparent;
 		display: flex;
-		flex-wrap: wrap;
+			flex-wrap: wrap;
 		position: relative;
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 1%;
-	}
-
-	.container .column,
-	.container .columns {
-		margin: 0 1%;
+		.column,
+		.columns {
+			margin: 0 1%;
+		}
 	}
 
 	.gridRow,
@@ -1104,24 +1107,27 @@ body.mobilenavopen {
 
 .darkHeader {
 	#header {
-		color: #fff;
+		color: #ddd;
 		svg {
 			path {
 				fill: #fff;
 			}
 		}
 		#headerLogin {
-			color: #fff;
+			color: #ddd;
 			a {
-				color: #fff;
+				color: #ddd;
+				&:hover {
+					color: #fff;
+				}
 			}
 		}
 		#nav2 {
 			a {
-				color: #fff;
+				color: #ddd;
 			}
 			a:hover {
-				color: $colour-link;
+				color: #fff;
 			}
 			.menu-item-has-children {
 				>a:after {
@@ -1161,7 +1167,7 @@ body.mobilenavopen {
 						color: $colour-link;
 					}
 					a:hover {
-						color: #222;
+						color: $colour-text;
 					}
 					.menu-item-has-children>a:after {
 						background-image: url(images/icon-chev-down-grey.svg);
@@ -1179,6 +1185,9 @@ body.mobilenavopen {
 					color: #222;
 					a {
 						color: $colour-link;
+						&:hover {
+							color: $colour-text;
+						}
 					}
 				}
 			}
@@ -2156,7 +2165,14 @@ body.mobilenavopen {
 	padding: 50px 0;
 	text-align: center;
 	a {
+		color: #ddd;
 		text-transform: uppercase;
+		&:visited {
+			color: #ddd;
+		}
+		&:hover {
+			color: #fff;
+		}
 	}
 	h3 {
 		color: #fff;
@@ -2178,7 +2194,7 @@ body.mobilenavopen {
 		width: 30px;
 	}
 	path {
-		fill: #eee;
+		fill: #ddd;
 		transition: color 0.2s linear;
 	}
 	a:hover path {
@@ -2365,7 +2381,7 @@ html .wcpt-product-form select {
 		width: auto;
 	}
 	a path {
-		fill: #ccc;
+		fill: #ddd;
 		transition: all 0.2s linear;
 	}
 	a:hover path {

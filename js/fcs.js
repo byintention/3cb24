@@ -77,6 +77,7 @@
 
 		// Add div for dropdown arrow to modified select boxes
 		$("#sidebar select").wrap("<div class=\"select-input\"></div>");
+		$("form select").wrap("<div class=\"select-input\"></div>");
 		
 	});
 
