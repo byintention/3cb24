@@ -1,54 +1,67 @@
+/*
+Theme Name: 3CB 2024 
+Theme URI: https://byintention.co
+Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
+Author: Nick "Badger" Hayward
+Author URI: https://byintention.co
+Version: 1.74
+Tags: 
+License: GPL3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+Text Domain: tcb24
+
+GitHub Theme URI: byintention/3cb24
+Primary Branch: main
+
+*/
+
 @use "sass:color";
 
 @font-face {
-  font-family: 'Bebas Neue';
-  font-style: normal;
-  font-weight: 400;
-  src: local(''),
-	   url('fonts/bebas-neue-v9-latin-regular.woff2') format('woff2'), 
-	   url('fonts/bebas-neue-v9-latin-regular.woff') format('woff'); 
+	font-display: swap;
+	font-family: 'Bebas Neue';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+		url('fonts/bebas-neue-v9-latin-regular.woff2') format('woff2'),
+		url('fonts/bebas-neue-v9-latin-regular.woff') format('woff');
 }
 
 @font-face {
-  font-display: swap; 
-  font-family: 'D-DIN';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/D-DIN.woff2') format('woff2'); 
+	font-display: swap;
+	font-family: 'D-DIN';
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/D-DIN.woff2') format('woff2'); 
 }
 
 @font-face {
-  font-display: swap; 
-  font-family: 'D-DIN';
-  font-style: normal;
-  font-weight: 700;
-  src: url('fonts/D-DIN-Bold.woff2') format('woff2');
+	font-display: swap;
+	font-family: 'D-DIN';
+	font-style: normal;
+	font-weight: 700;
+	src: url('fonts/D-DIN-Bold.woff2') format('woff2');
 }
 
 // Font weights
 $light: 100;
 $regular: 400;
-$bold: 700; 
+$bold: 700;
 
 // Base Font
 $base-font-family: "D-DIN", arial, sans-serif;
+$header-font-family: 'Bebas Neue', arial, sans-serif;
 $base-font-weight: $regular;
 $base-font-size: 18px;
 $base-line-height: 1.5;
 
-$header-font-family: 'Bebas Neue', arial, sans-serif;
-
-// Colours 
-
+// Colours
 $colour-text: #222;
-
 $pageBg: #eee;
 
 //$colour-link: #5c9bbf;
-$colour-link: #2271b1;
-
+$colour-link: #2170B0;
 $colour-link-hover: color.adjust($colour-link, $lightness: 10%);
-
-
-$colour-button: #2271b1;
+$colour-button: #2170B0;
 $colour-button-hover: color.adjust($colour-button, $lightness: 10%);

@@ -1,4 +1,4 @@
-@use 'vars' as *;
+@use 'vars';
 
 * {
 		-moz-box-sizing: border-box;
@@ -149,10 +149,10 @@ html {
 body {
 	background: #fff;
 	font-size: 16px;
-	line-height: $base-line-height;
-	font-family: $base-font-family;
-	font-weight: $regular;
-	color: $colour-text;
+	line-height: vars.$base-line-height;
+	font-family: vars.$base-font-family;
+	font-weight: vars.$regular;
+	color: vars.$colour-text;
 	-ms-text-size-adjust: none;
 	-webkit-text-size-adjust: none;
 	opacity: 0;
@@ -174,9 +174,9 @@ h3,
 h4,
 h5,
 h6 {
-	color: $colour-text;
-	font-family: $header-font-family;
-	font-weight: $regular;
+	color: vars.$colour-text;
+	font-family: vars.$header-font-family;
+	font-weight: vars.$regular;
 	line-height: 1;
 	margin-bottom: 20px;
 	text-transform: uppercase;
@@ -224,7 +224,7 @@ h6 {
 }
 
 p {
-	margin: 0 0 $base-font-size 0;
+	margin: 0 0 vars.$base-font-size 0;
 }
 
 p img {
@@ -232,7 +232,7 @@ p img {
 }
 
 address {
-	margin: 0 0 $base-font-size 0;
+	margin: 0 0 vars.$base-font-size 0;
 }
 
 em {
@@ -240,7 +240,7 @@ em {
 }
 
 strong {
-	font-weight: $bold;
+	font-weight: vars.$bold;
 }
 
 .has-small-font-size,
@@ -268,7 +268,7 @@ p.has-large-font-size {
 @media only screen and (min-width: 600px) {
 
 	body {
-		font-size: $base-font-size;
+		font-size: vars.$base-font-size;
 	}
 
 	h1 {
@@ -311,13 +311,13 @@ p.has-large-font-size {
 
 blockquote,
 blockquote p {
-	color: $colour-text;
+	color: vars.$colour-text;
 	font-style: normal;
 }
 
 blockquote {
 	background: #fafafa;
-	margin: 0 0 $base-font-size;
+	margin: 0 0 vars.$base-font-size;
 	padding: 20px;
 }
 
@@ -346,7 +346,7 @@ hr {
 
 a,
 a:visited {
-	color: $colour-link;
+	color: vars.$colour-link;
 	font-weight: bold;
 	text-decoration: underline;
 	transition: all 0.2s linear;
@@ -354,12 +354,12 @@ a:visited {
 
 a:hover,
 a:focus {
-	color: $colour-text;
+	color: vars.$colour-text;
 	transition: all 0.2s linear;
 }
 
 a:focus-visible {
-	outline-color: $colour-text;
+	outline-color: vars.$colour-text;
 }
 
 a:active {
@@ -415,7 +415,7 @@ dd {
 */
 
 .info {
-	background: $colour-button;
+	background: vars.$colour-button;
 	color: #fff;
 	font-weight: bold;
 	padding: 5px 10px;
@@ -435,7 +435,7 @@ dd {
 	background-size: 14px 14px;
 	color: #fff;
 	font-size: 14px;
-	font-weight: $bold;
+	font-weight: vars.$bold;
 	padding: 5px 10px 5px 32px;
 }
 
@@ -448,7 +448,7 @@ dd {
 	background-size: 14px 14px;
 	color: #fff;
 	font-size: 14px;
-	font-weight: $bold;
+	font-weight: vars.$bold;
 	padding: 5px 10px 5px 32px;
 }
 
@@ -463,7 +463,7 @@ div span.wpcf7-not-valid-tip {
 	background-size: 14px 14px;
 	color: #fff;
 	font-size: 14px;
-	font-weight: $bold;
+	font-weight: vars.$bold;
 	padding: 5px 10px 5px 32px;
 }
 
@@ -672,14 +672,14 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
 	background-color: transparent;
-	border: 2px solid $colour-button;
+	border: 2px solid vars.$colour-button;
 	border-radius: 0;
-	color: $colour-button;
+	color: vars.$colour-button;
 	cursor: pointer;
 	display: inline-block;
-	font-family: $base-font-family;
-	font-size: $base-font-size*.75;
-	font-weight: 400;
+	font-family: vars.$base-font-family;
+	font-size: vars.$base-font-size*.75;
+	font-weight: 700;
 	line-height: 1.2;
 	overflow: visible;
 	padding: 15px 30px;
@@ -694,7 +694,7 @@ button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
-	background-color: $colour-button;
+	background-color: vars.$colour-button;
 	color: #fff;
 	transition: all 0.2s linear;
 }
@@ -725,7 +725,7 @@ input[type="submit"]:disabled {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"] {
-		font-size: $base-font-size;
+		font-size: vars.$base-font-size;
 	}
 
 }
@@ -770,8 +770,8 @@ select {
 	-webkit-box-sizing: border-box;
 	color: #333;
 	display: block;
-	font-family: $base-font-family;
-	font-size: $base-font-size*.75;
+	font-family: vars.$base-font-family;
+	font-size: vars.$base-font-size*.75;
 	line-height: 1.2;
 	margin: 0;
 	padding: 15px;
@@ -819,8 +819,8 @@ select {
 	cursor: pointer;
 	border: 0;
 	display: block;
-	font-family: $base-font-family;
-	font-size: $base-font-size*.75;
+	font-family: vars.$base-font-family;
+	font-size: vars.$base-font-size*.75;
 	font-weight: 400;
 	line-height: 1.2;
 	padding: 13px 10px 13px 11px;
@@ -852,7 +852,7 @@ input[type="checkbox"] {
 	input[type="number"],
 	textarea,
 	select {
-		font-size: $base-font-size;
+		font-size: vars.$base-font-size;
 	}
 }
 
@@ -1138,7 +1138,7 @@ body.mobilenavopen {
 						color: #fff;
 					}
 					a:hover {
-						color: $colour-link;
+						color: vars.$colour-link;
 					}
 				}
 			}
@@ -1164,10 +1164,10 @@ body.mobilenavopen {
 				}
 				#nav2 {
 					a {
-						color: $colour-link;
+						color: vars.$colour-link;
 					}
 					a:hover {
-						color: $colour-text;
+						color: vars.$colour-text;
 					}
 					.menu-item-has-children>a:after {
 						background-image: url(images/icon-chev-down-grey.svg);
@@ -1177,16 +1177,16 @@ body.mobilenavopen {
 							color: #fff;
 						}
 						a:hover {
-							color: $colour-link;
+							color: vars.$colour-link;
 						}
 					}
 				}
 				#headerLogin {
 					color: #222;
 					a {
-						color: $colour-link;
+						color: vars.$colour-link;
 						&:hover {
-							color: $colour-text;
+							color: vars.$colour-text;
 						}
 					}
 				}
@@ -1210,11 +1210,15 @@ body.mobilenavopen {
 	font-size: 14px;
 	line-height: 1.3;
 	position: absolute;
-	top: 21px;
+	top: 50%;
 	right: 80px;
 	text-align: center;
-	width: 220px;
+	transform: translateY(50%);
+	width: 200px;
 	strong {
+		
+	}
+	.userLinks {
 		display: block;
 	}
 }
@@ -1222,10 +1226,14 @@ body.mobilenavopen {
 	@media only screen and (min-width: 1200px) {
 		#headerLogin {
 			font-size: 16px;
-			top: 15px;
-			right: 1%;
+				top: 15px;
+				right: 1%;
+			transform: none;
 			width: auto;
 			strong {
+				display: inline;
+			}
+			.userLinks {
 				display: inline;
 			}
 		}
@@ -1276,8 +1284,8 @@ body.mobilenavopen {
 
 #headerMenuMobile {
 	border: none;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
 	position: absolute;
@@ -1287,6 +1295,7 @@ body.mobilenavopen {
 	z-index: 2000;
 	button {
 		background: transparent;
+		border: none;
 		border-radius: 0;
 		color: #fff;
 		display: block;
@@ -1295,7 +1304,7 @@ body.mobilenavopen {
 		padding: 0;
 		width: 29px;
 		span {
-			background: $colour-button;
+			background: vars.$colour-button;
 			display: block;
 			height: 5px;
 			position: absolute;
@@ -1305,7 +1314,7 @@ body.mobilenavopen {
 			width: 29px;
 		}
 		&:before {
-			background: $colour-button;
+			background: vars.$colour-button;
 			content: "";
 			height: 5px;
 			position: absolute;
@@ -1315,7 +1324,7 @@ body.mobilenavopen {
 			width: 29px;
 		}
 		&:after {
-			background: $colour-button;
+			background: vars.$colour-button;
 			content: "";
 			height: 5px;
 			position: absolute;
@@ -1396,7 +1405,7 @@ body.mobilenavopen {
 }
 
 .blue {
-	background-color: $colour-button;
+	background-color: vars.$colour-button;
 }
 
 .grey {
@@ -1431,7 +1440,7 @@ body.mobilenavopen {
 		margin: 0 auto;
 		max-width: 600px;
 		a {
-			color: $colour-link;
+			color: vars.$colour-link;
 			text-decoration: underline
 		}
 		label {
@@ -1492,7 +1501,7 @@ body.mobilenavopen {
 	background-size: cover;
 	clear: both;
 	color: #fff;
-	font-size: $base-font-size;
+	font-size: vars.$base-font-size;
 	padding: 60px 20px 120px 20px;
 	position: relative;
 	text-align: center;
@@ -1904,7 +1913,7 @@ body.mobilenavopen {
 .archive,
 .blog {
 	.contentWrap {
-		background: $pageBg;
+		background: vars.$pageBg;
 	}
 	.post {
 		margin-bottom: 40px;
@@ -1920,7 +1929,7 @@ body.mobilenavopen {
 }
 
 .single {
-	background: $pageBg;
+	background: vars.$pageBg;
 	.contentWrap {
 		background: transparent;
 	}
@@ -2017,7 +2026,7 @@ body.mobilenavopen {
 			font-style: normal;
 		}
 		.fn {
-			font-weight: $bold;
+			font-weight: vars.$bold;
 		}
 		.says {
 			display: none;
@@ -2113,12 +2122,12 @@ body.mobilenavopen {
 	}
 	
 	#searchsubmit {
-		background: $colour-button;
+		background: vars.$colour-button;
 		color: #fff;
 		width: 60px;
 		&:hover {
-			background: $colour-button-hover;
-			border-color: $colour-button-hover;
+			background: vars.$colour-button-hover;
+			border-color: vars.$colour-button-hover;
 		}
 	}
 	
@@ -2241,10 +2250,10 @@ body.mobilenavopen {
 				list-style: none;
 				position: relative;
 				a {
-					color: $colour-button;
+					color: vars.$colour-button;
 					display: block;
-					font-size: 20px;
-					font-weight: $regular;
+					font-size: 22px;
+					font-weight: vars.$regular;
 					height: 50px;
 					line-height: 40px;
 					padding: 0 20px;
@@ -2252,7 +2261,7 @@ body.mobilenavopen {
 					text-transform: uppercase;
 				}
 				a:hover {
-					color: $colour-text;
+					color: vars.$colour-text;
 				}
 				&:last-child a {
 					padding-right: 0;
@@ -2288,7 +2297,7 @@ body.mobilenavopen {
 					}
 				}
 				.sub-menu {
-					background: $colour-text;
+					background: vars.$colour-text;
 					box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 					display: block;
 					max-height: 0;
@@ -2313,7 +2322,7 @@ body.mobilenavopen {
 							width: 220px;
 
 							&:hover {
-								color: $colour-link;
+								color: vars.$colour-link;
 							}
 						}
 						&:first-child {
@@ -2324,7 +2333,7 @@ body.mobilenavopen {
 						}
 					}
 					&:before {
-						background: $colour-text;
+						background: vars.$colour-text;
 						content: "";
 						display: block;
 						height: 20px;

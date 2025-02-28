@@ -5,7 +5,7 @@
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
-		height: 100%;
+		height: 100vh;
 		padding: 20px;
 		position: fixed;
 			top: 0;
@@ -38,7 +38,6 @@
 				float: none;
 				margin: 0;
 				padding: 0;
-		
 				a,
 				a:link,
 				a:visited {
@@ -50,19 +49,17 @@
 					float: none;
 					padding: 10px 0;
 					clear: both;
+					text-align: center;
 					text-decoration: none;
 					text-transform: uppercase;
 					-moz-osx-font-smoothing: grayscale;
-		
 					span {
 						display: block;
 						font-size: 15px;
 						opacity: 0.5;
 					}
 				}
-		
 			}
-		
 		}
 		
 		/* Second Level */

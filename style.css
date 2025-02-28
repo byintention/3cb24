@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.72
+Version: 1.74
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -17,6 +17,7 @@ Primary Branch: main
 
 */
 @font-face {
+  font-display: swap;
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: 400;
@@ -42,7 +43,7 @@ Primary Branch: main
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 100%;
+    height: 100vh;
     padding: 20px;
     position: fixed;
     top: 0;
@@ -88,6 +89,7 @@ Primary Branch: main
     float: none;
     padding: 10px 0;
     clear: both;
+    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     -moz-osx-font-smoothing: grayscale;
@@ -172,23 +174,6 @@ Primary Branch: main
     transition: all 0.1s linear rotate(0.0001deg);
   }
 }
-/*
-Theme Name: 3CB 2024 
-Theme URI: https://byintention.co
-Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
-Author: Nick "Badger" Hayward
-Author URI: https://byintention.co
-Version: 1.72
-Tags: 
-License: GPL3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
-
-Text Domain: tcb24
-
-GitHub Theme URI: byintention/3cb24
-Primary Branch: main
-
-*/
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -520,7 +505,7 @@ hr {
 */
 a,
 a:visited {
-  color: #2271b1;
+  color: #2170B0;
   font-weight: bold;
   text-decoration: underline;
   transition: all 0.2s linear;
@@ -582,7 +567,7 @@ dd {
 	Notification Styles
 */
 .info {
-  background: #2271b1;
+  background: #2170B0;
   color: #fff;
   font-weight: bold;
   padding: 5px 10px;
@@ -828,14 +813,14 @@ input[type=submit],
 input[type=reset],
 input[type=button] {
   background-color: transparent;
-  border: 2px solid #2271b1;
+  border: 2px solid #2170B0;
   border-radius: 0;
-  color: #2271b1;
+  color: #2170B0;
   cursor: pointer;
   display: inline-block;
   font-family: "D-DIN", arial, sans-serif;
   font-size: 13.5px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2;
   overflow: visible;
   padding: 15px 30px;
@@ -850,7 +835,7 @@ button:hover,
 input[type=submit]:hover,
 input[type=reset]:hover,
 input[type=button]:hover {
-  background-color: #2271b1;
+  background-color: #2170B0;
   color: #fff;
   transition: all 0.2s linear;
 }
@@ -1245,7 +1230,7 @@ body.mobilenavopen {
   color: #fff;
 }
 .darkHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
-  color: #2271b1;
+  color: #2170B0;
 }
 
 @media only screen and (min-width: 600px) {
@@ -1265,7 +1250,7 @@ body.mobilenavopen {
     fill: #222;
   }
   #header.scrollHeader #nav2 a {
-    color: #2271b1;
+    color: #2170B0;
   }
   #header.scrollHeader #nav2 a:hover {
     color: #222;
@@ -1277,13 +1262,13 @@ body.mobilenavopen {
     color: #fff;
   }
   #header.scrollHeader #nav2 .sub-menu a:hover {
-    color: #2271b1;
+    color: #2170B0;
   }
   #header.scrollHeader #headerLogin {
     color: #222;
   }
   #header.scrollHeader #headerLogin a {
-    color: #2271b1;
+    color: #2170B0;
   }
   #header.scrollHeader #headerLogin a:hover {
     color: #222;
@@ -1303,12 +1288,13 @@ body.mobilenavopen {
   font-size: 14px;
   line-height: 1.3;
   position: absolute;
-  top: 21px;
+  top: 50%;
   right: 80px;
   text-align: center;
-  width: 220px;
+  transform: translateY(50%);
+  width: 200px;
 }
-#headerLogin strong {
+#headerLogin .userLinks {
   display: block;
 }
 
@@ -1317,9 +1303,13 @@ body.mobilenavopen {
     font-size: 16px;
     top: 15px;
     right: 1%;
+    transform: none;
     width: auto;
   }
   #headerLogin strong {
+    display: inline;
+  }
+  #headerLogin .userLinks {
     display: inline;
   }
 }
@@ -1373,6 +1363,7 @@ body.mobilenavopen {
 }
 #headerMenuMobile button {
   background: transparent;
+  border: none;
   border-radius: 0;
   color: #fff;
   display: block;
@@ -1382,7 +1373,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button span {
-  background: #2271b1;
+  background: #2170B0;
   display: block;
   height: 5px;
   position: absolute;
@@ -1392,7 +1383,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button:before {
-  background: #2271b1;
+  background: #2170B0;
   content: "";
   height: 5px;
   position: absolute;
@@ -1402,7 +1393,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button:after {
-  background: #2271b1;
+  background: #2170B0;
   content: "";
   height: 5px;
   position: absolute;
@@ -1477,7 +1468,7 @@ body.mobilenavopen {
 }
 
 .blue {
-  background-color: #2271b1;
+  background-color: #2170B0;
 }
 
 .grey {
@@ -1513,7 +1504,7 @@ body.mobilenavopen {
   max-width: 600px;
 }
 .banners .the_champ_login_container .heateor_ss_sl_optin_container a {
-  color: #2271b1;
+  color: #2170B0;
   text-decoration: underline;
 }
 .banners .the_champ_login_container .heateor_ss_sl_optin_container label {
@@ -2145,13 +2136,13 @@ body.mobilenavopen {
   border: 1px solid #ccc;
 }
 #searchform #searchsubmit {
-  background: #2271b1;
+  background: #2170B0;
   color: #fff;
   width: 60px;
 }
 #searchform #searchsubmit:hover {
-  background: rgb(46.9620853081, 139.8151658768, 215.0379146919);
-  border-color: rgb(46.9620853081, 139.8151658768, 215.0379146919);
+  background: rgb(44.4736842105, 138.971291866, 215.5263157895);
+  border-color: rgb(44.4736842105, 138.971291866, 215.5263157895);
 }
 
 #searchwrapper {
@@ -2267,9 +2258,9 @@ body.mobilenavopen {
     position: relative;
   }
   #nav2 ul li a {
-    color: #2271b1;
+    color: #2170B0;
     display: block;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
     height: 50px;
     line-height: 40px;
@@ -2341,7 +2332,7 @@ body.mobilenavopen {
     width: 220px;
   }
   #nav2 ul li .sub-menu li a:hover {
-    color: #2271b1;
+    color: #2170B0;
   }
   #nav2 ul li .sub-menu li:first-child {
     margin-top: 10px;
@@ -2491,23 +2482,6 @@ ul.acf-checkbox-list li {
   width: 25px;
 }
 
-/*
-Theme Name: 3CB 2024 
-Theme URI: https://byintention.co
-Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
-Author: Nick "Badger" Hayward
-Author URI: https://byintention.co
-Version: 1.72
-Tags: 
-License: GPL3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
-
-Text Domain: tcb24
-
-GitHub Theme URI: byintention/3cb24
-Primary Branch: main
-
-*/
 #wikiSearch {
   margin: 0 auto;
   max-width: 400px;
@@ -2525,7 +2499,7 @@ Primary Branch: main
 }
 #wikiSearch #datafetch {
   background: #fff;
-  color: #2271b1;
+  color: #2170B0;
   max-height: 0;
   opacity: 0;
   padding: 0;
@@ -2549,7 +2523,7 @@ Primary Branch: main
   overflow-y: auto;
 }
 #wikiSearch #datafetch ul li a {
-  color: #2271b1;
+  color: #2170B0;
 }
 #wikiSearch label {
   display: none;
@@ -3072,23 +3046,6 @@ div.pswp__img--placeholder,
   display: none;
 }
 
-/*
-Theme Name: 3CB 2024 
-Theme URI: https://byintention.co
-Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
-Author: Nick "Badger" Hayward
-Author URI: https://byintention.co
-Version: 1.72
-Tags: 
-License: GPL3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
-
-Text Domain: tcb24
-
-GitHub Theme URI: byintention/3cb24
-Primary Branch: main
-
-*/
 .post-type-archive-tribe_events #header {
   background: #fff;
 }
@@ -3105,6 +3062,9 @@ Primary Branch: main
   margin-bottom: 30px;
   padding: 30px;
   position: relative;
+}
+#intention-events-listing .intention-events-listing-event .intention-events-listing-image {
+  min-height: 150px;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title {
   background: rgba(0, 0, 0, 0.5);

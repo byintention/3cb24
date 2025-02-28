@@ -1,7 +1,6 @@
-@use 'vars' as *;
+@use 'vars';
 
 #wikiSearch {
-	
 	margin: 0 auto;
 	max-width: 400px;
 	position: relative;
@@ -19,7 +18,7 @@
 	}
 	#datafetch {
 		background: #fff;
-		color: $colour-button;
+		color: vars.$colour-button;
 		max-height:0;
 		opacity: 0;
 		padding: 0;
@@ -41,8 +40,8 @@
 			overflow: hidden;
 			overflow-y: auto;
 			li a {
-				color: $colour-button;
-			}	
+				color: vars.$colour-button;
+			}
 		}
 	}
 	label {

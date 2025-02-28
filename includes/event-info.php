@@ -6,14 +6,11 @@
 ?>
 <article class="intention-events-listing-event">
 	<a href="<?php the_permalink(); ?>">
-	<?php
-	if ( has_post_thumbnail() ) { ?>
 		<div class="intention-events-listing-image">
 			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>">
 			<?php the_post_thumbnail( 'large' ); ?>
 			</a>
 		</div>
-	<?php } ?>
 	<div class="intention-events-listing-title centre">
 		<h3><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
 		<p>

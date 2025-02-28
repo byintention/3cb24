@@ -42,8 +42,8 @@
 				<div id="headerLogin">
 					<?php if ( ! is_user_logged_in() ) { ?>
 					<?php } else { ?>
-						<strong>Welcome: </strong>Logged in as <span class="username"><?php echo esc_html( wp_get_current_user()->user_login ); ?></span> &nbsp; <a href="/edit-user-profile/">Edit profile</a> &nbsp;
-						<a href="/wp-login.php?action=logout">Log out</a>
+						<strong>Welcome: </strong>Logged in as <span class="username"><?php echo esc_html( wp_get_current_user()->user_login ); ?></span> <span class="userLinks"><a href="/edit-user-profile/">Edit profile</a> &nbsp;
+						<a href="/wp-login.php?action=logout">Log out</a></span>
 					<?php } ?>
 				</div>
 			</div>

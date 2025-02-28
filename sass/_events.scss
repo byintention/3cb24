@@ -1,4 +1,4 @@
-@use 'vars' as *;
+@use 'vars';
 
 .post-type-archive-tribe_events {
 	#header {
@@ -7,7 +7,7 @@
 }
 
 #intention-events-listing {
-	background: $pageBg;
+	background: vars.$pageBg;
 	padding: 150px 0 100px 0;
 	.container {
 		max-width: 1000px;
@@ -17,6 +17,9 @@
 		margin-bottom: 30px;
 		padding: 30px;
 		position: relative;
+		.intention-events-listing-image {
+			min-height: 150px;
+		}
 		.intention-events-listing-title {
 			background: rgba(0,0,0,0.5);
 			color: #fff;
@@ -41,7 +44,7 @@
 }
 
 #intention-events-single-event {
-	background: $pageBg;
+	background: vars.$pageBg;
 	padding: 0 0 50px 0;
 	.container {
 		max-width: 1200px;
