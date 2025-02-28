@@ -68,8 +68,8 @@ if ( $interview_id > 0 ) {
 	echo '<p><a href="/hidden/interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
 }
 
-// Early out for applicant status not set to Archive.
-if ( 'Archived' !== $applicant_status ) {
+// Early out for applicant status set to Pending or Rejected.
+if ( ( 'Pending' === $applicant_status ) || ( 'Rejected' === $applicant_status ) ) {
 	return;
 }
 
@@ -85,4 +85,9 @@ if ( $service_record_id > 0 ) {
 	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
 } else {
 	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Service Record</a></p>';
+}
+
+if ( 'Archived' === $applicant_status ) {
+	tcbp_public_sr_check_promotion_to_marine( $applicant_id, $service_record_id );
+	return;
 }
