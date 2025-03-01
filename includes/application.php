@@ -5,7 +5,8 @@
  * @package 3cb24
  */
 
-$role_list = $args['role'];
+$role_list      = $args['role'];
+$role_edit_list = $args['role_edit'];
 
 // Check if the user has the required role.
 $roles = wp_get_current_user()->roles;
@@ -44,7 +45,13 @@ foreach ( $fields as $field ) {
 
 echo '</ol>';
 
-echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
+$can_edit = false;
+if ( ! empty( $role_edit_list ) ) {
+	if ( array_intersect( $role_edit_list, $roles ) ) {
+		echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
+		$can_edit = true;
+	}
+}
 
 // Get the user ID of the author.
 $applicant_id = get_the_author_meta( 'ID' );
@@ -64,7 +71,7 @@ if ( $interview_id > 0 ) {
 		return;
 	}
 	echo '<p><a href="/interview/' . esc_attr( $interview_post->post_name ) . '" class="button button-secondary">View Interview</a></p>';
-} else {
+} elseif ( $can_edit ) {
 	echo '<p><a href="/hidden/interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
 }
 
@@ -82,8 +89,10 @@ if ( $service_record_id > 0 ) {
 	}
 	echo '<p><a href="/service-records/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
 
-	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
-} else {
+	if ( $can_edit ) {
+		echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
+	}
+} elseif ( $can_edit ) {
 	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Service Record</a></p>';
 }
 

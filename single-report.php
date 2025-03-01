@@ -40,7 +40,8 @@ get_header();
 					<div class="entry padded">
 					<?php
 					$args = array(
-						'role' => array( 'training_admin', 'recruit_admin', 'administrator' ),
+						'role'      => array( 'officer', 'snco', 'administrator' ),
+						'role_edit' => array( 'officer', 'administrator' ),
 					);
 					get_template_part( 'includes/content', null, $args );
 					?>
@@ -49,7 +50,7 @@ get_header();
 					<div>
 					<?php
 					$args = array(
-						'role'        => array( 'training_admin', 'recruit_admin', 'administrator' ),
+						'role'        => array( 'officer', 'administrator' ),
 						'duration'    => '',
 						'comment_php' => '/comments.php',
 					);

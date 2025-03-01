@@ -27,13 +27,14 @@ get_header(); ?>
 			the_post();
 			?>
 			<div class="post white serviceRecord" id="post-<?php the_ID(); ?>">
-				<div class="padded" style="padding-bottom:0;">
-					<ul class="breadcrumb has-small-font-size">
-						<li><a href="<?php echo esc_url( home_url() ); ?>">Home</a></li>
-						<li><a href="<?php echo esc_url( home_url() ); ?>/roster/">Roster</a></li>
-						<li><?php the_title(); ?></li>
-					</ul>
+				<div class="padded">
+					<?php
+					if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
+						seopress_display_breadcrumbs();
+					}
+					?>
 				</div>
+
 				<div class="entry padded">
 					<div class="container">
 						<div class="tcb_user_info five columns">

@@ -36,7 +36,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args = array(
-					'role'   => array( 'training_admin', 'recruit_admin', 'administrator' ),
+					'role'   => array( 'officer', 'snco', 'administrator' ),
 					'type'   => 'Report',
 					'status' => 'Pending',
 					'info'   => 'Yet to be processed',

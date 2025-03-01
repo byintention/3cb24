@@ -15,8 +15,8 @@ get_header(); ?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Applications</h1>
-				<h2>Recruit phase</h2>
+				<h1>Recruit phase</h1>
+				<h2>Applications</h2>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args = array(
-					'role'   => array( 'training_admin', 'recruit_admin', 'administrator' ),
+					'role'   => array( 'training_admin', 'recruit_admin', 'officer', 'snco', 'nco', 'administrator' ),
 					'type'   => 'Application',
 					'status' => 'Pending',
 					'info'   => 'Being processed or in Candidate phase',

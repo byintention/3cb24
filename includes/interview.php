@@ -5,7 +5,8 @@
  * @package 3cb24
  */
 
-$role_list = $args['role'];
+$role_list      = $args['role'];
+$role_edit_list = $args['role_edit'];
 
 // Check if the user has the required role.
 $roles = wp_get_current_user()->roles;
@@ -66,7 +67,11 @@ foreach ( $fields as $field ) {
 }
 echo '</ol>';
 
-echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
+if ( ! empty( $role_edit_list ) ) {
+	if ( array_intersect( $role_edit_list, $roles ) ) {
+		echo '<p><a href="/edit-status/?id=' . esc_attr( $post_id_ ) . '" class="button button-secondary">Edit Status</a></p>';
+	}
+}
 
 // Early out for no applicant.
 if ( ! $applicant->exists() ) {
