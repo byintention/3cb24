@@ -99,6 +99,11 @@ get_header(); ?>
 				?>
 			</div>
 		</div>
+		<div class="post white" id="post-<?php the_ID(); ?>" >
+			<div class="entry padded">
+				<p>The full range of <a href="/hidden/duties">Administrative Duties</a> can be found here.<br>
+			</div>
+		</div>
 	</div>
 </div>
 <?php

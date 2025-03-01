@@ -11,7 +11,8 @@
 			<div class="container">
 				<div class="twelve columns">
 					<h3>Contact Us</h3>
-					<p><a href="<?php the_field( 'teamspeak', 'options' ); ?>">Join Teamspeak Server</a><br>
+					<p><a href="/hidden/duties">Support</a><br>
+					<a href="<?php the_field( 'teamspeak', 'options' ); ?>">Join Teamspeak Server</a><br>
 					<a href="<?php the_field( 'discord', 'options' ); ?>">Join Discord Server</a></p>
 					<?php get_template_part( 'includes/social' ); ?>
 					<p class="has-small-font-size">&copy; <?php the_field( 'footer_message', 'options' ); ?></p>
