@@ -103,12 +103,18 @@ if ( $can_edit ) {
 }
 
 // Early out for applicant status set to Pending or Rejected.
-if ( in_array( $applicant_status, array( 'submission', 'interview', 'candidate', 'rejected' ), true ) ) {
+if ( in_array( $applicant_status, array( 'submission', 'interview', 'candidate' ), true ) ) {
 	return;
 }
 
 $profile_id        = 'user_' . $applicant_id;
 $service_record_id = get_field( 'service_record', $profile_id );
+
+// Early out for applicant status set to Rejected.
+if ( 'rejected' === $applicant_status ) {
+	tcbp_public_sr_check_demotion_to_subscriber( $applicant_id, $service_record_id );
+	return;
+}
 
 if ( $service_record_id > 0 ) {
 	$service_record_post = get_post( $service_record_id );

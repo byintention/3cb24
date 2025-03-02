@@ -15,7 +15,8 @@ get_header(); ?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Service Records</h1>
+				<h1>Roster</h1>
+				<h2>Service Records</h2>
 			</div>
 		</div>
 	</div>

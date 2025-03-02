@@ -130,14 +130,6 @@ if ( $has_training_access ) {
 			echo '<p><a href="/application/' . esc_attr( $application_post->post_name ) . '" class="button button-secondary">View Application</a></p>';
 		}
 	}
-
-	$interview_id = get_field( 'interview', $profile_id );
-	if ( $interview_id > 0 ) {
-		$interview_post = get_post( $interview_id );
-		if ( $application_post ) {
-			echo '<p><a href="/interview/' . esc_attr( $interview_post->post_name ) . '" class="button button-secondary">View Interview</a></p>';
-		}
-	}
 }
 
 echo '</div>';
