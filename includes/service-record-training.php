@@ -24,7 +24,7 @@ if ( $list_of_duties ) {
 
 	echo '<ul>';
 	foreach ( $list_of_duties as $duty ) {
-		$term_ = get_term_by( 'term_id', $duty['label'], 'tcb-duty' );
+		$term_ = get_term_by( 'term_id', $duty, 'tcb-duty' );
 		echo '<li>' . esc_attr( $term_->name ) . '</li>';
 	}
 
