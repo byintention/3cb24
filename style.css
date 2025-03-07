@@ -3339,7 +3339,7 @@ div.pswp__img--placeholder,
 input[type=submit].slotIcon {
   background: #fff;
   background-size: cover;
-  border: 2px solid #000;
+  border: 3px solid #2170B0;
   border-radius: 100%;
   box-sizing: border-box;
   cursor: pointer;
@@ -3370,4 +3370,20 @@ input[type=submit].slotIcon.disabled {
 
 .unit {
   margin-bottom: 30px;
+}
+
+.slotToolSlotDummyImage {
+  background: #fff;
+  background-size: cover;
+  border: 3px solid #000;
+  border-radius: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 0;
+  height: 30px;
+  margin-right: 10px;
+  padding: 0;
+  position: relative;
+  vertical-align: top;
+  width: 30px;
 }
