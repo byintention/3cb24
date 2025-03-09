@@ -140,6 +140,7 @@ function prefix_remove_comments_tl() {
 	remove_menu_page( 'edit.php?post_type=application' );
 	remove_menu_page( 'edit.php?post_type=report' );
 	remove_menu_page( 'edit.php?post_type=loa' );
+	remove_menu_page( 'index.php' );
 
 	// These do not work -- attempts to remove acf global settings and field groups from menu.
 	// remove_menu_page( 'edit.php?post_type=acf-field-group' );
