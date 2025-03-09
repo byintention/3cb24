@@ -52,9 +52,9 @@ function tcb24_custom_body_classes( $classes ) {
 		$classes[] = 'darkHeader';
 	}
 	// If we're on service record archive
-	//if ( is_page_template( 'archive-service-record.php' ) ) {
-	//	$classes[] = 'darkHeader';
-	//}
+	// if ( is_page_template( 'archive-service-record.php' ) ) {
+	// $classes[] = 'darkHeader';
+	// }
 	if ( get_post_type() === 'service-record' && ! is_single() ) {
 		$classes[] = 'darkHeader';
 	}
@@ -91,7 +91,7 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( get_post_type() === 'post' && ! is_single() ) {
 		$classes[] = 'darkHeader';
 	}
-	
+
 	return $classes;
 }
 
@@ -136,6 +136,14 @@ function prefix_remove_comments_tl() {
 	}
 	remove_menu_page( 'profile.php' );
 	remove_menu_page( 'tools.php' );
+	remove_menu_page( 'edit.php?post_type=service-record' );
+	remove_menu_page( 'edit.php?post_type=application' );
+	remove_menu_page( 'edit.php?post_type=report' );
+	remove_menu_page( 'edit.php?post_type=loa' );
+
+	// These do not work -- attempts to remove acf global settings and field groups from menu.
+	// remove_menu_page( 'edit.php?post_type=acf-field-group' );
+	// remove_menu_page( 'edit.php?post_type=acf-options-global-settings' );
 
 	if ( in_array( 'officer', $user->roles, true ) ) {
 		return;
@@ -148,10 +156,10 @@ add_action( 'admin_menu', 'prefix_remove_comments_tl' );
 /**
  * Custom events post type.
  */
- 
+
 // Display 5 posts on event archive page.
 function sv_cpt_page( $query ) {
-	if ( !is_admin() &&  is_post_type_archive( 'tribe_events' ) ) {
+	if ( ! is_admin() && is_post_type_archive( 'tribe_events' ) ) {
 		$query->set( 'posts_per_page', '2' );
 	}
 }
@@ -172,8 +180,7 @@ function sv_pagination( $event_direction ) {
 	global $wp_query, $event_query;
 	if ( $event_query ) {
 		$total = $event_query->max_num_pages;
-	} 
-	else {
+	} else {
 		$total = $wp_query->max_num_pages;
 	}
 
@@ -185,31 +192,31 @@ function sv_pagination( $event_direction ) {
 	if ( $event_direction === 'future' ) {
 		$paginate_links = paginate_links(
 			array(
-				'base'        => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-				'current'     => max( 1, get_query_var( 'paged' ) ),
-				'total'       => $total,
-				'show_all'    => true,
-				'prev_text'	  => $next_arrow,
-				'next_text'	  => $prev_arrow,
-				'prev_next'   => 'true',
+				'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $total,
+				'show_all'  => true,
+				'prev_text' => $next_arrow,
+				'next_text' => $prev_arrow,
+				'prev_next' => 'true',
 			)
 		);
 	} else {
 		$paginate_links = paginate_links(
 			array(
-				'base'        => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-				'current'     => max( 1, get_query_var( 'paged' ) ),
-				'total'       => $total,
-				'show_all'    => true,
-				'prev_text'	  => $prev_arrow,
-				'next_text'	  => $next_arrow,
-				'prev_next'   => 'true',
+				'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $total,
+				'show_all'  => true,
+				'prev_text' => $prev_arrow,
+				'next_text' => $next_arrow,
+				'prev_next' => 'true',
 			)
 		);
 	}
 	// Display the pagination if more than one page is found
 	if ( $paginate_links ) {
-		print_r ( $paginate_links );
+		print_r( $paginate_links );
 	}
 }
 
