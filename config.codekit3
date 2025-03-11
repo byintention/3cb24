@@ -7,7 +7,7 @@
       "uuidString" : "4B038CBA-BC31-4B1E-A3D3-761E28A40788"
     }
   ],
-  "creatorBuild" : "34680",
+  "creatorBuild" : "34689",
   "files" : {
     "\/.github\/ISSUE_TEMPLATE\/bug_report.md" : {
       "cB" : 0,
@@ -432,6 +432,16 @@
       "miP" : 0,
       "oA" : 2,
       "oAP" : "\/images\/icon-refresh4.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/images\/icon-refresh5.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/images\/icon-refresh5.svg",
       "oF" : 0,
       "opt" : 0,
       "plM" : 52780316221407,
@@ -1423,8 +1433,6 @@
     "buildFolderActive" : 0,
     "buildFolderName" : "build",
     "cleanBuild" : 1,
-    "cssoForceMediaMerge" : 0,
-    "cssoRestructure" : 1,
     "environmentVariableEntries" : [
       "NODE_ENV:::production"
     ],

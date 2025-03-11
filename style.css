@@ -2195,6 +2195,9 @@ body.mobilenavopen {
 #footer h3 {
   color: #fff;
 }
+#footer .copyright p {
+  display: inline;
+}
 
 .btt {
   display: block;
@@ -2461,25 +2464,6 @@ ul.acf-checkbox-list li {
 .tcb_user_ribbons img {
   max-width: 200px;
   width: 200px;
-}
-
-.slotToolSlot.loading .slotForm {
-  pointer-events: none;
-  position: relative;
-}
-.slotToolSlot.loading:after {
-  -webkit-animation: fa-spin 1s infinite linear;
-  animation: fa-spin 1s infinite linear;
-  background: url(images/icon-refresh4.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: auto 100%;
-  content: "";
-  height: 25px;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 25px;
 }
 
 #wikiSearch {
@@ -3278,6 +3262,33 @@ div.pswp__img--placeholder,
   vertical-align: top;
   width: 20px;
 }
+#attendanceRoster .spinner {
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
+  background: url(images/icon-refresh5.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  display: none;
+  height: 25px;
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  width: 25px;
+}
+#attendanceRoster .spinner.reg {
+  left: 30px;
+}
+#attendanceRoster .loading {
+  position: relative;
+}
+#attendanceRoster .loading .spinner {
+  display: block;
+}
+#attendanceRoster .loading input[type=submit] {
+  background: #2170B0;
+  color: #2170B0;
+}
 
 @media only screen and (min-width: 1200px) {
   #attendanceRoster {
@@ -3305,38 +3316,18 @@ div.pswp__img--placeholder,
   padding: 40px;
   width: 39%;
 }
-
-.slotToolSlot {
+#slotTool .slotToolSlot {
   height: 30px;
   line-height: 30px;
   margin-bottom: 10px;
   position: relative;
   text-align: left;
 }
-.slotToolSlot form {
+#slotTool .slotToolSlot form {
   display: inline-block;
   height: 30px;
 }
-.slotToolSlot.slotIconCanDelete {
-  position: relative;
-  z-index: 400;
-}
-.slotToolSlot.slotIconCanDelete:before {
-  background: #fff url(images/icon-minus.svg);
-  background-size: 100%;
-  border: 1px solid #fff;
-  border-radius: 40px;
-  content: "";
-  height: 15px;
-  pointer-events: none;
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 15px;
-  z-index: 500;
-}
-
-input[type=submit].slotIcon {
+#slotTool .slotToolSlot input[type=submit].slotIcon {
   background: #fff;
   background-size: cover;
   border: 2px solid #000;
@@ -3352,8 +3343,47 @@ input[type=submit].slotIcon {
   vertical-align: top;
   width: 30px;
 }
-input[type=submit].slotIcon.disabled {
+#slotTool .slotToolSlot input[type=submit].slotIcon.disabled {
   cursor: not-allowed;
+}
+#slotTool .slotToolSlot.loading .slotForm {
+  pointer-events: none;
+  position: relative;
+}
+#slotTool .slotToolSlot.loading:after {
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
+  background: url(images/icon-refresh4.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  content: "";
+  height: 25px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 25px;
+}
+#slotTool .slotToolSlot.slotIconCanDelete {
+  position: relative;
+  z-index: 400;
+}
+#slotTool .slotToolSlot.slotIconCanDelete:before {
+  background: #fff url(images/icon-minus.svg);
+  background-size: 100%;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  content: "";
+  height: 15px;
+  pointer-events: none;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 15px;
+  z-index: 500;
+}
+#slotTool .unit {
+  margin-bottom: 30px;
 }
 
 #slotToolButtons {
@@ -3366,8 +3396,4 @@ input[type=submit].slotIcon.disabled {
 }
 #slotToolButtons br {
   display: none;
-}
-
-.unit {
-  margin-bottom: 30px;
 }
