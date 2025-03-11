@@ -15,7 +15,8 @@ get_header(); ?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1>Service Records</h1>
+				<h1>Roster</h1>
+				<h2>Service Records</h2>
 			</div>
 		</div>
 	</div>
@@ -97,6 +98,11 @@ get_header(); ?>
 				$args['rank'] = 'Reserve';
 				get_template_part( 'includes/archive-service-record', null, $args );
 				?>
+			</div>
+		</div>
+		<div class="post white" id="post-<?php the_ID(); ?>" >
+			<div class="entry padded">
+				<p>The full range of <a href="/hidden/duties">Administrative Duties</a> can be found here.<br>
 			</div>
 		</div>
 	</div>

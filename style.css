@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.75
+Version: 1.88
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -3346,6 +3346,21 @@ div.pswp__img--placeholder,
 #slotTool .slotToolSlot input[type=submit].slotIcon.disabled {
   cursor: not-allowed;
 }
+#slotTool .slotToolSlot .slotToolSlotDummyImage {
+  background: #fff;
+  background-size: cover;
+  border: 2px solid #000;
+  border-radius: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 0;
+  height: 30px;
+  margin-right: 10px;
+  padding: 0;
+  position: relative;
+  vertical-align: top;
+  width: 30px;
+}
 #slotTool .slotToolSlot.loading .slotForm {
   pointer-events: none;
   position: relative;
@@ -3383,7 +3398,9 @@ div.pswp__img--placeholder,
   z-index: 500;
 }
 #slotTool .unit {
+  border: 1px solid #ccc;
   margin-bottom: 30px;
+  padding: 20px 20px 15px 20px;
 }
 
 #slotToolButtons {

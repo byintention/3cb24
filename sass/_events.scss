@@ -335,7 +335,21 @@
 				cursor: not-allowed;
 			}
 		}
-		
+		.slotToolSlotDummyImage {
+			background: #fff;
+			background-size: cover;
+			border: 2px solid #000;
+			border-radius: 100%;
+			box-sizing: border-box;
+			display: inline-block;
+			font-size: 0;
+			height: 30px;
+			margin-right: 10px;
+			padding: 0;
+			position: relative;
+			vertical-align: top;
+			width: 30px;
+		}
 		&.loading {
 			.slotForm {
 				pointer-events: none;
@@ -377,7 +391,9 @@
 		}
 	}
 	.unit {
+		border: 1px solid #ccc;
 		margin-bottom: 30px;
+		padding: 20px 20px 15px 20px;
 	}
 }
 
