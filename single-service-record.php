@@ -46,7 +46,7 @@ get_header(); ?>
 							?>
 						</div>
 						
-						<div class="tcb_user_training five columns">
+						<div class="tcb_user_training four columns">
 						<?php
 							$args = array(
 								'role' => array( 'member', 'administrator' ),
@@ -55,7 +55,7 @@ get_header(); ?>
 							?>
 						</div>
 						
-						<div class="tcb_user_ribbons two columns">
+						<div class="tcb_user_ribbons three columns">
 						<?php
 							$args = array(
 								'role' => array( 'member', 'administrator' ),
