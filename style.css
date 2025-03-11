@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.88
+Version: 1.89
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -1189,7 +1189,7 @@ body.mobilenavopen {
   position: relative;
 }
 #header svg path {
-  fill: #222;
+  fill: #fff;
 }
 #header.scrollHeader {
   background: rgba(255, 255, 255, 0.95);
@@ -1202,34 +1202,34 @@ body.mobilenavopen {
   fill: #222;
 }
 
-.darkHeader #header {
+.lightHeader #header {
   color: #ddd;
 }
-.darkHeader #header svg path {
-  fill: #fff;
+.lightHeader #header svg path {
+  fill: #222;
 }
-.darkHeader #header #headerLogin {
-  color: #ddd;
+.lightHeader #header #headerLogin {
+  color: #222;
 }
-.darkHeader #header #headerLogin a {
-  color: #ddd;
+.lightHeader #header #headerLogin a {
+  color: #2170B0;
 }
-.darkHeader #header #headerLogin a:hover {
-  color: #fff;
+.lightHeader #header #headerLogin a:hover {
+  color: #222;
 }
-.darkHeader #header #nav2 a {
-  color: #ddd;
+.lightHeader #header #nav2 a {
+  color: #2170B0;
 }
-.darkHeader #header #nav2 a:hover {
-  color: #fff;
+.lightHeader #header #nav2 a:hover {
+  color: #222;
 }
-.darkHeader #header #nav2 .menu-item-has-children > a:after {
+.lightHeader #header #nav2 .menu-item-has-children > a:after {
   background-image: url(images/icon-chev-down-white.svg);
 }
-.darkHeader #header #nav2 .menu-item-has-children .sub-menu a {
+.lightHeader #header #nav2 .menu-item-has-children .sub-menu a {
   color: #fff;
 }
-.darkHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
+.lightHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
   color: #2170B0;
 }
 
@@ -1284,7 +1284,7 @@ body.mobilenavopen {
   }
 }
 #headerLogin {
-  color: #222;
+  color: #ddd;
   font-size: 14px;
   line-height: 1.3;
   position: absolute;
@@ -1293,6 +1293,15 @@ body.mobilenavopen {
   text-align: center;
   transform: translateY(50%);
   width: 200px;
+}
+#headerLogin .username {
+  margin-right: 15px;
+}
+#headerLogin a {
+  color: #ddd;
+}
+#headerLogin a:hover {
+  color: #fff;
 }
 #headerLogin .userLinks {
   display: block;
@@ -2261,7 +2270,7 @@ body.mobilenavopen {
     position: relative;
   }
   #nav2 ul li a {
-    color: #2170B0;
+    color: #ddd;
     display: block;
     font-size: 22px;
     font-weight: 400;
@@ -2272,7 +2281,7 @@ body.mobilenavopen {
     text-transform: uppercase;
   }
   #nav2 ul li a:hover {
-    color: #222;
+    color: #fff;
   }
   #nav2 ul li:last-child a {
     padding-right: 0;

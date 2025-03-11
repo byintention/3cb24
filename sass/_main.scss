@@ -1088,7 +1088,7 @@ body.mobilenavopen {
 	}
 	svg {
 		path {
-			fill: #222;
+			fill: #fff;
 		}
 	}
 	&.scrollHeader {
@@ -1105,29 +1105,29 @@ body.mobilenavopen {
 	}
 }
 
-.darkHeader {
+.lightHeader {
 	#header {
 		color: #ddd;
 		svg {
 			path {
-				fill: #fff;
+				fill: vars.$colour-text;
 			}
 		}
 		#headerLogin {
-			color: #ddd;
+			color: #222;
 			a {
-				color: #ddd;
+				color: vars.$colour-link;
 				&:hover {
-					color: #fff;
+					color: vars.$colour-text;
 				}
 			}
 		}
 		#nav2 {
 			a {
-				color: #ddd;
+				color: vars.$colour-link;
 			}
 			a:hover {
-				color: #fff;
+				color: vars.$colour-text;
 			}
 			.menu-item-has-children {
 				>a:after {
@@ -1206,7 +1206,7 @@ body.mobilenavopen {
 	}
 
 #headerLogin {
-	color: #222;
+	color: #ddd;
 	font-size: 14px;
 	line-height: 1.3;
 	position: absolute;
@@ -1215,8 +1215,14 @@ body.mobilenavopen {
 	text-align: center;
 	transform: translateY(50%);
 	width: 200px;
-	strong {
-		
+	.username {
+		margin-right: 15px;
+	}
+	a {
+		color: #ddd;
+		&:hover {
+			color: #fff;
+		}
 	}
 	.userLinks {
 		display: block;
@@ -2255,7 +2261,7 @@ body.mobilenavopen {
 				list-style: none;
 				position: relative;
 				a {
-					color: vars.$colour-button;
+					color: #ddd;
 					display: block;
 					font-size: 22px;
 					font-weight: vars.$regular;
@@ -2266,7 +2272,7 @@ body.mobilenavopen {
 					text-transform: uppercase;
 				}
 				a:hover {
-					color: vars.$colour-text;
+					color: #fff;
 				}
 				&:last-child a {
 					padding-right: 0;

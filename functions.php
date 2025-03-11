@@ -37,8 +37,8 @@ add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-
  */
 function tcb24_custom_body_classes( $classes ) {
 	// If custom field is set for dark header.
-	if ( get_field( 'dark_header' ) ) {
-		$classes[] = 'darkHeader';
+	if ( get_field( 'light_header' ) ) {
+		$classes[] = 'lightHeader';
 	}
 	// If custom field is set for dark header on posts page.
 	$page_for_posts = get_option( 'page_for_posts' );
@@ -76,10 +76,18 @@ function tcb24_custom_body_classes( $classes ) {
 	if ( is_singular( 'epkb_post_type_1' ) ) {
 		$classes[] = 'darkHeader';
 	}
+	
+	if ( get_post_type() === 'tribe_events' && ! is_single() ) {
+		$classes[] = 'lightHeader';
+	}
+	//if ( is_page_template( 'archive-tribe_events.php' ) ) {
+	//	$classes[] = 'lightHeader';
+	//}
 	// If we're in a single event post.
 	if ( is_singular( 'tribe_events' ) ) {
 		$classes[] = 'darkHeader';
 	}
+	
 	// If we're in search results page.
 	if ( is_search() ) {
 		$classes[] = 'darkHeader';

@@ -127,14 +127,6 @@
       "oAP" : "\/archive-epkb_post_type_1.php",
       "oF" : 0
     },
-    "\/archive-interview.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/archive-interview.php",
-      "oF" : 0
-    },
     "\/archive-loa.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -157,14 +149,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/archive-service-record.php",
-      "oF" : 0
-    },
-    "\/archive-transfer.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/archive-transfer.php",
       "oF" : 0
     },
     "\/archive-tribe_events.php" : {
@@ -197,14 +181,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/comments-application.php",
-      "oF" : 0
-    },
-    "\/comments-interview.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/comments-interview.php",
       "oF" : 0
     },
     "\/comments-service-record.php" : {
@@ -495,12 +471,12 @@
       "oAP" : "\/includes\/application.php",
       "oF" : 0
     },
-    "\/includes\/archive-admin_duty.php" : {
+    "\/includes\/archive-application.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/includes\/archive-admin_duty.php",
+      "oAP" : "\/includes\/archive-application.php",
       "oF" : 0
     },
     "\/includes\/archive-post.php" : {
@@ -517,6 +493,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/archive-service-record.php",
+      "oF" : 0
+    },
+    "\/includes\/conditional-comments-application.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/conditional-comments-application.php",
       "oF" : 0
     },
     "\/includes\/conditional-comments.php" : {
@@ -549,14 +533,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/includes\/flexible-content.php",
-      "oF" : 0
-    },
-    "\/includes\/interview.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/includes\/interview.php",
       "oF" : 0
     },
     "\/includes\/postloop.php" : {
@@ -983,14 +959,6 @@
       "oAP" : "\/single-epkb_post_type_1.php",
       "oF" : 0
     },
-    "\/single-interview.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/single-interview.php",
-      "oF" : 0
-    },
     "\/single-loa.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1013,14 +981,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/single-service-record.php",
-      "oF" : 0
-    },
-    "\/single-transfer.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/single-transfer.php",
       "oF" : 0
     },
     "\/single-tribe_events.php" : {
