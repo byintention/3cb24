@@ -3244,8 +3244,8 @@ div.pswp__img--placeholder,
 #attendanceRoster .attendanceCol form {
   margin: 0;
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 15px;
+  left: 15px;
   width: 100%;
 }
 #attendanceRoster .attendanceCol form input {
