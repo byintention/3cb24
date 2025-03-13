@@ -98,7 +98,7 @@ if ( $can_edit ) {
 	if ( $has_been_interviewed ) {
 		echo '<p><a href="/hidden/edit-interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Interview</a></p>';
 	} else {
-		echo '<p><a href="/hidden/interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
+		echo '<p><a href="/hidden/edit-interview/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Interview</a></p>';
 	}
 }
 
