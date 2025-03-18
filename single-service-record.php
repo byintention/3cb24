@@ -19,7 +19,6 @@ get_header(); ?>
 		</div>
 	</div>
 </div>
-
 <div class="container">
 	<?php
 	if ( have_posts() ) :
@@ -34,10 +33,9 @@ get_header(); ?>
 					}
 					?>
 				</div>
-
 				<div class="entry padded">
 					<div class="container">
-						<div class="tcb_user_info five columns">
+						<div class="tcb_user_info four columns">
 							<?php
 							$args = array(
 								'role' => array( 'member', 'administrator' ),
@@ -46,7 +44,7 @@ get_header(); ?>
 							?>
 						</div>
 						
-						<div class="tcb_user_training four columns">
+						<div class="tcb_user_training five columns">
 						<?php
 							$args = array(
 								'role' => array( 'member', 'administrator' ),

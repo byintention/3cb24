@@ -25,6 +25,7 @@ if ( have_rows( 'flexible_content' ) ) {
 			<?php
 
 
+
 		} elseif ( get_row_layout() === 'filler' ) {
 			?>
 			<div id="panel<?php echo esc_attr( $counter ); ?>" class="filler <?php the_sub_field( 'background' ); ?>"></div>

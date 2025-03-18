@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.93
+Version: 1.96
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -468,7 +468,9 @@ p.has-large-font-size {
     font-size: 21px;
   }
 }
-/*	Blockquotes  */
+/*
+	Blockquotes
+*/
 blockquote,
 blockquote p {
   color: #222;
@@ -530,7 +532,9 @@ p a:visited {
   line-height: inherit;
 }
 
-/* #Lists */
+/* 
+	Lists
+*/
 ul,
 ol {
   margin: 0 0 32px 32px;
@@ -656,12 +660,12 @@ span.wpcf7-not-valid-tip {
     transform: rotate(359deg);
   }
 }
-/* hide original loader */
+/* Hide original loader */
 .submitting .wpcf7-spinner {
   display: inline-block;
 }
 
-/* style for custom loader - '1s' for speeding up animation */
+/* Style for custom loader - '1s' for speeding up animation */
 .wpcf7-spinner {
   -webkit-animation: fa-spin 1s infinite linear;
   animation: fa-spin 1s infinite linear;
@@ -1027,7 +1031,9 @@ input[type=checkbox] {
   margin: 0 0 2% 0;
 }
 
-/* Grid > 800px */
+/*
+	Grid > 800px
+*/
 @media only screen and (min-width: 800px) {
   .container {
     background: transparent;
@@ -1123,7 +1129,9 @@ input[type=checkbox] {
   padding: 10px;
 }
 
-/* #Clearing */
+/*
+	Clearing
+*/
 /* Self Clearing Goodness */
 .container:after {
   content: " ";
@@ -1162,7 +1170,9 @@ or wrap each row of columns in a <div class="row"> */
   clear: both;
 }
 
-/* Header */
+/*
+	Header
+*/
 .wrap {
   background: transparent;
 }
@@ -1456,7 +1466,9 @@ body.mobilenavopen {
     display: none;
   }
 }
-/* Flexible content */
+/*
+	Flexible content
+*/
 .page-template-default #content {
   padding: 155px 0 100px 0;
 }
@@ -1562,63 +1574,6 @@ body.mobilenavopen {
     padding: 70px 0 0 0;
   }
 }
-.testimonials {
-  background: #fff;
-  background-position: center center;
-  background-size: cover;
-  clear: both;
-  color: #fff;
-  font-size: 18px;
-  padding: 60px 20px 120px 20px;
-  position: relative;
-  text-align: center;
-}
-.testimonials .container {
-  position: inherit;
-}
-.testimonials blockquote {
-  padding: 0 12%;
-}
-.testimonials h2 {
-  color: #fff;
-  font-size: 26px;
-  line-height: 1.2;
-}
-.testimonials cite {
-  opacity: 0.75;
-}
-.testimonials .tns-nav {
-  display: none;
-}
-.testimonials .tns-controls {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  text-align: center;
-  width: 100%;
-  z-index: 500;
-}
-
-.tns-controls button {
-  background: none;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  border: none;
-  font-size: 0;
-  height: 40px;
-  margin: 0 5px;
-  width: 40px;
-}
-.tns-controls button:first-child {
-  background-image: url(images/icon-down-grey.svg);
-  transform: rotate(90deg);
-}
-.tns-controls button:nth-child(2) {
-  background-image: url(images/icon-down-grey.svg);
-  transform: rotate(-90deg);
-}
-
 .gallery {
   background: transparent;
   clear: both;
@@ -1905,7 +1860,9 @@ body.mobilenavopen {
   padding-bottom: 20px;
 }
 
-/* Blog section */
+/*
+	Blog section
+*/
 .blogBanner {
   height: 400px;
   margin-bottom: 40px;
@@ -2050,6 +2007,7 @@ body.mobilenavopen {
 }
 #comments .comment-author img {
   border-radius: 100px;
+  max-width: 64px;
 }
 #comments .comment-content .comment-meta {
   display: block;
@@ -2247,6 +2205,9 @@ body.mobilenavopen {
     display: block;
   }
 }
+/*
+	Desktop size navigation
+*/
 @media only screen and (min-width: 1200px) {
   #nav2 {
     display: block;
@@ -2445,7 +2406,13 @@ ul.acf-checkbox-list li {
 .serviceRecord {
   width: 100%;
 }
+.serviceRecord #comments {
+  padding-left: 0;
+}
 
+.tcb_user_info {
+  margin-left: 0 !important;
+}
 .tcb_user_info .one-third {
   margin-bottom: 30px;
 }
@@ -2473,6 +2440,22 @@ ul.acf-checkbox-list li {
 .tcb_user_ribbons img {
   max-width: 200px;
   width: 200px;
+}
+
+#ui-datepicker-div a {
+  text-decoration: none;
+}
+#ui-datepicker-div select {
+  display: inline-block;
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  width: 45%;
+}
+#ui-datepicker-div .ui-timepicker-div select {
+  margin: 0 3px;
+  width: auto;
 }
 
 #wikiSearch {

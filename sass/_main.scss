@@ -307,7 +307,9 @@ p.has-large-font-size {
 
 }
 
-/*	Blockquotes  */
+/*
+	Blockquotes
+*/
 
 blockquote,
 blockquote p {
@@ -371,7 +373,9 @@ p a:visited {
 	line-height: inherit;
 }
 
-/* #Lists */
+/* 
+	Lists
+*/
 
 ul,
 ol {
@@ -509,7 +513,7 @@ span.wpcf7-not-valid-tip {
 	}
 }
 
-/* hide original loader */
+/* Hide original loader */
 .wpcf7-spinner {
 	
 }
@@ -518,7 +522,7 @@ span.wpcf7-not-valid-tip {
 	display: inline-block;
 }
 
-/* style for custom loader - '1s' for speeding up animation */
+/* Style for custom loader - '1s' for speeding up animation */
 .wpcf7-spinner {
 	-webkit-animation: fa-spin 1s infinite linear;
 	animation: fa-spin 1s infinite linear;
@@ -870,11 +874,6 @@ input[type="checkbox"] {
 	width: 100%;
 }
 
-.container .container {
-	//margin: 0;
-	//width: 100%;
-}
-
 .container .one,
 .container .two,
 .container .three,
@@ -900,7 +899,9 @@ input[type="checkbox"] {
 	margin: 0 0 2% 0;
 }
 
-/* Grid > 800px */
+/*
+	Grid > 800px
+*/
 
 @media only screen and (min-width: 800px) {
 
@@ -1020,7 +1021,9 @@ input[type="checkbox"] {
 	padding: 10px;
 }
 
-/* #Clearing */
+/*
+	Clearing
+*/
 
 /* Self Clearing Goodness */
 .container:after {
@@ -1060,7 +1063,9 @@ or wrap each row of columns in a <div class="row"> */
 	clear: both;
 }
 
-/* Header */
+/*
+	Header
+*/
 
 .wrap {
 	background: transparent;
@@ -1192,7 +1197,6 @@ body.mobilenavopen {
 				}
 			}
 		}
-	
 	}
 
 	@media only screen and (min-width: 1200px) {
@@ -1389,7 +1393,9 @@ body.mobilenavopen {
 		}
 	}
 
-/* Flexible content */
+/*
+	Flexible content
+*/
 
 .page-template-default #content {
 	padding: 155px 0 100px 0;
@@ -1500,65 +1506,6 @@ body.mobilenavopen {
 			padding: 70px 0 0 0;
 		}
 	}
-
-.testimonials {
-	background: #fff;
-	background-position: center center;
-	background-size: cover;
-	clear: both;
-	color: #fff;
-	font-size: vars.$base-font-size;
-	padding: 60px 20px 120px 20px;
-	position: relative;
-	text-align: center;
-	.container {
-		position: inherit;
-	}
-	blockquote {
-		padding: 0 12%;
-	}
-	h2 {
-		color: #fff;
-		font-size: 26px;
-		line-height: 1.2;
-	}
-	cite {
-		opacity: 0.75;
-	}
-	.tns-nav {
-		display: none;
-	}
-	.tns-controls {
-		position: absolute;
-		bottom: -50px;
-		left: 0;
-		text-align: center;
-		width: 100%;
-		z-index: 500;
-	}
-}
-
-.tns-controls {
-	button {
-		background: none;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: 100% auto;
-		border: none;
-		font-size: 0;
-		height: 40px;
-		margin: 0 5px;
-		width: 40px;
-	}
-	button:first-child {
-		background-image: url(images/icon-down-grey.svg);
-		transform: rotate(90deg);
-	}
-	button:nth-child(2) {
-		background-image: url(images/icon-down-grey.svg);
-		transform: rotate(-90deg);
-	}
-}
 
 .gallery {
 	background: transparent;
@@ -1730,11 +1677,11 @@ body.mobilenavopen {
 	}
 }
 
-@media only screen and (min-width: 600px) {
-	.twoColumn {
-		padding: 0;
+	@media only screen and (min-width: 600px) {
+		.twoColumn {
+			padding: 0;
+		}
 	}
-}
 
 .threeColumn {
 	padding: 0;
@@ -1746,11 +1693,11 @@ body.mobilenavopen {
 	}
 }
 
-@media only screen and (min-width: 600px) {
-	.threeColumn {
-		padding: 0;
+	@media only screen and (min-width: 600px) {
+		.threeColumn {
+			padding: 0;
+		}
 	}
-}
 
 .full {
 	clear: both;
@@ -1785,7 +1732,6 @@ body.mobilenavopen {
 		padding: 0;
 		text-align: center;
 		width: calc(96% - 24px);
-
 		h2,
 		h3 {
 			color: #fff;
@@ -1875,7 +1821,9 @@ body.mobilenavopen {
 }
 
 
-/* Blog section */
+/*
+	Blog section
+*/
 
 .blogBanner {
 	height: 400px;
@@ -2022,6 +1970,7 @@ body.mobilenavopen {
 		padding-right: 20px;
 		img {
 			border-radius: 100px;
+			max-width: 64px;
 		}
 	}
 	.comment-content {
@@ -2241,6 +2190,11 @@ body.mobilenavopen {
 		}
 	}
 
+
+/*
+	Desktop size navigation
+*/
+
 @media only screen and (min-width: 1200px) {
 	#nav2 {
 		display: block;
@@ -2449,9 +2403,13 @@ ul.acf-checkbox-list li {
 
 .serviceRecord {
 	width:100%;
+	#comments {
+		padding-left: 0;
+	}
 }
 
 .tcb_user_info {
+	margin-left: 0!important;
 	.one-third {
 		margin-bottom: 30px;
 	}
@@ -2484,3 +2442,22 @@ ul.acf-checkbox-list li {
 	}
 }
 
+#ui-datepicker-div {
+	a {
+		text-decoration: none;
+	}
+	select {
+		display: inline-block;
+		position: relative;
+			left: auto;
+			top: auto;
+		transform: none;
+		width: 45%;
+	}
+	.ui-timepicker-div {
+		select {
+			margin: 0 3px;
+			width: auto;
+		}
+	}
+}
