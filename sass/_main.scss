@@ -2403,10 +2403,13 @@ ul.acf-checkbox-list li {
 
 .serviceRecord {
 	width:100%;
+	#comments {
+		padding-left: 0;
+	}
 }
 
 .tcb_user_info {
-	margin-left: 0;
+	margin-left: 0!important;
 	.one-third {
 		margin-bottom: 30px;
 	}
