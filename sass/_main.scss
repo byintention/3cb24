@@ -1970,6 +1970,7 @@ body.mobilenavopen {
 		padding-right: 20px;
 		img {
 			border-radius: 100px;
+			max-width: 64px;
 		}
 	}
 	.comment-content {
@@ -2405,6 +2406,7 @@ ul.acf-checkbox-list li {
 }
 
 .tcb_user_info {
+	margin-left: 0;
 	.one-third {
 		margin-bottom: 30px;
 	}

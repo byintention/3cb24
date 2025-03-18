@@ -2007,6 +2007,7 @@ body.mobilenavopen {
 }
 #comments .comment-author img {
   border-radius: 100px;
+  max-width: 64px;
 }
 #comments .comment-content .comment-meta {
   display: block;
@@ -2406,6 +2407,9 @@ ul.acf-checkbox-list li {
   width: 100%;
 }
 
+.tcb_user_info {
+  margin-left: 0;
+}
 .tcb_user_info .one-third {
   margin-bottom: 30px;
 }
