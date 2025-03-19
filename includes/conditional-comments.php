@@ -13,7 +13,6 @@ $duration    = $args['duration'];
 $roles = wp_get_current_user()->roles;
 if ( ! empty( $role_list ) ) {
 	if ( ! array_intersect( $role_list, $roles ) ) {
-		echo '<p class="negative">Not authorised</p>';
 		return;
 	}
 }

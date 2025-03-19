@@ -17,8 +17,7 @@ if ( ! empty( $role_list ) ) {
 	}
 }
 
-$post_id_         = get_the_ID();
-$applicant_status = get_term_by( 'name', 'Submission phase', 'tcb-selection' )->slug;
+$post_id_ = get_the_ID();
 
 // Early exit if the post ID is not set.
 $fields = get_field_objects( $post_id_ );
@@ -26,6 +25,19 @@ if ( ! $fields ) {
 	return;
 }
 
+$term_ = false;
+if ( isset( $fields['tcb_selection']['value'][0] ) ) {
+	$term_ = get_term_by( 'term_taxonomy_id', $fields['tcb_selection']['value'][0] );
+}
+if ( ! $term_ ) {
+	$term_ = get_term_by( 'name', 'Submission phase', 'tcb-selection' );
+}
+$applicant_status = $term_->slug;
+$term_description = $term_->description;
+$term_name        = $term_->name;
+
+echo '<h2>' . esc_html( $term_name ) . '</h2>';
+echo '<p>' . esc_html( $term_description ) . '</p><br>';
 echo '<h2>Application</h2>';
 echo '<ol>';
 
@@ -49,14 +61,6 @@ foreach ( $fields as $field ) {
 			$has_been_interviewed = true;
 			break;
 		case 'tcb_selection':
-			echo '</ol><h2>Status</h2><ol>';
-			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>';
-			$term_ = get_term_by( 'term_taxonomy_id', $field['value'][0] );
-			if ( $term_ ) {
-				echo esc_html( $term_->name );
-				$applicant_status = $term_->slug;
-			}
-			echo '</li><br>';
 			break;
 		default:
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $field['value'] ) . '</li><br>';
@@ -122,7 +126,7 @@ if ( $service_record_id > 0 ) {
 		echo '<p class="negative">No such service record exists</p>';
 		return;
 	}
-	echo '<p><a href="/service-records/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
+	echo '<p><a href="/service-record/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
 
 	if ( $can_edit ) {
 		echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
