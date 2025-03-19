@@ -13,7 +13,9 @@
 					<h3>Contact Us</h3>
 					<p><a href="/hidden/duties">Support</a><br>
 					<a href="<?php the_field( 'teamspeak', 'options' ); ?>">Join Teamspeak Server</a><br>
-					<a href="<?php the_field( 'discord', 'options' ); ?>">Join Discord Server</a></p>
+					<a href="<?php the_field( 'discord', 'options' ); ?>">Join Discord Server</a><br>
+					<a href="/terms-and-conditions/">Terms &amp; Conditions</a><br>
+					<a href="/privacy-policy/">Privacy Policy</a></p>
 					<?php get_template_part( 'includes/social' ); ?>
 					<div class="has-small-font-size copyright">&copy; <?php the_field( 'footer_message', 'options' ); ?></div>
 				</div>

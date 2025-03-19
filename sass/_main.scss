@@ -2406,41 +2406,50 @@ ul.acf-checkbox-list li {
 	#comments {
 		padding-left: 0;
 	}
-}
-
-.tcb_user_info {
-	margin-left: 0!important;
-	.one-third {
-		margin-bottom: 30px;
-	}
-	img {
-		width: auto;
-	}
-	table {
-		border:0;
-		border-top: 1px solid #ccc;
-		margin-bottom: 50px;
-		td {
+	.tcb_user_info {
+		margin-left: 0!important;
+		.one-third {
+			margin-bottom: 30px;
+		}
+		img {
+			width: auto;
+		}
+		table {
 			border:0;
-			border-bottom: 1px solid #ccc;
-			padding: 10px ;
-		}
-		td:first-child {
-			font-weight: bold;
-			padding-left:0;
+			border-top: 1px solid #ccc;
+			margin-bottom: 50px;
+			td {
+				border:0;
+				border-bottom: 1px solid #ccc;
+				padding: 10px ;
+			}
+			td:first-child {
+				font-weight: bold;
+				padding-left:0;
+			}
 		}
 	}
+	
+	.tcb_user_ribbons {
+		p {
+			margin-bottom: 5px;
+		}
+		img {
+			max-width: 200px;
+			width: 200px;
+		}
+	}
+	
+	
 }
 
-.tcb_user_ribbons {
-	p {
-		margin-bottom: 5px;
+	@media only screen and (min-width: 830px) {
+		.serviceRecord {
+			.tcb_user_training {
+				padding-left:40px;
+			}
+		}
 	}
-	img {
-		max-width: 200px;
-		width: 200px;
-	}
-}
 
 #ui-datepicker-div {
 	a {

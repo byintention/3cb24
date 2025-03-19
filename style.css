@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 1.95
+Version: 1.96
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -2409,39 +2409,42 @@ ul.acf-checkbox-list li {
 .serviceRecord #comments {
   padding-left: 0;
 }
-
-.tcb_user_info {
+.serviceRecord .tcb_user_info {
   margin-left: 0 !important;
 }
-.tcb_user_info .one-third {
+.serviceRecord .tcb_user_info .one-third {
   margin-bottom: 30px;
 }
-.tcb_user_info img {
+.serviceRecord .tcb_user_info img {
   width: auto;
 }
-.tcb_user_info table {
+.serviceRecord .tcb_user_info table {
   border: 0;
   border-top: 1px solid #ccc;
   margin-bottom: 50px;
 }
-.tcb_user_info table td {
+.serviceRecord .tcb_user_info table td {
   border: 0;
   border-bottom: 1px solid #ccc;
   padding: 10px;
 }
-.tcb_user_info table td:first-child {
+.serviceRecord .tcb_user_info table td:first-child {
   font-weight: bold;
   padding-left: 0;
 }
-
-.tcb_user_ribbons p {
+.serviceRecord .tcb_user_ribbons p {
   margin-bottom: 5px;
 }
-.tcb_user_ribbons img {
+.serviceRecord .tcb_user_ribbons img {
   max-width: 200px;
   width: 200px;
 }
 
+@media only screen and (min-width: 830px) {
+  .serviceRecord .tcb_user_training {
+    padding-left: 40px;
+  }
+}
 #ui-datepicker-div a {
   text-decoration: none;
 }
@@ -3391,8 +3394,11 @@ div.pswp__img--placeholder,
 }
 #slotTool .unit {
   border: 1px solid #ccc;
-  margin-bottom: 30px;
+  border-bottom: 0;
   padding: 20px 20px 15px 20px;
+}
+#slotTool .unit:last-child {
+  border: 1px solid #ccc;
 }
 
 #slotToolButtons {

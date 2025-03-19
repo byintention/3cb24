@@ -26,7 +26,7 @@ get_header(); ?>
 			the_post();
 			?>
 			<div class="post white serviceRecord" id="post-<?php the_ID(); ?>">
-				<div class="padded">
+				<div class="padded" style="padding-bottom:0;">
 					<?php
 					if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
 						seopress_display_breadcrumbs();
@@ -43,7 +43,6 @@ get_header(); ?>
 							get_template_part( 'includes/service-record', null, $args );
 							?>
 						</div>
-						
 						<div class="tcb_user_training five columns">
 						<?php
 							$args = array(
@@ -52,7 +51,6 @@ get_header(); ?>
 							get_template_part( 'includes/service-record-training', null, $args );
 							?>
 						</div>
-						
 						<div class="tcb_user_ribbons three columns">
 						<?php
 							$args = array(
