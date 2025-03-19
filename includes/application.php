@@ -37,7 +37,7 @@ $term_description = $term_->description;
 $term_name        = $term_->name;
 
 echo '<h2>' . esc_html( $term_name ) . '</h2>';
-echo '<p>' . esc_html( $term_description ) . '</p>';
+echo '<p>' . esc_html( $term_description ) . '</p><br>';
 echo '<h2>Application</h2>';
 echo '<ol>';
 
