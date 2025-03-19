@@ -2146,7 +2146,26 @@ body.mobilenavopen {
 			display: inline;
 		}
 	}
+	.footer-menu {
+		a {
+			display: block;
+			margin:  10px;
+		}
+	}
 }
+
+	@media only screen and (min-width: 600px) {
+	
+		#footer {
+			.footer-menu {
+				a {
+					display: inline;
+					margin: 0 10px;
+				}
+			}
+		}
+	
+	}
 
 .btt {
 	display: block;
