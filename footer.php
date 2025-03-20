@@ -34,7 +34,7 @@
 	
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
-			
+			// Wiki section AJAX search
 			jQuery(document).mouseup(function(e){
 				var container = jQuery(".blogBanner #datafetch.show");
 				// If the target of the click isn't the container
@@ -42,7 +42,6 @@
 					jQuery(".blogBanner #datafetch").removeClass( 'show' );
 				}
 			});
-			
 			jQuery('.blogBanner #searchsubmit').click(function() {
 				event.preventDefault();
 				jQuery("#datafetch").addClass( 'show' );
@@ -63,10 +62,9 @@
 					jQuery('#datafetch').html( '<ul><li>Please enter 3 or more letters</li></ul>' );
 				}
 			});
-			
 		});
 	</script>
-	
+
 	<script type="module">
 		import PhotoSwipeLightbox from '/wp-content/themes/3cb24/js/photoswipe-lightbox.esm.min.js';
 		const lightbox = new PhotoSwipeLightbox({

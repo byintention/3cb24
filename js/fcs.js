@@ -70,18 +70,24 @@
 		}
 		
 		// Add scroll class to header 
-		$(function() {
+		function classOnScroll() {
 			//caches a jQuery object containing the header element
 			var header = $("#header");
-			$(window).scroll(function() {
+			//$(window).scroll(function() {
 				var scroll = $(window).scrollTop();
 				if (scroll >= 1) {
 					header.removeClass('clearHeader').addClass("scrollHeader");
 				} else {
 					header.removeClass("scrollHeader").addClass('clearHeader');
 				}
-			});
-		});
+			//});
+		}
+		
+		//Run on first site run
+		classOnScroll();
+		
+		//Run on scroll and resize
+		$(window).on('scroll resize',classOnScroll);
 
 		// Add div for dropdown arrow to modified select boxes
 		$("#sidebar select").wrap("<div class=\"select-input\"></div>");

@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 2.0
+Version: 2.01
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -1200,6 +1200,7 @@ body.mobilenavopen {
 }
 #header svg path {
   fill: #fff;
+  transition: all 0.1s ease-in-out;
 }
 #header.scrollHeader {
   background: rgba(255, 255, 255, 0.95);
@@ -1210,6 +1211,7 @@ body.mobilenavopen {
 }
 #header.scrollHeader svg path {
   fill: #222;
+  transition: all 0.1s ease-in-out;
 }
 
 .lightHeader #header {
@@ -1229,9 +1231,11 @@ body.mobilenavopen {
 }
 .lightHeader #header #nav2 a {
   color: #2170B0;
+  transition: all 0.1s ease-in-out;
 }
 .lightHeader #header #nav2 a:hover {
   color: #222;
+  transition: all 0.1s ease-in-out;
 }
 .lightHeader #header #nav2 .menu-item-has-children > a:after {
   background-image: url(images/icon-chev-down-white.svg);
@@ -1261,9 +1265,11 @@ body.mobilenavopen {
   }
   #header.scrollHeader #nav2 a {
     color: #2170B0;
+    transition: all 0.1s ease-in-out;
   }
   #header.scrollHeader #nav2 a:hover {
     color: #222;
+    transition: all 0.1s ease-in-out;
   }
   #header.scrollHeader #nav2 .menu-item-has-children > a:after {
     background-image: url(images/icon-chev-down-grey.svg);
@@ -1276,6 +1282,7 @@ body.mobilenavopen {
   }
   #header.scrollHeader #headerLogin {
     color: #222;
+    transition: all 0.1s ease-in-out;
   }
   #header.scrollHeader #headerLogin a {
     color: #2170B0;
@@ -1302,6 +1309,7 @@ body.mobilenavopen {
   right: 80px;
   text-align: center;
   transform: translateY(50%);
+  transition: all 0.1s ease-in-out;
   width: 200px;
 }
 #headerLogin .username {
@@ -1309,6 +1317,7 @@ body.mobilenavopen {
 }
 #headerLogin a {
   color: #ddd;
+  transition: all 0.1s ease-in-out;
 }
 #headerLogin a:hover {
   color: #fff;
@@ -2250,9 +2259,11 @@ body.mobilenavopen {
     padding: 0 20px;
     text-decoration: none;
     text-transform: uppercase;
+    transition: all 0.1s ease-in-out;
   }
   #nav2 ul li a:hover {
     color: #fff;
+    transition: all 0.1s ease-in-out;
   }
   #nav2 ul li:last-child a {
     padding-right: 0;

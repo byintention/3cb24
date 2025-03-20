@@ -52,7 +52,7 @@ get_header(); ?>
 				wp_reset_postdata();
 			} else {
 				?>
-				<p class="message-info">No events upcoming.</p>
+				<p class="info centre">No events upcoming.</p>
 				<?php
 			} // End event loop.
 		} // End test if does not have query string for past events.
@@ -98,7 +98,7 @@ get_header(); ?>
 				wp_reset_postdata();
 			} else {
 				?>
-				<p class="message-info">No past events.</p>
+				<p class="info centred">No past events.</p>
 				<?php
 			} // End event loop.
 		} // End test if does have query string for past events.

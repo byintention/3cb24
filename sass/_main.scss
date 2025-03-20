@@ -1094,6 +1094,7 @@ body.mobilenavopen {
 	svg {
 		path {
 			fill: #fff;
+			transition: all 0.1s ease-in-out;
 		}
 	}
 	&.scrollHeader {
@@ -1105,6 +1106,7 @@ body.mobilenavopen {
 		svg {
 			path {
 				fill: #222;
+				transition: all 0.1s ease-in-out;
 			}
 		}
 	}
@@ -1130,9 +1132,11 @@ body.mobilenavopen {
 		#nav2 {
 			a {
 				color: vars.$colour-link;
+				transition: all 0.1s ease-in-out;
 			}
 			a:hover {
 				color: vars.$colour-text;
+				transition: all 0.1s ease-in-out;
 			}
 			.menu-item-has-children {
 				>a:after {
@@ -1170,9 +1174,11 @@ body.mobilenavopen {
 				#nav2 {
 					a {
 						color: vars.$colour-link;
+						transition: all 0.1s ease-in-out;
 					}
 					a:hover {
 						color: vars.$colour-text;
+						transition: all 0.1s ease-in-out;
 					}
 					.menu-item-has-children>a:after {
 						background-image: url(images/icon-chev-down-grey.svg);
@@ -1188,6 +1194,7 @@ body.mobilenavopen {
 				}
 				#headerLogin {
 					color: #222;
+					transition: all 0.1s ease-in-out;
 					a {
 						color: vars.$colour-link;
 						&:hover {
@@ -1218,12 +1225,14 @@ body.mobilenavopen {
 	right: 80px;
 	text-align: center;
 	transform: translateY(50%);
+	transition: all 0.1s ease-in-out;
 	width: 200px;
 	.username {
 		margin-right: 15px;
 	}
 	a {
 		color: #ddd;
+		transition: all 0.1s ease-in-out;
 		&:hover {
 			color: #fff;
 		}
@@ -2243,9 +2252,11 @@ body.mobilenavopen {
 					padding: 0 20px;
 					text-decoration: none;
 					text-transform: uppercase;
+					transition: all 0.1s ease-in-out;
 				}
 				a:hover {
 					color: #fff;
+					transition: all 0.1s ease-in-out;
 				}
 				&:last-child a {
 					padding-right: 0;
