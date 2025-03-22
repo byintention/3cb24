@@ -30,6 +30,9 @@ $has_ribbon_access    = array_intersect( $allowed_ribbon_roles, $roles );
 $allowed_training_roles = array( 'training_admin', 'snco', 'officer', 'administrator' );
 $has_training_access    = array_intersect( $allowed_training_roles, $roles );
 
+$allowed_recruit_roles = array( 'recruit_admin', 'snco', 'officer', 'administrator' );
+$has_recruit_access    = array_intersect( $allowed_recruit_roles, $roles );
+
 $post_id_ = get_the_ID();
 $user_id  = get_field( 'user_id', $post_id_ );
 $user     = get_user_by( 'id', $user_id );
@@ -110,16 +113,13 @@ echo '</table>';
 
 echo '<div class = "tcb_user_edit_options" >';
 
-$allowed_partial_roles = array( 'training_admin', 'commendation_admin', 'training_admin', 'snco', 'officer', 'administrator' );
-$has_partial_access    = array_intersect( $allowed_partial_roles, $roles );
-
 if ( $has_training_access ) {
 	echo '<p><a href="' . esc_attr( home_url() ) . '/edit-sr-training/?id=' . esc_attr( $user_id ) . '" class="button button-secondary">Edit Training Record</a></p>';
 }
 if ( $has_ribbon_access ) {
 	echo '<p><a href="' . esc_attr( home_url() ) . '/edit-sr-ribbons/?id=' . esc_attr( $user_id ) . '" class="button button-secondary">Edit Commendations</a></p>';
 }
-if ( $has_full_access ) {
+if ( $has_recruit_access ) {
 	echo '<p><a href="' . esc_attr( home_url() ) . '/edit-sr-info/?id=' . esc_attr( $user_id ) . '" class="button button-secondary">Edit User Info</a></p>';
 }
 if ( $has_training_access ) {

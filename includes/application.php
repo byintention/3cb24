@@ -127,10 +127,6 @@ if ( $service_record_id > 0 ) {
 		return;
 	}
 	echo '<p><a href="/service-record/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
-
-	if ( $can_edit ) {
-		echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Edit Service Record</a></p>';
-	}
 } elseif ( $can_edit ) {
 	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Service Record</a></p>';
 }
