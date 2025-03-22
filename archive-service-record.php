@@ -37,7 +37,7 @@ get_header(); ?>
 			<div class="entry padded">
 				<?php
 				$args = array(
-					'role' => array( 'member', 'administrator' ),
+					'role' => array( 'member', 'limited_member', 'administrator' ),
 					'rank' => 'Officer',
 				);
 				get_template_part( 'includes/archive-service-record', null, $args );
