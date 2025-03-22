@@ -38,7 +38,7 @@ get_header(); ?>
 						<div class="tcb_user_info four columns">
 							<?php
 							$args = array(
-								'role' => array( 'member', 'administrator' ),
+								'role' => array( 'limited_member', 'member', 'administrator' ),
 							);
 							get_template_part( 'includes/service-record', null, $args );
 							?>
@@ -46,7 +46,7 @@ get_header(); ?>
 						<div class="tcb_user_training five columns">
 						<?php
 							$args = array(
-								'role' => array( 'member', 'administrator' ),
+								'role' => array( 'limited_member', 'member', 'administrator' ),
 							);
 							get_template_part( 'includes/service-record-training', null, $args );
 							?>
@@ -54,7 +54,7 @@ get_header(); ?>
 						<div class="tcb_user_ribbons three columns">
 						<?php
 							$args = array(
-								'role' => array( 'member', 'administrator' ),
+								'role' => array( 'limited_member', 'member', 'administrator' ),
 							);
 							get_template_part( 'includes/service-record-commendation', null, $args );
 							?>
