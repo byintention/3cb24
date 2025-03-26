@@ -5,6 +5,16 @@
  * @package 3cb24
  */
 
+$role_list = $args['role'];
+
+// Check if the user has the required role.
+$roles = wp_get_current_user()->roles;
+if ( ! empty( $role_list ) ) {
+	if ( ! array_intersect( $role_list, $roles ) ) {
+		echo '<p class="negative">Not authorised</p>';
+		return;
+	}
+}
 
 echo '<h3>Training Completed</h3>';
 
