@@ -98,7 +98,7 @@ get_header(); ?>
 				wp_reset_postdata();
 			} else {
 				?>
-				<p class="info centred">No past events.</p>
+				<p class="info centre">No past events.</p>
 				<?php
 			} // End event loop.
 		} // End test if does have query string for past events.
