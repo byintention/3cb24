@@ -34,7 +34,7 @@
 
 (function($) {
 	$(document).ready(function() {
-		
+
 		// Mobile nav
 		$('.menu-trigger').click(function() {
 			//console.log('open');
@@ -42,7 +42,7 @@
 			$('body').toggleClass('mobilenavopen');
 			$(this).toggleClass('navOpen');
 		});
-	
+
 		// Dropdown triggers
 		$('#nav2 li.menu-item-has-children').prepend( '<a class="sub_nav"><div class="arrow_down"></div></a>' );
 	
@@ -53,7 +53,7 @@
 
 		// End mobile nav
 
-	
+
 		// Dropdown navigation for desktop size
 		var curz = 99;
 		var screen = $(window);
@@ -68,32 +68,29 @@
 			 }, this), 0));
 			});
 		}
-		
+
 		// Add scroll class to header 
 		function classOnScroll() {
 			//caches a jQuery object containing the header element
 			var header = $("#header");
-			//$(window).scroll(function() {
 				var scroll = $(window).scrollTop();
 				if (scroll >= 1) {
 					header.removeClass('clearHeader').addClass("scrollHeader");
 				} else {
 					header.removeClass("scrollHeader").addClass('clearHeader');
 				}
-			//});
 		}
-		
-		//Run on first site run
+
+		// Run on first site run
 		classOnScroll();
-		
-		//Run on scroll and resize
+
+		// Run on scroll and resize
 		$(window).on('scroll resize',classOnScroll);
 
 		// Add div for dropdown arrow to modified select boxes
 		$("#sidebar select").wrap("<div class=\"select-input\"></div>");
 		$("form select").wrap("<div class=\"select-input\"></div>");
-		
+
 	});
 
-	
 })(jQuery); // Fully reference $ after this point.

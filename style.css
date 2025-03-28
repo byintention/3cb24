@@ -1528,6 +1528,7 @@ body.mobilenavopen {
 }
 .banners img {
   display: block;
+  width: 100%;
 }
 .banners .the_champ_login_container .heateor_ss_sl_optin_container {
   margin: 0 auto;
