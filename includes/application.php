@@ -56,6 +56,13 @@ foreach ( $fields as $field ) {
 			}
 			echo ( implode( ', ', $name_list ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			break;
+		case 'app_marketting':
+			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>';
+			if ( ! is_array( $field['value'] ) ) {
+				break;
+			}
+			echo ( implode( ', ', $field['value'] ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			break;
 		case 'Interview_evaluation':
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $field['value']['label'] ) . '</li><br>';
 			$has_been_interviewed = true;
