@@ -98,6 +98,16 @@ if ( ! $applicant->exists() ) {
 
 echo '<h2>Steam</h2><ol>';
 $steam_info = get_field( 'steam_info', $profile_id );
+if ( ! $steam_info ) {
+	$steam_id = get_field( 'steam_id', $profile_id );
+	if ( ! $steam_id ) {
+		$steam_id = $user->name;
+	}
+	$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
+	if ( $steam_info ) {
+		update_field( 'steam_info', $steam_info, $profile_id );
+	}
+}
 if ( $steam_info ) {
 	foreach ( $steam_info as $key => $value ) {
 		echo '<li><strong>' . esc_html( $key ) . '</strong><br>' . ( $value ? esc_html( $value ) : 'none' ) . '</li><br>';

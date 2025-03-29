@@ -65,6 +65,27 @@
             "append": ""
         },
         {
+            "key": "field_67e82b9019e2e",
+            "label": "Steam ID",
+            "name": "steam_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Your Steam ID is available here: https:\/\/store.steampowered.com\/account\/\r\nIt is displayed directly below your name.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 20,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6365c24d143ea",
             "label": "Country",
             "name": "app_country",
@@ -220,5 +241,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1743204800
+    "modified": 1743268973
 }
