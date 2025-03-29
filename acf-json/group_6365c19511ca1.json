@@ -24,27 +24,6 @@
             "append": ""
         },
         {
-            "key": "field_6365c218143e8",
-            "label": "Steam ID64",
-            "name": "app_steam_id64",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "You can find your steamID64 by entering your steam profile URL on <a href=\"https:\/\/steamid.io\/\">SteamIO<\/a>.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": 17,
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6365c23b143e9",
             "label": "Discord Username",
             "name": "app_discord_username",
@@ -241,5 +220,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1743198771
+    "modified": 1743204800
 }

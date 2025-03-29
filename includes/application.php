@@ -87,12 +87,24 @@ if ( ! empty( $role_edit_list ) ) {
 // Get the user ID of the author.
 $applicant_id = get_the_author_meta( 'ID' );
 $applicant    = get_user_by( 'id', $applicant_id );
+$profile_id   = 'user_' . $applicant_id;
 
 // Early out for no applicant.
 if ( ! $applicant->exists() ) {
 	echo '<p class="negative">No such applicant exists</p>';
 	return;
 }
+
+echo '<h2>Steam</h2><ol>';
+$steam_info = get_field( 'steam_info', $profile_id );
+if ( $steam_info ) {
+	foreach ( $steam_info as $key => $value ) {
+		echo '<li><strong>' . esc_html( $key ) . '</strong><br>' . ( $value ? esc_html( $value ) : 'none' ) . '</li><br>';
+	}
+} else {
+	echo '<p class="negative">No Steam ID</p>';
+}
+echo '</ol>';
 
 if ( $can_edit ) {
 	// Update selection status.
@@ -118,7 +130,6 @@ if ( in_array( $applicant_status, array( 'submission', 'interview', 'candidate' 
 	return;
 }
 
-$profile_id        = 'user_' . $applicant_id;
 $service_record_id = get_field( 'service_record', $profile_id );
 
 // Early out for applicant status set to Rejected.
