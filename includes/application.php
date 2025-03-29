@@ -101,7 +101,7 @@ $steam_info = get_field( 'steam_info', $profile_id );
 if ( ! $steam_info ) {
 	$steam_id = get_field( 'steam_id', $profile_id );
 	if ( ! $steam_id ) {
-		$steam_id = $user->name;
+		$steam_id = $applicant->name;
 	}
 	$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
 	if ( $steam_info ) {
