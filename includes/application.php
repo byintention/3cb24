@@ -56,6 +56,7 @@ foreach ( $fields as $field ) {
 			}
 			echo ( implode( ', ', $name_list ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			break;
+		case 'app_terms_&_conditions':
 		case 'app_marketting':
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>';
 			if ( ! is_array( $field['value'] ) ) {
