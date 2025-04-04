@@ -56,6 +56,14 @@ foreach ( $fields as $field ) {
 			}
 			echo ( implode( ', ', $name_list ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			break;
+		case 'app_terms_&_conditions':
+		case 'app_marketting':
+			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>';
+			if ( ! is_array( $field['value'] ) ) {
+				break;
+			}
+			echo ( implode( ', ', $field['value'] ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			break;
 		case 'Interview_evaluation':
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $field['value']['label'] ) . '</li><br>';
 			$has_been_interviewed = true;
@@ -80,12 +88,34 @@ if ( ! empty( $role_edit_list ) ) {
 // Get the user ID of the author.
 $applicant_id = get_the_author_meta( 'ID' );
 $applicant    = get_user_by( 'id', $applicant_id );
+$profile_id   = 'user_' . $applicant_id;
 
 // Early out for no applicant.
 if ( ! $applicant->exists() ) {
 	echo '<p class="negative">No such applicant exists</p>';
 	return;
 }
+
+echo '<h2>Steam</h2><ol>';
+$steam_info = get_field( 'steam_info', $profile_id );
+if ( ! $steam_info ) {
+	$steam_id = get_field( 'steam_id', $profile_id );
+	if ( ! $steam_id ) {
+		$steam_id = $applicant->name;
+	}
+	$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
+	if ( $steam_info ) {
+		update_field( 'steam_info', $steam_info, $profile_id );
+	}
+}
+if ( $steam_info ) {
+	foreach ( $steam_info as $key => $value ) {
+		echo '<li><strong>' . esc_html( $key ) . '</strong><br>' . ( $value ? esc_html( $value ) : 'none' ) . '</li><br>';
+	}
+} else {
+	echo '<p class="negative">No Steam ID</p>';
+}
+echo '</ol>';
 
 if ( $can_edit ) {
 	// Update selection status.
@@ -111,7 +141,6 @@ if ( in_array( $applicant_status, array( 'submission', 'interview', 'candidate' 
 	return;
 }
 
-$profile_id        = 'user_' . $applicant_id;
 $service_record_id = get_field( 'service_record', $profile_id );
 
 // Early out for applicant status set to Rejected.
