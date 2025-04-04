@@ -23,19 +23,18 @@
 		.intention-events-listing-title {
 			background: rgba(0,0,0,0.5);
 			color: #fff;
-			padding: 20px;
+			padding: 30px;
 			position: absolute;
 				top: 50%;
 				left: 50%;
 			transform: translateX(-50%) translateY(-50%);
-			width: 80%;
+			width: 75%;
 			h2, h3 {
 				color: #fff;
 				a {
 					color: #fff;
 				}
 			}
-			p {margin: 0;}
 		}
 		img {
 			width: 100%;
@@ -62,9 +61,13 @@
 		h3,
 		h4 {
 			color: #fff;
+			
 		}
 		h3 {
 			width: 100%;
+		}
+		h4 {
+			margin-bottom: 20px;
 		}
 		.tint {
 			background: rgba(0, 0, 0, 0.5);
@@ -96,7 +99,7 @@
 		.inner {
 			padding: 0 20px;
 			position: absolute;
-				top: 60%;
+				top: 55%;
 				left: 0;
 			transform: translateY(-50%);
 			width: 100%;
@@ -134,6 +137,25 @@
 			}
 		}
 	}
+
+.intention-events-event-type {
+	span {
+		background: vars.$colour-link;
+		border-radius: 50px;
+		color: #fff;
+		font-weight: bold;
+		padding: 8px 12px 6px 12px;
+		&.patrol {
+			background: green;
+		}
+		&.public {
+			background: orange;
+		}
+		&.joint {
+			background: red;
+		}
+	}
+}
 
 .intention-events-listing-navigation {
 	display: table;

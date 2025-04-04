@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 2.04
+Version: 2.02
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -3070,21 +3070,18 @@ div.pswp__img--placeholder,
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title {
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 80%;
+  width: 75%;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title h2, #intention-events-listing .intention-events-listing-event .intention-events-listing-title h3 {
   color: #fff;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title h2 a, #intention-events-listing .intention-events-listing-event .intention-events-listing-title h3 a {
   color: #fff;
-}
-#intention-events-listing .intention-events-listing-event .intention-events-listing-title p {
-  margin: 0;
 }
 #intention-events-listing .intention-events-listing-event img {
   width: 100%;
@@ -3114,6 +3111,9 @@ div.pswp__img--placeholder,
 }
 #intention-events-single-event .event-banner h3 {
   width: 100%;
+}
+#intention-events-single-event .event-banner h4 {
+  margin-bottom: 20px;
 }
 #intention-events-single-event .event-banner .tint {
   background: rgba(0, 0, 0, 0.5);
@@ -3145,7 +3145,7 @@ div.pswp__img--placeholder,
 #intention-events-single-event .event-banner .inner {
   padding: 0 20px;
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 0;
   transform: translateY(-50%);
   width: 100%;
@@ -3175,6 +3175,23 @@ div.pswp__img--placeholder,
     width: 100%;
   }
 }
+.intention-events-event-type span {
+  background: #2170B0;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 12px 6px 12px;
+}
+.intention-events-event-type span.patrol {
+  background: green;
+}
+.intention-events-event-type span.public {
+  background: orange;
+}
+.intention-events-event-type span.joint {
+  background: red;
+}
+
 .intention-events-listing-navigation {
   display: table;
   padding: 30px 0;

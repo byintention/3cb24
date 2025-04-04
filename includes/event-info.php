@@ -1,8 +1,9 @@
 <?php
 	$format_in = 'Y-m-d'; // the format your value is saved in (set in the field options)
-	$format_out = 'F j, Y'; // the format you want to end up with
+	$format_out = 'jS M Y'; // the format you want to end up with
 	$date = '';
 	$date = DateTime::createFromFormat( $format_in, get_field( 'event_start_date') );
+	$day = date( 'l', strtotime( get_field( 'event_start_date') ) ) ;
 ?>
 <article class="intention-events-listing-event">
 	<a href="<?php the_permalink(); ?>">
@@ -15,7 +16,7 @@
 		<h3><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
 		<p>
 		<?php
-			echo $date->format( $format_out ); 
+			echo $day . ' '; echo $date->format( $format_out ); 
 		if ( !empty ( get_field( 'event_start_time' ) ) ) { ?>
 		&bull;
 			<?php the_field( 'event_start_time' ); ?> - <?php the_field( 'event_end_time' );
@@ -23,6 +24,9 @@
 			echo " &bull; Time TBC";
 		}
 		?></p>
+		<div class="intention-events-event-type has-small-font-size">
+			<span class="<?php echo strtolower( get_field( 'event_type' ) ); ?>"><?php the_field( 'event_type' ); ?></span>
+		</div>
 	</div>
 	</a>
 </article>

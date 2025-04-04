@@ -8,14 +8,14 @@
  */
 
 $format_in   = 'Y-m-d'; // the format your value is saved in (set in the field options).
-$format_out  = 'F j, Y'; // the format you want to end up with.
+$format_out  = 'jS M Y'; // the format you want to end up with.
 $is_date_set = ! empty( get_field( 'event_start_time' ) );
 if ( $is_date_set ) {
 	$date_str = DateTime::createFromFormat( $format_in, get_field( 'event_start_date' ) )->format( $format_out );
 } else {
 	$date_str = 'Date TBC';
 }
-
+$day = date( 'l', strtotime( get_field( 'event_start_date') ) ) ;
 get_header(); ?>
 <div id="intention-events-single-event">
 	<div class="event-banner">
@@ -36,7 +36,7 @@ get_header(); ?>
 			<h1><?php the_title(); ?></h1>
 			<h4 class="intention-event-metadata clear has-large-text">
 				<?php
-				echo esc_html( $date_str );
+				echo $day . ' '; echo esc_html( $date_str );
 				if ( $is_date_set ) {
 					?>
 					&bull;
@@ -48,6 +48,9 @@ get_header(); ?>
 				}
 				?>
 			</h4>
+			<div class="intention-events-event-type has-small-font-size">
+				<span class="<?php echo strtolower( get_field( 'event_type' ) ); ?>"><?php the_field( 'event_type' ); ?></span>
+			</div>
 		</div>
 		<div class="tint"></div>
 	</div>

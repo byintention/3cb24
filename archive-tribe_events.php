@@ -43,10 +43,12 @@ get_header(); ?>
 				}
 				?>
 				<div class="intention-events-listing-navigation future">
-					<?php sv_pagination( 'future' ); ?>
-				</div>
-				<div id="past-events-link" class="centre">
-					<a href="/events/?eventDisplay=past" class="btn">Past events</a>
+					<?php
+					if ( 1 == $paged ) { ?>
+					<a href="/events/?eventDisplay=past">&laquo; Past events</a>	
+						<?php
+					}
+					sv_pagination( 'future' ); ?>
 				</div>
 				<?php
 				wp_reset_postdata();
