@@ -101,15 +101,15 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="post white" id="post-<?php the_ID(); ?>" >
-			Further details can be found below, including the full range of administrative duties and responsibilities for each rank, training and commendations.<br>
+			<p> Further details can be found below, including the full range of administrative duties and responsibilities for each rank, training and commendations.<br>
 			<div class="entry padded">
-				<p> <a href="/duties">Administrative Duties</a> <br>
+				<p> <a href="/duties">Administrative Duties</a>
 			</div>
 			<div class="entry padded">
-				<p> <a href="/commendations">Commendations</a> <br>
+				<p> <a href="/commendations">Commendations</a>
 			</div>
 			<div class="entry padded">
-				<p> <a href="/training">Training</a> <br>
+				<p> <a href="/training">Training</a>
 			</div>
 		</div>
 	</div>
