@@ -101,8 +101,15 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="post white" id="post-<?php the_ID(); ?>" >
+			Further details can be found below, including the full range of administrative duties and responsibilities for each rank, training and commendations.<br>
 			<div class="entry padded">
-				<p>The full range of <a href="/hidden/duties">Administrative Duties</a> can be found here.<br>
+				<p> <a href="/duties">Administrative Duties</a> <br>
+			</div>
+			<div class="entry padded">
+				<p> <a href="/commendations">Commendations</a> <br>
+			</div>
+			<div class="entry padded">
+				<p> <a href="/training">Training</a> <br>
 			</div>
 		</div>
 	</div>
