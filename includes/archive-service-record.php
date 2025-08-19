@@ -14,11 +14,12 @@ $term_ = get_term_by( 'name', $rank, 'tcb-rank' );
 echo '<p>' . esc_html( $term_->description ) . '</p>';
 
 // Check if the user has the required role.
-$roles = wp_get_current_user()->roles;
+$view_access = true;
+$roles       = wp_get_current_user()->roles;
 if ( ! empty( $role_list ) ) {
 	if ( ! array_intersect( $role_list, $roles ) ) {
-		echo '<p class="negative">Not authorised</p>';
-		return;
+		$view_access = false;
+		// Not authorised to view this service record.
 	}
 }
 
@@ -53,7 +54,12 @@ while ( $posts_->have_posts() ) {
 		continue;
 	}
 	$display_name = $user->get( 'display_name' );
-	echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( $display_name ) . '</a></li>';
+	if ( $view_access ) {
+		// User has access to view the service record.
+		echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( $display_name ) . '</a></li>';
+	} else {
+		echo '<li>' . esc_html( $display_name ) . '</li>';
+	}
 }
 echo '</ul>';
 wp_reset_postdata();
