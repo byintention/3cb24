@@ -42,76 +42,43 @@ if ( $list_of_ribbons ) {
 
 $image_translation = array( 1, 4, 16, 64, 256, 1024 );
 
+$mention_in_despatches = array(
+	'combat_medic'     => 'Combat Medic',
+	'weapons_operator' => 'Weapons Operator',
+	'armour_asset'     => 'Armour Asset',
+	'air_asset'        => 'Air Asset',
+	'man_of_the_match' => 'Man of the Match',
+);
+$leadership            = array(
+	'troop'    => 'Troop Leadership',
+	'section'  => 'Section Leadership',
+	'fireteam' => 'Fireteam Leadership',
+	'asset'    => 'Asset Leadership',
+);
+$mission_creation      = array(
+	'mission_author' => 'Mission Author',
+	'zeus'           => 'Zeus',
+);
+
 $sub_field     = get_field( 'leadership' );
 $section_title = 'Leadership Commendations';
 if ( $sub_field ) {
 	$print_header = false;
-	$name         = 'troop';
-	$title_       = 'Troop Leadership';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+	foreach ( $leadership as $name => $title_ ) {
+		if ( isset( $sub_field[ $name ] ) ) {
+			$value = intval( $sub_field[ $name ] );
+			if ( $value > 0 ) {
+				if ( ! $print_header ) {
+					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
+					$print_header = true;
 				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'section';
-	$title_ = 'Section Leadership';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+				foreach ( $image_translation as $idx => $img_val ) {
+					if ( $img_val > $value ) {
+						break;
+					}
 				}
+				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
 			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'fireteam';
-	$title_ = 'Fireteam Leadership';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
-				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'asset';
-	$title_ = 'Asset Leadership';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
-				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
 		}
 	}
 }
@@ -120,89 +87,21 @@ $sub_field     = get_field( 'mention_in_despatches' );
 $section_title = 'Mention in Despatches';
 if ( $sub_field ) {
 	$print_header = false;
-	$name         = 'combat_medic';
-	$title_       = 'Combat Medic';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+	foreach ( $mention_in_despatches as $name => $title_ ) {
+		if ( isset( $sub_field[ $name ] ) ) {
+			$value = intval( $sub_field[ $name ] );
+			if ( $value > 0 ) {
+				if ( ! $print_header ) {
+					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
+					$print_header = true;
 				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'weapons_operator';
-	$title_ = 'Weapons Operator';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+				foreach ( $image_translation as $idx => $img_val ) {
+					if ( $img_val > $value ) {
+						break;
+					}
 				}
+				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
 			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'armour_asset';
-	$title_ = 'Armour Asset';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
-				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'air_asset';
-	$title_ = 'Air Asset';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
-				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'man_of_the_match';
-	$title_ = 'Man of the Match';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
-				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
 		}
 	}
 }
@@ -211,38 +110,21 @@ $sub_field     = get_field( 'mission_creation' );
 $section_title = 'Mission Creation';
 if ( $sub_field ) {
 	$print_header = false;
-	$name         = 'mission_author';
-	$title_       = 'Mission Author';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+	foreach ( $mission_creation as $name => $title_ ) {
+		if ( isset( $sub_field[ $name ] ) ) {
+			$value = intval( $sub_field[ $name ] );
+			if ( $value > 0 ) {
+				if ( ! $print_header ) {
+					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
+					$print_header = true;
 				}
-			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
-		}
-	}
-	$name   = 'zeus';
-	$title_ = 'Zeus';
-	if ( isset( $sub_field[ $name ] ) ) {
-		$value = intval( $sub_field[ $name ] );
-		if ( $value > 0 ) {
-			if ( ! $print_header ) {
-				echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-				$print_header = true;
-			}
-			foreach ( $image_translation as $idx => $img_val ) {
-				if ( $img_val > $value ) {
-					break;
+				foreach ( $image_translation as $idx => $img_val ) {
+					if ( $img_val > $value ) {
+						break;
+					}
 				}
+				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
 			}
-			echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x' . esc_attr( $value ) . '" width="350" height="94"></p>';
 		}
 	}
 }
