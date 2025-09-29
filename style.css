@@ -3186,10 +3186,10 @@ div.pswp__img--placeholder,
   background: green;
 }
 .intention-events-event-type span.publicevent, .intention-events-event-type span.publicaction {
-  background: orange;
+  background: #ff8c00;
 }
 .intention-events-event-type span.jo {
-  background: red;
+  background: #c00;
 }
 
 .intention-events-listing-navigation {

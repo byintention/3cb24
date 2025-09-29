@@ -40,7 +40,7 @@ $query_args = array(
 
 $posts_ = new WP_Query( $query_args );
 if ( ! $posts_->have_posts() ) {
-	echo '<p>No ' . esc_html( $rank ) . ' service records</p>';
+	echo '<div class="info">No ' . esc_html( $rank ) . ' service records</div>';
 	return;
 }
 
