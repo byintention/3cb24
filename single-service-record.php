@@ -14,7 +14,12 @@ get_header(); ?>
 	<div class="inner">
 		<div class="container">
 			<div class="twelve columns centre">
-				<h1><?php the_title(); ?></h1>
+				<?php
+				$user_id_badger = get_field( 'user_id' );
+				$user_info = get_userdata( $user_id_badger);
+				$display_name = $user_info->display_name;
+				?>
+				<h1><?php echo $display_name; ?></h1>
 			</div>
 		</div>
 	</div>
@@ -26,12 +31,14 @@ get_header(); ?>
 			the_post();
 			?>
 			<div class="post white serviceRecord" id="post-<?php the_ID(); ?>">
-				<div class="padded" style="padding-bottom:0;">
-					<?php
-					if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
-						seopress_display_breadcrumbs();
-					}
-					?>
+				<div class="padded" style="padding-bottom: 0;">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+							<li class="breadcrumb-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a itemscope="" itemtype="https://schema.org/WebPage" itemprop="item" itemid="<?php echo esc_url( home_url() ); ?>" href="<?php echo esc_url( home_url() ); ?>"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+							<li class="breadcrumb-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a itemscope="" itemtype="https://schema.org/WebPage" itemprop="item" itemid="<?php echo esc_url( home_url() ); ?>/service-record-archive/" href="<?php echo esc_url( home_url() ); ?>/service-record-archive/"><span itemprop="name">Service Records</span></a><meta itemprop="position" content="2"></li>
+							<li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><span itemprop="name"><?php echo $display_name; ?>’s Service Record</span><meta itemprop="position" content="3"></li>
+						</ol>
+					</nav>
 				</div>
 				<div class="entry padded">
 					<div class="container">

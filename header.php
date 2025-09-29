@@ -8,7 +8,6 @@
  */
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,6 @@
 	<?php acf_form_head(); ?>
 	<?php wp_head(); ?>
 </head>
-
 <body <?php body_class(); ?>>
 	<?php acf_form_head(); ?>
 	<div id="wrap" class="wrap">
