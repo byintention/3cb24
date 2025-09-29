@@ -49,7 +49,10 @@ get_header(); ?>
 				?>
 			</h4>
 			<div class="intention-events-event-type has-small-font-size">
-				<span class="<?php echo strtolower( get_field( 'event_type' ) ); ?>"><?php the_field( 'event_type' ); ?></span>
+				<?php
+					$missionType = get_field( 'brief_mission_type' );
+				?>
+				<span class="<?php echo $missionType[ 'value' ]; ?>"><?php echo $missionType[ 'label' ]; ?></span>
 			</div>
 		</div>
 		<div class="tint"></div>

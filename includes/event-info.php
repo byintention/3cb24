@@ -25,7 +25,10 @@
 		}
 		?></p>
 		<div class="intention-events-event-type has-small-font-size">
-			<span class="<?php echo strtolower( get_field( 'mission_type' ) ); ?>"><?php the_field( 'mission_type' ); ?></span>
+			<?php
+				$missionType = get_field( 'brief_mission_type' );
+			?>
+			<span class="<?php echo strtolower( $missionType[ 'value' ] ); ?>"><?php echo $missionType[ 'label' ]; ?></span>
 		</div>
 	</div>
 	</a>
