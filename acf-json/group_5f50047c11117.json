@@ -143,9 +143,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_603d08aef58dc",
-            "label": "Footer message",
-            "name": "footer_message",
+            "key": "field_68dc52007cee5",
+            "label": "TikTok",
+            "name": "tiktok",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -158,7 +158,7 @@
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 1,
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -189,5 +189,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1735342055
+    "modified": 1759269396
 }

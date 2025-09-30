@@ -5,7 +5,7 @@ Theme URI: https://byintention.co
 Description: Design by Arka, Wordpress theme by Nick at Intention, plugins by Lifetap
 Author: Nick "Badger" Hayward
 Author URI: https://byintention.co
-Version: 2.19
+Version: 2.20
 Tags: 
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -353,6 +353,14 @@ h6 {
   margin-bottom: 20px;
   text-transform: uppercase;
 }
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+  font-weight: 400;
+}
 
 h3,
 h4,
@@ -573,7 +581,6 @@ dd {
 .info {
   background: #2170B0;
   color: #fff;
-  font-weight: bold;
   padding: 5px 10px;
 }
 
@@ -1001,6 +1008,8 @@ input[type=checkbox] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0 20px;
   width: 100%;
@@ -1229,23 +1238,6 @@ body.mobilenavopen {
 .lightHeader #header #headerLogin a:hover {
   color: #222;
 }
-.lightHeader #header #nav2 a {
-  color: #2170B0;
-  transition: all 0.1s ease-in-out;
-}
-.lightHeader #header #nav2 a:hover {
-  color: #222;
-  transition: all 0.1s ease-in-out;
-}
-.lightHeader #header #nav2 .menu-item-has-children > a:after {
-  background-image: url(images/icon-chev-down-white.svg);
-}
-.lightHeader #header #nav2 .menu-item-has-children .sub-menu a {
-  color: #fff;
-}
-.lightHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
-  color: #2170B0;
-}
 
 @media only screen and (min-width: 600px) {
   #header {
@@ -1292,6 +1284,38 @@ body.mobilenavopen {
   }
 }
 @media only screen and (min-width: 1200px) {
+  .lightHeader #header {
+    color: #ddd;
+  }
+  .lightHeader #header svg path {
+    fill: #222;
+  }
+  .lightHeader #header #headerLogin {
+    color: #222;
+  }
+  .lightHeader #header #headerLogin a {
+    color: #2170B0;
+  }
+  .lightHeader #header #headerLogin a:hover {
+    color: #222;
+  }
+  .lightHeader #header #nav2 a {
+    color: #2170B0;
+    transition: all 0.1s ease-in-out;
+  }
+  .lightHeader #header #nav2 a:hover {
+    color: #222;
+    transition: all 0.1s ease-in-out;
+  }
+  .lightHeader #header #nav2 .menu-item-has-children > a:after {
+    background-image: url(images/icon-chev-down-white.svg);
+  }
+  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a {
+    color: #fff;
+  }
+  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
+    color: #2170B0;
+  }
   #header {
     height: 95px;
   }
@@ -1305,12 +1329,11 @@ body.mobilenavopen {
   font-size: 14px;
   line-height: 1.3;
   position: absolute;
-  top: 50%;
-  right: 80px;
+  top: 24px;
+  right: 70px;
   text-align: center;
-  transform: translateY(50%);
   transition: all 0.1s ease-in-out;
-  width: 200px;
+  width: 220px;
 }
 #headerLogin .username {
   margin-right: 15px;
@@ -1451,6 +1474,19 @@ body.mobilenavopen {
   width: 38px;
 }
 
+.darkHeader #headerMenuMobile button span, .darkHeader #headerMenuMobile button:before, .darkHeader #headerMenuMobile button:after {
+  background: #fff;
+}
+.darkHeader .scrollHeader #headerLogin {
+  color: #222;
+}
+.darkHeader .scrollHeader #headerLogin a {
+  color: #2170B0;
+}
+.darkHeader .scrollHeader #headerMenuMobile button span, .darkHeader .scrollHeader #headerMenuMobile button:before, .darkHeader .scrollHeader #headerMenuMobile button:after {
+  background: #2170B0;
+}
+
 #headerContactMobile {
   background-image: url(images/icon-mobile.svg);
   background-position: center center;
@@ -1573,6 +1609,16 @@ body.mobilenavopen {
   }
   .banners .inner {
     top: 50%;
+  }
+}
+.banners .inner h1.homeHeader {
+  color: #333;
+  font-size: 4rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .banners .inner h1.homeHeader {
+    font-size: 8rem;
   }
 }
 .filler {
@@ -1938,6 +1984,7 @@ body.mobilenavopen {
   background: transparent;
 }
 .single .post {
+  hyphens: auto;
   margin-bottom: 40px;
 }
 .single .post .news-thumb img {
@@ -2155,7 +2202,6 @@ body.mobilenavopen {
 #footer {
   background: #222;
   color: #ddd;
-  font-size: 18px;
   padding: 50px 0;
   text-align: center;
 }
@@ -2428,14 +2474,19 @@ ul.acf-checkbox-list li {
 .serviceRecord {
   width: 100%;
 }
+.serviceRecord .container {
+  padding: 0;
+}
+.serviceRecord .container .three.columns,
+.serviceRecord .container .four.columns,
+.serviceRecord .container .five.columns {
+  margin-bottom: 30px;
+}
 .serviceRecord #comments {
   padding-left: 0;
 }
 .serviceRecord .tcb_user_info {
   margin-left: 0 !important;
-}
-.serviceRecord .tcb_user_info .one-third {
-  margin-bottom: 30px;
 }
 .serviceRecord .tcb_user_info img {
   width: auto;
@@ -2466,6 +2517,9 @@ ul.acf-checkbox-list li {
   .serviceRecord .tcb_user_training {
     padding-left: 40px;
   }
+  .serviceRecord .columns {
+    margin-bottom: 0;
+  }
 }
 #ui-datepicker-div a {
   text-decoration: none;
@@ -2481,6 +2535,15 @@ ul.acf-checkbox-list li {
 #ui-datepicker-div .ui-timepicker-div select {
   margin: 0 3px;
   width: auto;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.in-view {
+  opacity: 1;
 }
 
 #wikiSearch {
@@ -2536,10 +2599,16 @@ ul.acf-checkbox-list li {
 }
 
 #tcbWikiContent {
+  flex-direction: column-reverse;
   position: relative;
   z-index: 500;
 }
 
+@media only screen and (min-width: 800px) {
+  #tcbWikiContent {
+    flex-direction: row;
+  }
+}
 #tcbWikiListing #tcbWikiContent {
   padding-bottom: 50px;
   max-width: 800px;
@@ -2556,7 +2625,7 @@ ul.acf-checkbox-list li {
   padding-bottom: 50px;
 }
 #tcbWiki .wiki-category {
-  margin-bottom: 2%;
+  margin-bottom: 20px;
 }
 #tcbWiki .wiki-category h3 {
   margin-bottom: 20px;
@@ -2565,6 +2634,11 @@ ul.acf-checkbox-list li {
   text-decoration: none;
 }
 
+@media only screen and (min-width: 800px) {
+  #tcbWiki .wiki-category {
+    margin-bottom: 2%;
+  }
+}
 .wiki-docs {
   list-style: none;
   margin: 0 0 18px 18px;
@@ -2606,7 +2680,7 @@ ul.acf-checkbox-list li {
   margin-bottom: 30px;
   padding: 0;
 }
-#tcbWikiSingle h1, #tcbWikiSingle h2, #tcbWikiSingle h3, #tcbWikiSingle h4, #tcbWikiSingle h5, #tcbWikiSingle h6 {
+#tcbWikiSingle .post h1, #tcbWikiSingle .post h2, #tcbWikiSingle .post h3, #tcbWikiSingle .post h4, #tcbWikiSingle .post h5, #tcbWikiSingle .post h6 {
   padding-top: 110px;
   margin-top: -110px;
 }
@@ -2614,11 +2688,7 @@ ul.acf-checkbox-list li {
   margin-bottom: 5px;
 }
 #tcbWikiSingle #toc {
-  max-height: calc(100vh - 140px);
-  overflow-y: auto;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 110px;
+  margin-bottom: 2rem;
 }
 #tcbWikiSingle #toc #toclist {
   list-style: none;
@@ -2636,6 +2706,15 @@ ul.acf-checkbox-list li {
   text-decoration: none;
 }
 
+@media only screen and (min-width: 800px) {
+  #tcbWikiSingle #toc {
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 110px;
+  }
+}
 /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
 .pswp {
   --pswp-bg: #000;
@@ -3061,21 +3140,19 @@ div.pswp__img--placeholder,
 #intention-events-listing .intention-events-listing-event {
   background: #fff;
   margin-bottom: 30px;
-  padding: 30px;
+  padding: 10px;
   position: relative;
 }
-#intention-events-listing .intention-events-listing-event .intention-events-listing-image {
-  min-height: 150px;
+#intention-events-listing .intention-events-listing-event a {
+  text-decoration: none;
+}
+#intention-events-listing .intention-events-listing-event .intention-events-listing-image img {
+  display: block;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title {
-  background: rgba(0, 0, 0, 0.5);
+  background: #333;
   color: #fff;
   padding: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 75%;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title h2, #intention-events-listing .intention-events-listing-event .intention-events-listing-title h3 {
   color: #fff;
@@ -3087,6 +3164,24 @@ div.pswp__img--placeholder,
   width: 100%;
 }
 
+@media only screen and (min-width: 800px) {
+  #intention-events-listing .container {
+    max-width: 1000px;
+  }
+  #intention-events-listing .intention-events-listing-event {
+    padding: 30px;
+  }
+  #intention-events-listing .intention-events-listing-event .intention-events-listing-title {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 75%;
+  }
+}
 #intention-events-single-event {
   background: #eee;
   padding: 0 0 50px 0;
@@ -3180,7 +3275,7 @@ div.pswp__img--placeholder,
   border-radius: 50px;
   color: #fff;
   font-weight: bold;
-  padding: 8px 12px 6px 12px;
+  padding: 6px 12px;
 }
 .intention-events-event-type span.private, .intention-events-event-type span.patrolop, .intention-events-event-type span.miniop {
   background: green;
@@ -3221,27 +3316,48 @@ div.pswp__img--placeholder,
 .tcb_briefing {
   background: #fff;
   margin-bottom: 30px;
-  padding: 40px;
+  padding: 30px;
+}
+.tcb_briefing h2 {
+  margin-bottom: 2rem;
+}
+.tcb_briefing h3 {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 .tcb_briefing .briefing-meta {
-  padding-bottom: 15px;
+  padding: 1.5rem 0 1rem 0;
 }
 .tcb_briefing .briefing-meta .column {
+  padding-bottom: 1.5rem;
   padding-right: 20px;
 }
 .tcb_briefing .briefing-meta .column:first-child {
   margin-left: 0;
+}
+.tcb_briefing .briefing-meta p:last-child {
+  margin-bottom: 0;
+}
+.tcb_briefing .briefing-meta h3 {
+  padding-top: 0;
 }
 .tcb_briefing .missionRow {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
-.tcb_briefing h3 {
-  padding-top: 15px;
-  margin-bottom: 10px;
-}
 
+@media only screen and (min-width: 600px) {
+  .tcb_briefing {
+    padding: 40px;
+  }
+  .tcb_briefing .briefing-meta {
+    padding: 1.5rem 0 0 0;
+  }
+  .tcb_briefing .briefing-meta .column {
+    padding: 0 1.5rem 0 0;
+  }
+}
 /*
 	Attendance panel
 */
@@ -3257,24 +3373,8 @@ div.pswp__img--placeholder,
   transition: all 0.2s linear;
 }
 #attendanceRoster .attendanceCol {
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  padding: 15px 15px 80px 15px;
+  margin-bottom: 2rem;
   position: relative;
-}
-#attendanceRoster .attendanceCol:nth-child(2) {
-  border-left: 0;
-  border-right: 0;
-}
-#attendanceRoster .attendanceCol form {
-  margin: 0;
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  width: 100%;
-}
-#attendanceRoster .attendanceCol form input {
-  padding: 10px;
 }
 #attendanceRoster ul {
   list-style: none;
@@ -3292,7 +3392,7 @@ div.pswp__img--placeholder,
 #attendanceRoster img {
   border-radius: 100%;
   height: 20px;
-  margin-right: 3px;
+  margin-right: 5px;
   vertical-align: top;
   width: 20px;
 }
@@ -3324,7 +3424,7 @@ div.pswp__img--placeholder,
   color: #2170B0;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 600px) {
   #attendanceRoster {
     float: right;
     margin-left: 1%;
@@ -3335,8 +3435,24 @@ div.pswp__img--placeholder,
     display: flex;
   }
   #attendanceRoster .attendanceCol {
+    border: 1px solid #ccc;
     flex: 1 1;
+    margin-bottom: 20px;
+    padding: 15px 15px 80px 15px;
+  }
+  #attendanceRoster .attendanceCol:nth-child(2) {
+    border-left: 0;
+    border-right: 0;
+  }
+  #attendanceRoster .attendanceCol form {
     margin: 0;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 100%;
+  }
+  #attendanceRoster .attendanceCol form input {
+    padding: 10px;
   }
 }
 /* 
@@ -3344,11 +3460,8 @@ div.pswp__img--placeholder,
 */
 #slotTool {
   background: #fff;
-  float: left;
-  margin-right: 1%;
   margin-bottom: 30px;
-  padding: 40px;
-  width: 39%;
+  padding: 30px;
 }
 #slotTool .slotToolSlot {
   height: 30px;
@@ -3432,22 +3545,42 @@ div.pswp__img--placeholder,
   z-index: 500;
 }
 #slotTool .unit {
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   border-bottom: 0;
-  padding: 20px 20px 15px 20px;
-}
-#slotTool .unit:last-child {
-  border: 1px solid #ccc;
+  padding: 1.5rem 0 1rem 0;
 }
 
+@media only screen and (min-width: 1200px) {
+  #slotTool {
+    float: left;
+    margin-right: 1%;
+    padding: 40px;
+    width: 39%;
+  }
+  #slotTool .unit {
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+  #slotTool .unit:last-child {
+    border: 1px solid #ccc;
+  }
+}
 #slotToolButtons {
   clear: both;
   padding: 30px;
   text-align: center;
 }
 #slotToolButtons a {
-  margin: 0 10px;
+  margin: 0 1rem 1.5rem 1rem;
 }
 #slotToolButtons br {
   display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  #slotToolButtons a {
+    margin: 0 1rem;
+  }
 }

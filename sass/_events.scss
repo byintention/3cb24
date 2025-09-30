@@ -15,20 +15,20 @@
 	.intention-events-listing-event {
 		background: #fff;
 		margin-bottom: 30px;
-		padding: 30px;
+		padding: 10px;
 		position: relative;
+		a {
+			text-decoration: none;
+		}
 		.intention-events-listing-image {
-			min-height: 150px;
+			img {
+				display: block;
+			}
 		}
 		.intention-events-listing-title {
-			background: rgba(0,0,0,0.5);
+			background: #333;
 			color: #fff;
 			padding: 30px;
-			position: absolute;
-				top: 50%;
-				left: 50%;
-			transform: translateX(-50%) translateY(-50%);
-			width: 75%;
 			h2, h3 {
 				color: #fff;
 				a {
@@ -41,6 +41,28 @@
 		}
 	}
 }
+
+	@media only screen and (min-width: 800px) {
+		#intention-events-listing {
+			.container {
+				max-width: 1000px;
+			}
+			.intention-events-listing-event {
+				padding: 30px;
+				.intention-events-listing-title {
+					background: rgba(0,0,0,0.5);
+					color: #fff;
+					padding: 30px;
+					position: absolute;
+						top: 50%;
+						left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					width: 75%;
+				}
+			}
+			
+		}
+	}
 
 #intention-events-single-event {
 	background: vars.$pageBg;
@@ -61,7 +83,6 @@
 		h3,
 		h4 {
 			color: #fff;
-			
 		}
 		h3 {
 			width: 100%;
@@ -144,7 +165,7 @@
 		border-radius: 50px;
 		color: #fff;
 		font-weight: bold;
-		padding: 8px 12px 6px 12px;
+		padding: 6px 12px;
 		&.private,
 		&.patrolop,
 		&.miniop {
@@ -194,14 +215,28 @@
 .tcb_briefing {
 	background: #fff;
 	margin-bottom: 30px;
-	padding: 40px;
+	padding: 30px;
+	h2 {
+		margin-bottom: 2rem;
+	}
+	h3 {
+		margin-bottom: 1rem;
+		padding-top: 1rem;
+	}
 	.briefing-meta {
-		padding-bottom: 15px;
+		padding: 1.5rem 0 1rem 0;
 		.column {
+			padding-bottom: 1.5rem;
 			padding-right: 20px;
 		}
 		.column:first-child {
 			margin-left:0;
+		}
+		p:last-child {
+			margin-bottom: 0;
+		}
+		h3 {
+			padding-top: 0;
 		}
 	}
 	.missionRow {
@@ -209,13 +244,20 @@
 		margin-bottom: 20px;
 		padding-bottom: 20px;
 	}
-	h3 {
-		padding-top: 15px;
-		margin-bottom: 10px;
-	}
+	
 }
 
-
+	@media only screen and (min-width: 600px) {
+		.tcb_briefing {
+			padding: 40px;
+			.briefing-meta {
+				padding: 1.5rem 0 0 0;
+				.column {
+					padding: 0 1.5rem 0 0;
+				}
+			}
+		}
+	}
 
 /*
 	Attendance panel
@@ -232,24 +274,8 @@
 		transition: all 0.2s linear;
 	}
 	.attendanceCol {
-		border: 1px solid #ccc;
-		margin-bottom: 20px;
-		padding: 15px 15px 80px 15px;
+		margin-bottom: 2rem;
 		position: relative;
-		&:nth-child(2) {
-			border-left: 0;
-			border-right: 0;
-		}
-		form {
-			margin: 0;
-			position: absolute;
-				bottom: 15px;
-				left: 15px;
-			width: 100%;
-			input {
-				padding: 10px;
-			}
-		}
 	}
 	ul {
 		list-style: none;
@@ -267,7 +293,7 @@
 	img {
 		border-radius: 100%;
 		height: 20px;
-		margin-right: 3px;
+		margin-right: 5px;
 		vertical-align: top;
 		width: 20px;
 	}
@@ -303,7 +329,7 @@
 	}
 }
 
-	@media only screen and (min-width: 1200px) {
+	@media only screen and (min-width: 600px) {
 		#attendanceRoster {
 			float: right;
 			margin-left: 1%;
@@ -313,8 +339,24 @@
 				display: flex;
 			}
 			.attendanceCol {
+				border: 1px solid #ccc;
 				flex: 1 1;
-				margin: 0;
+				margin-bottom: 20px;
+				padding: 15px 15px 80px 15px;
+				&:nth-child(2) {
+					border-left: 0;
+					border-right: 0;
+				}
+				form {
+					margin: 0;
+					position: absolute;
+						bottom: 15px;
+						left: 15px;
+					width: 100%;
+					input {
+						padding: 10px;
+					}
+				}
 			}
 		}
 	}
@@ -325,12 +367,8 @@
 
 #slotTool {
 	background: #fff;
-	float: left;
-	margin-right: 1%;
 	margin-bottom: 30px;
-	padding: 40px;
-	width: 39%;
-	
+	padding: 30px;
 	.slotToolSlot {
 		height: 30px;
 		line-height: 30px;
@@ -416,14 +454,31 @@
 		}
 	}
 	.unit {
-		border: 1px solid #ccc;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
 		border-bottom: 0;
-		padding: 20px 20px 15px 20px;
-		&:last-child {
-			border: 1px solid #ccc;
-		}
+		padding: 1.5rem 0 1rem 0;
 	}
 }
+
+	@media only screen and (min-width: 1200px) {
+		
+		#slotTool {
+			float: left;
+			margin-right: 1%;
+			padding: 40px;
+			width: 39%;
+			.unit {
+				border: 1px solid #ccc;
+				border-bottom: 0;
+				padding: 1.5rem 1.5rem 1rem 1.5rem;
+				&:last-child {
+					border: 1px solid #ccc;
+				}
+			}
+		}
+		
+	}
 
 
 #slotToolButtons {
@@ -431,9 +486,17 @@
 	padding: 30px;
 	text-align: center;
 	a {
-		margin: 0 10px;
+		margin: 0 1rem 1.5rem 1rem;
 	}
 	br {
 		display: none;
 	}
 }
+
+	@media only screen and (min-width: 1200px) {
+		#slotToolButtons {
+			a {
+				margin: 0 1rem;
+			}
+		}
+	}

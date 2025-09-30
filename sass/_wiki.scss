@@ -55,9 +55,16 @@
 }
 
 #tcbWikiContent {
+	flex-direction: column-reverse;
 	position: relative;
 	z-index: 500;
 }
+
+	@media only screen and (min-width: 800px) {
+		#tcbWikiContent {
+			flex-direction: row;
+		}
+	}
 
 #tcbWikiListing {
 	#tcbWikiContent {
@@ -74,13 +81,13 @@
 	}
 }
 
-#tcbWiki {	
+#tcbWiki {
 	#tcbWikiContent {
 		justify-content: center;
 		padding-bottom: 50px;
 	}
 	.wiki-category {
-		margin-bottom: 2%;
+		margin-bottom: 20px;
 		h3 {
 			margin-bottom: 20px;
 		}
@@ -89,6 +96,17 @@
 		}
 	}
 }
+
+	@media only screen and (min-width: 800px) {
+	
+		#tcbWiki {
+			.wiki-category {
+				margin-bottom: 2%;
+			}
+		}	
+		
+	}
+	
 
 .wiki-docs {
 	list-style: none;
@@ -131,19 +149,18 @@
 		margin-bottom: 30px;
 		padding: 0;
 	}
-	h1,h2,h3,h4,h5,h6 {
-		padding-top: 110px;
-		margin-top: -110px;
+	.post {
+		h1,h2,h3,h4,h5,h6 {
+			padding-top: 110px;
+			margin-top: -110px;
+		}
 	}
 	.entry h1 {
 		margin-bottom: 5px;
 	}
 	#toc {
-		max-height: calc(100vh - 140px);
-		overflow-y: auto;
-		position: -webkit-sticky;
-		position: sticky;
-		top: 110px;
+		margin-bottom: 2rem;
+		
 		#toclist {
 			list-style: none;
 			margin: 0;
@@ -161,3 +178,14 @@
 		}
 	}
 }
+	@media only screen and (min-width: 800px) {
+		#tcbWikiSingle { 
+			#toc {	
+				max-height: calc(100vh - 140px);
+				overflow-y: auto;
+				position: -webkit-sticky;
+				position: sticky;
+				top: 110px;
+			}
+		}
+	}

@@ -36,8 +36,8 @@ if ( have_rows( 'flexible_content' ) ) {
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="banners clear">
 			<picture>
-				<source media="(max-width:599px)" srcset="<?php the_sub_field( 'mobile_banner' ); ?>">
-				<source media="(min-width:600px)" srcset="<?php the_sub_field( 'desktop_banner' ); ?>">
+				<source media="(max-width:899px)" srcset="<?php the_sub_field( 'mobile_banner' ); ?>">
+				<source media="(min-width:900px)" srcset="<?php the_sub_field( 'desktop_banner' ); ?>">
 				<img src="<?php the_sub_field( 'mobile_banner' ); ?>" alt="<?php the_title(); ?>">
 			</picture>
 				<div class="inner">

@@ -15,7 +15,6 @@
 						<a href="/hidden/duties">Support</a>
 						<a href="<?php the_field( 'teamspeak', 'options' ); ?>">Join Teamspeak Server</a>
 						<a href="<?php the_field( 'discord', 'options' ); ?>">Join Discord Server</a>
-						
 					</p>
 					<?php get_template_part( 'includes/social' ); ?>
 					<div class="has-small-font-size copyright">&copy; <?php the_field( 'footer_message', 'options' ); ?></div>
