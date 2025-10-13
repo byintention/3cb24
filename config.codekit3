@@ -551,6 +551,14 @@
       "oAP" : "\/includes\/flexible-content.php",
       "oF" : 0
     },
+    "\/includes\/logos.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/includes\/logos.php",
+      "oF" : 0
+    },
     "\/includes\/postloop.php" : {
       "cB" : 0,
       "ft" : 8192,

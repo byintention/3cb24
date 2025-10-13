@@ -37,14 +37,14 @@ get_header(); ?>
 			<h4 class="intention-event-metadata clear has-large-text">
 				<?php
 				echo $day . ' '; echo esc_html( $date_str );
+				echo '<br>';
 				if ( $is_date_set ) {
 					?>
-					&bull;
 					<?php the_field( 'event_start_time' ); ?> - 
 					<?php
 					the_field( 'event_end_time' );
 				} else {
-					echo ' &bull; Time TBC';
+					echo 'Time TBC';
 				}
 				?>
 			</h4>

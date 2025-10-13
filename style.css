@@ -55,8 +55,8 @@ Primary Branch: main
     /* Second Level */
   }
   #nav2 .navInner {
-    height: calc(100% - 120px);
-    margin-top: 100px;
+    height: calc(100% - 80px);
+    margin-top: 80px;
     margin-bottom: 20px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -396,11 +396,11 @@ h4 {
 }
 
 h5 {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 h6 {
-  font-size: 18px;
+  font-size: 21px;
 }
 
 p {
@@ -667,7 +667,6 @@ span.wpcf7-not-valid-tip {
     transform: rotate(359deg);
   }
 }
-/* Hide original loader */
 .submitting .wpcf7-spinner {
   display: inline-block;
 }
@@ -1205,6 +1204,7 @@ body.mobilenavopen {
   z-index: 999;
 }
 #header .container {
+  height: 80px;
   position: relative;
 }
 #header svg path {
@@ -1223,29 +1223,7 @@ body.mobilenavopen {
   transition: all 0.1s ease-in-out;
 }
 
-.lightHeader #header {
-  color: #ddd;
-}
-.lightHeader #header svg path {
-  fill: #222;
-}
-.lightHeader #header #headerLogin {
-  color: #222;
-}
-.lightHeader #header #headerLogin a {
-  color: #2170B0;
-}
-.lightHeader #header #headerLogin a:hover {
-  color: #222;
-}
-
 @media only screen and (min-width: 600px) {
-  #header {
-    height: 95px;
-  }
-  #header.scrollHeader {
-    height: 95px;
-  }
   #header.scrollHeader {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -1254,6 +1232,24 @@ body.mobilenavopen {
   }
   #header.scrollHeader svg path {
     fill: #222;
+  }
+  #header.scrollHeader #headerLogin {
+    color: #222;
+    transition: all 0.1s ease-in-out;
+  }
+  #header.scrollHeader #headerLogin a {
+    color: #2170B0;
+  }
+  #header.scrollHeader #headerLogin a:hover {
+    color: #222;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #header {
+    height: 95px;
+  }
+  #header .container {
+    height: 95px;
   }
   #header.scrollHeader #nav2 a {
     color: #2170B0;
@@ -1272,57 +1268,6 @@ body.mobilenavopen {
   #header.scrollHeader #nav2 .sub-menu a:hover {
     color: #2170B0;
   }
-  #header.scrollHeader #headerLogin {
-    color: #222;
-    transition: all 0.1s ease-in-out;
-  }
-  #header.scrollHeader #headerLogin a {
-    color: #2170B0;
-  }
-  #header.scrollHeader #headerLogin a:hover {
-    color: #222;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .lightHeader #header {
-    color: #ddd;
-  }
-  .lightHeader #header svg path {
-    fill: #222;
-  }
-  .lightHeader #header #headerLogin {
-    color: #222;
-  }
-  .lightHeader #header #headerLogin a {
-    color: #2170B0;
-  }
-  .lightHeader #header #headerLogin a:hover {
-    color: #222;
-  }
-  .lightHeader #header #nav2 a {
-    color: #2170B0;
-    transition: all 0.1s ease-in-out;
-  }
-  .lightHeader #header #nav2 a:hover {
-    color: #222;
-    transition: all 0.1s ease-in-out;
-  }
-  .lightHeader #header #nav2 .menu-item-has-children > a:after {
-    background-image: url(images/icon-chev-down-white.svg);
-  }
-  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a {
-    color: #fff;
-  }
-  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
-    color: #2170B0;
-  }
-  #header {
-    height: 95px;
-  }
-  #header .container {
-    height: 95px;
-    position: relative;
-  }
 }
 #headerLogin {
   color: #ddd;
@@ -1334,9 +1279,6 @@ body.mobilenavopen {
   text-align: center;
   transition: all 0.1s ease-in-out;
   width: 220px;
-}
-#headerLogin .username {
-  margin-right: 15px;
 }
 #headerLogin a {
   color: #ddd;
@@ -1356,6 +1298,9 @@ body.mobilenavopen {
     right: 1%;
     transform: none;
     width: auto;
+  }
+  #headerLogin .username {
+    margin-right: 15px;
   }
   #headerLogin strong {
     display: inline;
@@ -1424,7 +1369,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button span {
-  background: #2170B0;
+  background: #fff;
   display: block;
   height: 5px;
   position: absolute;
@@ -1434,7 +1379,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button:before {
-  background: #2170B0;
+  background: #fff;
   content: "";
   height: 5px;
   position: absolute;
@@ -1444,7 +1389,7 @@ body.mobilenavopen {
   width: 29px;
 }
 #headerMenuMobile button:after {
-  background: #2170B0;
+  background: #fff;
   content: "";
   height: 5px;
   position: absolute;
@@ -1474,41 +1419,91 @@ body.mobilenavopen {
   width: 38px;
 }
 
-.darkHeader #headerMenuMobile button span, .darkHeader #headerMenuMobile button:before, .darkHeader #headerMenuMobile button:after {
-  background: #fff;
-}
-.darkHeader .scrollHeader #headerLogin {
+#header.scrollHeader #headerLogin {
   color: #222;
 }
-.darkHeader .scrollHeader #headerLogin a {
+#header.scrollHeader #headerLogin a {
   color: #2170B0;
 }
-.darkHeader .scrollHeader #headerMenuMobile button span, .darkHeader .scrollHeader #headerMenuMobile button:before, .darkHeader .scrollHeader #headerMenuMobile button:after {
+#header.scrollHeader #headerMenuMobile button span, #header.scrollHeader #headerMenuMobile button:before, #header.scrollHeader #headerMenuMobile button:after {
   background: #2170B0;
 }
+#header.scrollHeader #headerMenuMobile button.navOpen span, #header.scrollHeader #headerMenuMobile button.navOpen:before, #header.scrollHeader #headerMenuMobile button.navOpen:after {
+  background: #fff;
+}
 
-#headerContactMobile {
-  background-image: url(images/icon-mobile.svg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  display: none;
-  font-size: 0;
-  height: 34px;
-  position: absolute;
-  top: 25px;
-  right: 20px;
-  vertical-align: top;
-  width: 30px;
+.lightHeader #header {
+  color: #ddd;
+}
+.lightHeader #header svg path {
+  fill: #222;
+}
+.lightHeader #header #headerLogin {
+  color: #222;
+}
+.lightHeader #header #headerLogin a {
+  color: #2170B0;
+}
+.lightHeader #header #headerLogin a:hover {
+  color: #222;
+}
+.lightHeader #header #headerMenuMobile button span, .lightHeader #header #headerMenuMobile button:before, .lightHeader #header #headerMenuMobile button:after {
+  background: #2170B0;
+}
+.lightHeader #header #nav2 a {
+  color: #fff;
+}
+.lightHeader.mobilenavopen #header #headerLogo svg path {
+  fill: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.lightHeader.mobilenavopen #header #headerMenuMobile button span, .lightHeader.mobilenavopen #header #headerMenuMobile button:before, .lightHeader.mobilenavopen #header #headerMenuMobile button:after {
+  background: #fff;
+}
+.lightHeader.scrollHeader #headerMenuMobile button span, .lightHeader.scrollHeader #headerMenuMobile button:before, .lightHeader.scrollHeader #headerMenuMobile button:after {
+  background: #fff;
 }
 
 @media only screen and (min-width: 1200px) {
-  #headerMenuMobile,
-  #headerContactMobile {
-    display: none;
+  .lightHeader #header {
+    color: #ddd;
+    height: 95px;
+  }
+  .lightHeader #header .container {
+    height: 95px;
+    position: relative;
+  }
+  .lightHeader #header svg path {
+    fill: #222;
+  }
+  .lightHeader #header #headerLogin {
+    color: #222;
+  }
+  .lightHeader #header #headerLogin a {
+    color: #2170B0;
+  }
+  .lightHeader #header #headerLogin a:hover {
+    color: #222;
+  }
+  .lightHeader #header #nav2 a {
+    color: #2170B0;
+    transition: all 0.1s ease-in-out;
+  }
+  .lightHeader #header #nav2 a:hover {
+    color: #222;
+    transition: all 0.1s ease-in-out;
+  }
+  .lightHeader #header #nav2 .menu-item-has-children > a:after {
+    background-image: url(images/icon-chev-down-white.svg);
+  }
+  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a {
+    color: #fff;
+  }
+  .lightHeader #header #nav2 .menu-item-has-children .sub-menu a:hover {
+    color: #2170B0;
+  }
+  .lightHeader #header.scrollHeader svg path {
+    fill: #222;
   }
 }
 /*
@@ -1617,6 +1612,14 @@ body.mobilenavopen {
 }
 
 @media only screen and (min-width: 600px) {
+  .banners .inner {
+    top: 55%;
+  }
+  .banners .inner h1.homeHeader {
+    font-size: 6rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
   .banners .inner h1.homeHeader {
     font-size: 8rem;
   }
@@ -1747,7 +1750,7 @@ body.mobilenavopen {
   margin: 0;
 }
 .fiftyFifty .container {
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 .fiftyFifty .text {
   margin-bottom: 30px;
@@ -1863,25 +1866,21 @@ body.mobilenavopen {
   max-width: 700px;
   padding: 0 20px;
 }
-
-.faq {
+.faqs .faq {
   border-bottom: 1px solid #eee;
   margin-bottom: 12px;
   position: relative;
 }
-
-.faq:first-child {
+.faqs .faq:first-child {
   border-top: 1px solid #eee;
   padding-top: 12px;
 }
-
-.faq-question {
+.faqs .faq-question {
   cursor: pointer;
   padding-left: 30px;
   position: relative;
 }
-
-.faq-question:before {
+.faqs .faq-question:before {
   background-image: url(images/icon-chev-down-grey.svg);
   background-size: 100% auto;
   background-position: center center;
@@ -1895,14 +1894,12 @@ body.mobilenavopen {
   left: 0;
   width: 20px;
 }
-
-.faq-answer {
+.faqs .faq-answer {
   display: none;
   overflow: hidden;
   padding-left: 30px;
 }
-
-.faq.active .faq-question:before {
+.faqs .faq.active .faq-question:before {
   -ms-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -1911,7 +1908,7 @@ body.mobilenavopen {
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-.faq.active .faq-answer {
+.faqs .faq.active .faq-answer {
   display: block;
   padding-bottom: 20px;
 }
@@ -1961,6 +1958,15 @@ body.mobilenavopen {
 .archive .post,
 .blog .post {
   margin-bottom: 40px;
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  text-overflow: ellipsis;
 }
 .error404 .news-thumb img,
 .search .news-thumb img,
@@ -2180,7 +2186,7 @@ body.mobilenavopen {
   margin: 0;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
   #sidebar {
     padding: 0 0 40px 20px;
   }
@@ -2192,6 +2198,7 @@ body.mobilenavopen {
 }
 
 .searchResults {
+  padding-bottom: 3rem;
   max-width: 800px;
 }
 .searchResults .postmetadata {
@@ -2207,7 +2214,6 @@ body.mobilenavopen {
 }
 #footer a {
   color: #ddd;
-  text-transform: uppercase;
 }
 #footer a:visited {
   color: #ddd;
@@ -2275,6 +2281,9 @@ body.mobilenavopen {
 	Desktop size navigation
 */
 @media only screen and (min-width: 1200px) {
+  #headerMenuMobile {
+    display: none;
+  }
   #nav2 {
     display: block;
     position: absolute;
@@ -2471,6 +2480,9 @@ ul.acf-checkbox-list li {
   line-height: inherit;
 }
 
+/* 
+	Service records
+*/
 .serviceRecord {
   width: 100%;
 }
@@ -2537,6 +2549,9 @@ ul.acf-checkbox-list li {
   width: auto;
 }
 
+/* 
+	Appear when scrolled into view
+*/
 .fade-in {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -2546,6 +2561,19 @@ ul.acf-checkbox-list li {
   opacity: 1;
 }
 
+.screen-reader-text {
+  display: none;
+}
+
+html .acf-url i {
+  top: 18px;
+}
+
+@media only screen and (min-width: 600px) {
+  html .acf-url i {
+    top: 20px;
+  }
+}
 #wikiSearch {
   margin: 0 auto;
   max-width: 400px;
@@ -2641,7 +2669,7 @@ ul.acf-checkbox-list li {
 }
 .wiki-docs {
   list-style: none;
-  margin: 0 0 18px 18px;
+  margin: 0 0 18px 0;
 }
 .wiki-docs li,
 .wiki-docs li:active {
@@ -2660,7 +2688,7 @@ ul.acf-checkbox-list li {
 
 .wiki-subcats {
   list-style: none;
-  margin: 0 0 18px 18px;
+  margin: 0 0 18px 0;
 }
 .wiki-subcats li {
   background-image: url(images/wiki-folder.svg);
@@ -3156,6 +3184,7 @@ div.pswp__img--placeholder,
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title h2, #intention-events-listing .intention-events-listing-event .intention-events-listing-title h3 {
   color: #fff;
+  text-wrap: balance;
 }
 #intention-events-listing .intention-events-listing-event .intention-events-listing-title h2 a, #intention-events-listing .intention-events-listing-event .intention-events-listing-title h3 a {
   color: #fff;
@@ -3197,6 +3226,9 @@ div.pswp__img--placeholder,
   min-height: 400px;
   position: relative;
   text-align: center;
+}
+#intention-events-single-event .event-banner h1 {
+  text-wrap: balance;
 }
 #intention-events-single-event .event-banner h1,
 #intention-events-single-event .event-banner h2,
@@ -3347,7 +3379,7 @@ div.pswp__img--placeholder,
   padding-bottom: 20px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
   .tcb_briefing {
     padding: 40px;
   }
@@ -3373,8 +3405,11 @@ div.pswp__img--placeholder,
   transition: all 0.2s linear;
 }
 #attendanceRoster .attendanceCol {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   position: relative;
+}
+#attendanceRoster .attendanceCol h5 {
+  margin-bottom: 1.5rem;
 }
 #attendanceRoster ul {
   list-style: none;
@@ -3425,18 +3460,12 @@ div.pswp__img--placeholder,
 }
 
 @media only screen and (min-width: 600px) {
-  #attendanceRoster {
-    float: right;
-    margin-left: 1%;
-    padding: 40px;
-    width: 59%;
-  }
   #attendanceRoster .wrap {
     display: flex;
   }
   #attendanceRoster .attendanceCol {
+    flex: 0 0 33.333%;
     border: 1px solid #ccc;
-    flex: 1 1;
     margin-bottom: 20px;
     padding: 15px 15px 80px 15px;
   }
@@ -3453,6 +3482,14 @@ div.pswp__img--placeholder,
   }
   #attendanceRoster .attendanceCol form input {
     padding: 10px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #attendanceRoster {
+    float: right;
+    margin-left: 1%;
+    padding: 40px;
+    width: 59%;
   }
 }
 /* 

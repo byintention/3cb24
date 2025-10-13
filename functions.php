@@ -36,69 +36,16 @@ add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-
  * @param array $classes An array of body class names.
  */
 function tcb24_custom_body_classes( $classes ) {
-	// If custom field is set for dark header.
+	// If custom field is ticked for light header.
 	if ( get_field( 'light_header' ) ) {
 		$classes[] = 'lightHeader';
-	}
-	// If custom field is set for dark header on posts page.
-	$page_for_posts = get_option( 'page_for_posts' );
-	if ( is_home() ) {
-		if ( get_field( 'dark_header', $page_for_posts ) ) {
-			$classes[] = 'darkHeader';
-		}
-	}
-	// If we're in a single news post.
-	if ( is_singular( 'post' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	// If we're on service record archive
-	// if ( is_page_template( 'archive-service-record.php' ) ) {
-	// $classes[] = 'darkHeader';
-	// }
-	if ( get_post_type() === 'service-record' && ! is_single() ) {
-		$classes[] = 'darkHeader';
-	}
-	// If we're in a single service record post.
-	if ( is_singular( 'service-record' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	// If we're in the wiki section.
-	if ( is_page_template( 'page-template-template-wiki.php' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	if ( is_page_template( 'archive-epkb_post_type_1.php' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	if ( get_post_type() === 'epkb_post_type_1' && ! is_single() ) {
-		$classes[] = 'darkHeader';
-	}
-	// If we're in a single wiki post.
-	if ( is_singular( 'epkb_post_type_1' ) ) {
-		$classes[] = 'darkHeader';
 	}
 	
 	if ( get_post_type() === 'tribe_events' && ! is_single() ) {
 		$classes[] = 'lightHeader';
 	}
-	//if ( is_page_template( 'archive-tribe_events.php' ) ) {
-	//	$classes[] = 'lightHeader';
-	//}
-	// If we're in a single event post.
-	if ( is_singular( 'tribe_events' ) ) {
-		$classes[] = 'darkHeader';
-	}
-	
-	// If we're in search results page.
-	if ( is_search() ) {
-		$classes[] = 'darkHeader';
-	}
-	// If we're in 404 page.
-	if ( is_404() ) {
-		$classes[] = 'darkHeader';
-	}
-	if ( get_post_type() === 'post' && ! is_single() ) {
-		$classes[] = 'darkHeader';
-	}
+
+	// Dark header is now default, removed other conditionals here Oct 25.
 
 	return $classes;
 }

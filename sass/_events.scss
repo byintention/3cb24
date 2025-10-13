@@ -31,6 +31,7 @@
 			padding: 30px;
 			h2, h3 {
 				color: #fff;
+				text-wrap: balance;
 				a {
 					color: #fff;
 				}
@@ -78,6 +79,9 @@
 		min-height: 400px;
 		position: relative;
 		text-align: center;
+		h1 {
+			text-wrap: balance;
+		}
 		h1,
 		h2,
 		h3,
@@ -247,7 +251,7 @@
 	
 }
 
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: 900px) {
 		.tcb_briefing {
 			padding: 40px;
 			.briefing-meta {
@@ -258,6 +262,9 @@
 			}
 		}
 	}
+	
+	
+	
 
 /*
 	Attendance panel
@@ -274,8 +281,11 @@
 		transition: all 0.2s linear;
 	}
 	.attendanceCol {
-		margin-bottom: 2rem;
+		margin-bottom: 3rem;
 		position: relative;
+		h5 {
+			margin-bottom: 1.5rem;
+		}
 	}
 	ul {
 		list-style: none;
@@ -331,16 +341,12 @@
 
 	@media only screen and (min-width: 600px) {
 		#attendanceRoster {
-			float: right;
-			margin-left: 1%;
-			padding: 40px;
-			width: 59%;
 			.wrap {
 				display: flex;
 			}
 			.attendanceCol {
+				flex: 0 0 33.333%;
 				border: 1px solid #ccc;
-				flex: 1 1;
 				margin-bottom: 20px;
 				padding: 15px 15px 80px 15px;
 				&:nth-child(2) {
@@ -357,6 +363,21 @@
 						padding: 10px;
 					}
 				}
+			}
+		
+		}
+	}
+
+
+	@media only screen and (min-width: 1200px) {
+		#attendanceRoster {
+			float: right;
+			margin-left: 1%;
+			padding: 40px;
+			width: 59%;
+			
+			.attendanceCol {
+				
 			}
 		}
 	}
