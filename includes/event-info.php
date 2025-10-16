@@ -18,10 +18,10 @@
 		<?php
 			echo $day . ' '; echo $date->format( $format_out ); 
 		if ( !empty ( get_field( 'event_start_time' ) ) ) { ?>
-		&bull;
+			<br>
 			<?php the_field( 'event_start_time' ); ?> - <?php the_field( 'event_end_time' );
 		} else {
-			echo " &bull; Time TBC";
+			echo " Time TBC";
 		}
 		?></p>
 		<div class="intention-events-event-type has-small-font-size">

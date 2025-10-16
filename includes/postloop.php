@@ -18,6 +18,7 @@ if ( have_posts() ) {
 		<div class="padded">
 			<h3 class="blog-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
 			<?php the_excerpt(); ?>
+			<hr>
 			<p class="postmetadata clear">
 				<span class="blogcat">Posted in <?php the_category( ', ' ); ?></span>
 				<span class="blogdate"><?php the_time( 'F jS, Y' ); ?></span>

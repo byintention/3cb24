@@ -34,7 +34,7 @@ get_header(); ?>
 		?>
 		<div class="inner">
 			<h1><?php the_title(); ?></h1>
-			<h4 class="intention-event-metadata clear has-large-text">
+			<p class="intention-event-metadata clear has-large-text">
 				<?php
 				echo $day . ' '; echo esc_html( $date_str );
 				echo '<br>';
@@ -47,7 +47,7 @@ get_header(); ?>
 					echo 'Time TBC';
 				}
 				?>
-			</h4>
+			</p>
 			<div class="intention-events-event-type has-small-font-size">
 				<?php
 					$missionType = get_field( 'brief_mission_type' );
