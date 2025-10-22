@@ -97,7 +97,7 @@ if ( ! $applicant->exists() ) {
 }
 
 echo '<h2>Steam</h2><ol>';
-$steam_info = get_field( 'steam_info', $profile_id );
+$steam_info = wp_json_decode( get_field( 'steam_info', $profile_id ) );
 if ( ! $steam_info ) {
 	$steam_id = get_field( 'steam_id', $profile_id );
 	if ( ! $steam_id ) {
@@ -105,7 +105,7 @@ if ( ! $steam_info ) {
 	}
 	$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
 	if ( $steam_info ) {
-		update_field( 'steam_info', $steam_info, $profile_id );
+		update_field( 'steam_info', wp_json_encode( $steam_info ), $profile_id );
 	}
 }
 if ( $steam_info ) {
