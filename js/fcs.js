@@ -66,10 +66,8 @@
 
 		// Mobile nav
 		$('.menu-trigger').click(function() {
-			//console.log('open');
-			$('#nav2').fadeToggle(300);
 			$('body').toggleClass('mobilenavopen');
-			$(this).toggleClass('navOpen');
+			$('.menu-trigger').toggleClass('navOpen');
 		});
 
 		// Dropdown triggers
@@ -98,7 +96,7 @@
 			});
 		}
 
-		// Add scroll class to header 
+		// Add scroll class to header
 		function classOnScroll() {
 			//caches a jQuery object containing the header element
 			var header = $("#header");

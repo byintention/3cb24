@@ -357,11 +357,13 @@ a:visited {
 	transition: all 0.2s linear;
 }
 
-a:hover,
-a:focus {
-	color: vars.$colour-text;
-	transition: all 0.2s linear;
-}
+	@media only screen and (min-width: 600px) {
+		a:hover,
+		a:focus {
+			color: vars.$colour-text;
+			transition: all 0.2s linear;
+		}
+	}
 
 a:focus-visible {
 	outline-color: vars.$colour-text;
@@ -1108,8 +1110,6 @@ body.mobilenavopen {
 	}
 }
 
-
-
 	@media only screen and (min-width: 600px) {
 		#header {
 			&.scrollHeader {
@@ -1121,9 +1121,6 @@ body.mobilenavopen {
 					path {
 						fill: #222;
 					}
-				}
-				#nav2 {
-					
 				}
 				#headerLogin {
 					color: #222;
@@ -1252,10 +1249,6 @@ body.mobilenavopen {
 	}
 }
 
-#nav2 {
-	display: none;
-}
-
 #headerMenuMobile {
 	border: none;
 		-moz-box-sizing: border-box;
@@ -1281,10 +1274,11 @@ body.mobilenavopen {
 			background: #fff;
 			display: block;
 			height: 5px;
+			pointer-events: none;
 			position: absolute;
-			top: 12px;
-			left: 0;
-			transition: all 0.2s ease-in-out;
+				top: 12px;
+				left: 0;
+			transition: opacity 0.1s linear, background 0.1s linear, ;
 			width: 29px;
 		}
 		&:before {
@@ -1294,7 +1288,7 @@ body.mobilenavopen {
 			position: absolute;
 			top: 0;
 			left: 0;
-			transition: all 0.2s ease-in-out;
+			transition: transform 0.2s linear;
 			width: 29px;
 		}
 		&:after {
@@ -1302,9 +1296,9 @@ body.mobilenavopen {
 			content: "";
 			height: 5px;
 			position: absolute;
-			bottom: 0;
-			left: 0;
-			transition: all 0.2s ease-in-out;
+				bottom: 0;
+				left: 0;
+			transition: transform 0.2s linear;
 			width: 29px;
 		}
 		&:active {
@@ -1315,8 +1309,8 @@ body.mobilenavopen {
 		&:before {
 			background: #fff;
 			transform: rotate(45deg);
-			top: 12px;
-			left: -3px;
+				top: 12px;
+				left: -3px;
 			width: 38px;
 		}
 		span {
@@ -1325,8 +1319,8 @@ body.mobilenavopen {
 		&:after {
 			background: #fff;
 			transform: rotate(-45deg);
-			bottom: 12px;
-			left: -3px;
+				bottom: 12px;
+				left: -3px;
 			width: 38px;
 		}
 	}

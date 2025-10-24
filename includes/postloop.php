@@ -9,7 +9,7 @@ if ( have_posts() ) {
 			?>
 		<div class="news-thumb">
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-				<img src="<?php the_post_thumbnail_url( 'large' ); ?>" alt="<?php the_title(); ?>">
+				<img loading="lazy" src="<?php the_post_thumbnail_url( 'large' ); ?>" alt="<?php the_title(); ?>">
 			</a>
 		</div>
 			<?php

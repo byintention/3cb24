@@ -38,12 +38,15 @@ Primary Branch: main
   src: url("fonts/D-DIN-Bold.woff2") format("woff2");
 }
 @media only screen and (max-width: 1199px) {
+  .mobilenavopen #nav2 {
+    display: block;
+  }
   #nav2 {
     background: rgba(0, 0, 0, 0.95);
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 100vh;
+    display: none;
     padding: 20px;
     position: fixed;
     top: 0;
@@ -52,7 +55,6 @@ Primary Branch: main
     text-align: left;
     width: 100%;
     z-index: 1500;
-    /* Second Level */
   }
   #nav2 .navInner {
     height: calc(100% - 80px);
@@ -69,6 +71,7 @@ Primary Branch: main
     margin: 0 auto;
     max-width: 300px;
     overflow-y: auto;
+    /* Second Level */
   }
   #nav2 ul li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -130,14 +133,11 @@ Primary Branch: main
   #nav2 ul ul li:last-child {
     border-bottom: 0;
   }
-  #nav2 ul ul a,
-  #nav2 ul ul a:link,
-  #nav2 ul ul a:visited {
+  #nav2 ul ul li a,
+  #nav2 ul ul li a:link,
+  #nav2 ul ul li a:visited {
     color: #aaa;
     padding: 10px 0 10px 20px;
-  }
-  #nav2 ul ul a:hover {
-    color: #fff;
   }
   #nav2 .sub_nav {
     cursor: pointer;
@@ -521,12 +521,13 @@ a:visited {
   transition: all 0.2s linear;
 }
 
-a:hover,
-a:focus {
-  color: #222;
-  transition: all 0.2s linear;
+@media only screen and (min-width: 600px) {
+  a:hover,
+  a:focus {
+    color: #222;
+    transition: all 0.2s linear;
+  }
 }
-
 a:focus-visible {
   outline-color: #222;
 }
@@ -1341,10 +1342,6 @@ body.mobilenavopen {
   transition: all 0.2s ease-in-out;
 }
 
-#nav2 {
-  display: none;
-}
-
 #headerMenuMobile {
   border: none;
   -moz-box-sizing: border-box;
@@ -1372,10 +1369,11 @@ body.mobilenavopen {
   background: #fff;
   display: block;
   height: 5px;
+  pointer-events: none;
   position: absolute;
   top: 12px;
   left: 0;
-  transition: all 0.2s ease-in-out;
+  transition: opacity 0.1s linear, background 0.1s linear;
   width: 29px;
 }
 #headerMenuMobile button:before {
@@ -1385,7 +1383,7 @@ body.mobilenavopen {
   position: absolute;
   top: 0;
   left: 0;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s linear;
   width: 29px;
 }
 #headerMenuMobile button:after {
@@ -1395,7 +1393,7 @@ body.mobilenavopen {
   position: absolute;
   bottom: 0;
   left: 0;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s linear;
   width: 29px;
 }
 #headerMenuMobile button:active {

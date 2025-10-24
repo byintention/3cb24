@@ -8,9 +8,7 @@
 <article class="intention-events-listing-event">
 	<a href="<?php the_permalink(); ?>">
 		<div class="intention-events-listing-image">
-			
-			<?php the_post_thumbnail( 'large' ); ?>
-			
+			<img loading="lazy" src="<?php the_post_thumbnail_url( 'large' ); ?>" alt="<?php the_title(); ?> banner">
 		</div>
 	<div class="intention-events-listing-title centre">
 		<h3><?php the_title(); ?></h3>

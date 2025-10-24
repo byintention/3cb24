@@ -33,11 +33,15 @@ if ( have_rows( 'flexible_content' ) ) {
 
 
 		} elseif ( get_row_layout() === 'banner_block' ) {
+			if ( get_sub_field( 'desktop_banner' ) ) {
+				$mobile_banner  = get_sub_field( 'mobile_banner' );
+				$desktop_banner = get_sub_field( 'desktop_banner' );
+			}
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="banners clear">
 			<picture>
-				<source media="(max-width:899px)" srcset="<?php the_sub_field( 'mobile_banner' ); ?>">
-				<source media="(min-width:900px)" srcset="<?php the_sub_field( 'desktop_banner' ); ?>">
+				<source media="(max-width:599px)" srcset="<?php echo esc_url( $mobile_banner['url'] ); ?>" width="<?php echo esc_attr( $mobile_banner['width'] ); ?>" height="<?php echo esc_attr( $mobile_banner['height'] ); ?>">
+				<source media="(min-width:600px)" srcset="<?php echo esc_url( $desktop_banner['url'] ); ?>" width="<?php echo esc_attr( $desktop_banner['width'] ); ?>" height="<?php echo esc_attr( $desktop_banner['height'] ); ?>">
 				<img src="<?php the_sub_field( 'mobile_banner' ); ?>" alt="<?php the_title(); ?>">
 			</picture>
 				<div class="inner">
@@ -210,6 +214,7 @@ if ( have_rows( 'flexible_content' ) ) {
 
 
 		} elseif ( get_row_layout() === 'fifty_fifty' ) {
+			$image  = get_sub_field( 'image' );
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="clearfix fiftyFifty">
 			<div class="container <?php echo ( get_sub_field( 'flip' ) ) ? 'flip' : ''; ?>">
@@ -217,9 +222,12 @@ if ( have_rows( 'flexible_content' ) ) {
 					<?php the_sub_field( 'content_left' ); ?>
 				</div>
 				<div class="box">
-					<img src="<?php the_sub_field( 'image' ); ?>" alt="">
+					<picture class="fade-in">
+						<source media="(max-width:599px)" srcset="<?php echo esc_url( $image['sizes']['large'] ); ?>" width="<?php echo esc_attr( $image['width'] ); ?>" height="<?php echo esc_attr( $image['height'] ); ?>">
+						<source media="(min-width:600px)" srcset="<?php echo esc_url( $image['url'] ); ?>" width="<?php echo esc_attr( $image['width'] ); ?>" height="<?php echo esc_attr( $image['height'] ); ?>">
+						<img loading="lazy" src="<?php echo esc_url( $image['sizes']['large'] ); ?>" alt="<?php the_sub_field( 'alt_text' ); ?>">
+					</picture>
 				</div>
-				
 			</div>
 		</section>
 			<?php
