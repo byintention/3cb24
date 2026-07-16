@@ -533,7 +533,7 @@ function tcb24_mce_before_init( $settings ) {
 			'classes'  => 'btn',
 		),
 	);
-	$settings['style_formats']               = wp_json_encode( $style_formats );
+	$settings['style_formats']               = json_encode( $style_formats );
 	$settings['theme_advanced_blockformats'] = 'p,h3,h4';
 	$settings['theme_advanced_disable']      = 'forecolor';
 
