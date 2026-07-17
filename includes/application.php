@@ -103,7 +103,8 @@ if ( ! $steam_info ) {
 	if ( ! $steam_id ) {
 		$steam_id = $applicant->name;
 	}
-	$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
+	//$steam_info = tcb_roster_admin_steam_query_vac( $steam_id );
+	$steam_info = tcb_roster_get_steam_user_info( $steam_id );
 	if ( $steam_info ) {
 		update_field( 'steam_info', json_encode( $steam_info ), $profile_id );
 	}
