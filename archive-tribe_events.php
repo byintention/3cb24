@@ -23,14 +23,15 @@ get_header(); ?>
 			$args = array(
 				'post_type'      => 'tribe_events',
 				'meta_key'       => 'event_start_date',
-				'orderby'        => 'meta_value_num',
+				'orderby'        => 'meta_value',
+				'meta_type'      => 'DATE',
 				'order'          => 'ASC',
 				'paged'          => $paged,
 				'meta_query'     => array(
 					array(
 						'key'     => 'event_start_date',
 						'compare' => '>=',
-						'value'   => gmdate( 'Y-m-d h:i' ),
+						'value'   => $today,
 						'type'    => 'DATE',
 					),
 				),
@@ -69,14 +70,15 @@ get_header(); ?>
 				'post_type'      => 'tribe_events',
 				'meta_key'       => 'event_start_date',
 				//'posts_per_page' => 1,
-				'orderby'        => 'meta_value_num',
+				'orderby'        => 'meta_value',
+				'meta_type'      => 'DATE',
 				'order'          => 'DESC',
 				'paged'          => $paged,
 				'meta_query'     => array(
 					array(
 						'key'     => 'event_start_date',
 						'compare' => '<',
-						'value'   => gmdate( 'Y-m-d h:i' ),
+						'value'   => $today,
 						'type'    => 'DATE',
 					),
 				),
