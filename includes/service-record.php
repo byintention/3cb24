@@ -72,15 +72,15 @@ if ( $location ) {
 	echo '<tr><td>Location</td><td>' . esc_attr( $location ) . '</td></tr>';
 }
 
-// Discord ID.
-$discord_id = get_field( 'discord_id', $profile_id );
-if ( $has_partial_access && $discord_id ) {
-	echo '<tr><td>Discord ID</td><td>' . esc_attr( $discord_id ) . '</td></tr>';
+// Discord Username.
+$discord_username = get_field( 'discord_username', $profile_id );
+if ( $has_partial_access && $discord_username ) {
+	echo '<tr><td>Discord</td><td>' . esc_attr( $discord_username ) . '</td></tr>';
 }
 
 // Email.
 $email = $user->user_email;
-if ( $has_partial_access && $email ) {
+if ( $has_full_access && $email ) {
 	echo '<tr><td>Email</td><td>' . esc_attr( $email ) . '</td></tr>';
 }
 

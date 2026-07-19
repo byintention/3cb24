@@ -23,6 +23,11 @@ if ( ! empty( $role_list ) ) {
 	}
 }
 
+// Early exit if no view access and rank is Reserve.
+if ( ! $view_access && 'Reserve' === $rank ) {
+	return;
+}
+
 $query_args = array(
 	'post_type'              => 'service-record',
 	'posts_per_page'         => -1,
