@@ -17,7 +17,7 @@
 			echo $day . ' '; echo $date->format( $format_out ); 
 		if ( !empty ( get_field( 'event_start_time' ) ) ) { ?>
 			<br>
-			<?php the_field( 'event_start_time' ); ?> - <?php the_field( 'event_end_time' );
+			<?php echo esc_html( tcb24_format_24_hour_time( get_field( 'event_start_time' ) ) ); ?> - <?php echo esc_html( tcb24_format_24_hour_time( get_field( 'event_end_time' ) ) );
 		} else {
 			echo " Time TBC";
 		}

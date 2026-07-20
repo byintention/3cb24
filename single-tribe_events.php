@@ -12,8 +12,20 @@ $format_out  = 'jS M Y'; // the format you want to end up with.
 $is_date_set = ! empty( get_field( 'event_start_time' ) );
 if ( $is_date_set ) {
 	$date_str = DateTime::createFromFormat( $format_in, get_field( 'event_start_date' ) )->format( $format_out );
+
+	// event_start_date/event_start_time are entered in UK time. This gives event-local-time.js
+	// a timezone-aware timestamp to convert to the visitor's own browser timezone.
+	$event_start_datetime = DateTime::createFromFormat(
+		'Y-m-d g:i a',
+		get_field( 'event_start_date' ) . ' ' . get_field( 'event_start_time' ),
+		new DateTimeZone( 'Europe/London' )
+	);
+	$event_start_iso      = $event_start_datetime ? $event_start_datetime->format( DATE_ATOM ) : '';
+	$event_start_tz_abbr  = $event_start_datetime ? $event_start_datetime->format( 'T' ) : '';
 } else {
-	$date_str = 'Date TBC';
+	$date_str            = 'Date TBC';
+	$event_start_iso     = '';
+	$event_start_tz_abbr = '';
 }
 $day = date( 'l', strtotime( get_field( 'event_start_date') ) ) ;
 get_header(); ?>
@@ -40,9 +52,13 @@ get_header(); ?>
 				echo '<br>';
 				if ( $is_date_set ) {
 					?>
-					<?php the_field( 'event_start_time' ); ?> - 
+					<?php echo esc_html( tcb24_format_24_hour_time( get_field( 'event_start_time' ) ) ); ?> -
 					<?php
-					the_field( 'event_end_time' );
+					echo esc_html( tcb24_format_24_hour_time( get_field( 'event_end_time' ) ) );
+					echo ' ' . esc_html( $event_start_tz_abbr );
+					?>
+					<span class="event-local-time" data-event-start="<?php echo esc_attr( $event_start_iso ); ?>"></span>
+					<?php
 				} else {
 					echo 'Time TBC';
 				}

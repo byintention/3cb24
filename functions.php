@@ -406,12 +406,31 @@ function tcb24_scripts_method() {
 	// Add FCS javascript.
 	wp_register_script( 'fcs-script', get_template_directory_uri() . '/js/fcs-min.js', array( 'jquery' ), 1.0, true );
 	wp_enqueue_script( 'fcs-script' );
+
+	// Show event start times converted to the visitor's own browser timezone.
+	if ( is_singular( 'tribe_events' ) ) {
+		wp_register_script( 'event-local-time', get_template_directory_uri() . '/js/event-local-time.js', array(), 1.0, true );
+		wp_enqueue_script( 'event-local-time' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'tcb24_scripts_method' );
 
 
 
 // Events stuff.
+
+/**
+ * Formats a time stored in ACF's 12-hour "g:i a" format (e.g. "7:30 pm") as 24-hour "H:i" for
+ * display. The stored format itself is left alone since tcb-roster's mission scheduling code
+ * parses it as "g:i a" - this only affects how the time is shown on the page.
+ *
+ * @param string $time_12h Time string in "g:i a" format.
+ * @return string Time in 24-hour "H:i" format, or the original string if it can't be parsed.
+ */
+function tcb24_format_24_hour_time( $time_12h ) {
+	$time = DateTime::createFromFormat( 'g:i a', $time_12h );
+	return $time ? $time->format( 'H:i' ) : $time_12h;
+}
 add_action(
 	'tribe_template_before_include:events/v2/components/events-bar',
 	function () {
