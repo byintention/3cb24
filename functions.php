@@ -447,10 +447,19 @@ add_action( 'manage_epkb_post_type_1_posts_custom_column', 'custom_book_column',
 
 
 /**
- * Add ACF options page.
+ * Add ACF options page, once ACF has fully initialized rather than whenever functions.php
+ * happens to load relative to the plugins - acf_add_options_page() being defined isn't the
+ * same as ACF being ready for it to be called.
  */
-if ( function_exists( 'acf_add_options_page' ) ) {
-	acf_add_options_page( 'Global Settings' );
+add_action( 'acf/init', 'tcb24_add_acf_options_page' );
+
+/**
+ * Registers the ACF Global Settings options page.
+ */
+function tcb24_add_acf_options_page() {
+	if ( function_exists( 'acf_add_options_page' ) ) {
+		acf_add_options_page( 'Global Settings' );
+	}
 }
 
 

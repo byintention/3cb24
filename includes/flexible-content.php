@@ -33,17 +33,17 @@ if ( have_rows( 'flexible_content' ) ) {
 
 
 		} elseif ( get_row_layout() === 'banner_block' ) {
-			if ( get_sub_field( 'desktop_banner' ) ) {
-				$mobile_banner  = get_sub_field( 'mobile_banner' );
-				$desktop_banner = get_sub_field( 'desktop_banner' );
-			}
+			$mobile_banner  = get_sub_field( 'mobile_banner' );
+			$desktop_banner = get_sub_field( 'desktop_banner' );
 			?>
 		<section id="panel<?php echo esc_attr( $counter ); ?>" class="banners clear">
+			<?php if ( $mobile_banner && $desktop_banner ) : ?>
 			<picture>
 				<source media="(max-width:599px)" srcset="<?php echo esc_url( $mobile_banner['url'] ); ?>" width="<?php echo esc_attr( $mobile_banner['width'] ); ?>" height="<?php echo esc_attr( $mobile_banner['height'] ); ?>">
 				<source media="(min-width:600px)" srcset="<?php echo esc_url( $desktop_banner['url'] ); ?>" width="<?php echo esc_attr( $desktop_banner['width'] ); ?>" height="<?php echo esc_attr( $desktop_banner['height'] ); ?>">
-				<img src="<?php the_sub_field( 'mobile_banner' ); ?>" alt="<?php the_title(); ?>">
+				<img src="<?php echo esc_url( $mobile_banner['url'] ); ?>" alt="<?php the_title(); ?>">
 			</picture>
+			<?php endif; ?>
 				<div class="inner">
 					<div class="container">
 						<div class="twelve columns">
