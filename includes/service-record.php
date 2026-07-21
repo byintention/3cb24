@@ -30,7 +30,7 @@ $has_ribbon_access    = array_intersect( $allowed_ribbon_roles, $roles );
 $allowed_training_roles = array( 'training_admin', 'snco', 'officer', 'administrator' );
 $has_training_access    = array_intersect( $allowed_training_roles, $roles );
 
-$allowed_recruit_roles = array( 'recruit_admin', 'snco', 'officer', 'administrator' );
+$allowed_recruit_roles = array( 'officer', 'administrator' );
 $has_recruit_access    = array_intersect( $allowed_recruit_roles, $roles );
 
 $post_id_ = get_the_ID();
