@@ -17,6 +17,10 @@ if ( ! empty( $role_list ) ) {
 	}
 }
 
+// NCOs can view an application, but not the applicant's personal contact details - only roles
+// above nco in $role_list (snco and up) can see those fields.
+$can_view_applicant_pii = !(bool) array_intersect( array( 'nco' ), $roles );
+
 $post_id_ = get_the_ID();
 
 // Early exit if the post ID is not set.
@@ -63,6 +67,13 @@ foreach ( $fields as $field ) {
 				break;
 			}
 			echo ( implode( ', ', $field['value'] ) ) . '</li><br>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			break;
+		case 'app_first_name':
+		case 'app_email':
+			if ( ! $can_view_applicant_pii ) {
+				break;
+			}
+			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $field['value'] ) . '</li><br>';
 			break;
 		case 'Interview_evaluation':
 			echo '<li><strong>' . esc_html( $field['label'] ) . ' </strong><br>' . esc_html( $field['value']['label'] ) . '</li><br>';
