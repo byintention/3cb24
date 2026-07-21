@@ -78,6 +78,13 @@ get_header(); ?>
 					'parent'   => $current_cat,
 				),
 			);
+			// Don't link to subcategories the user has no access to.
+			$sub_cats = array_filter(
+				$sub_cats,
+				function ( $sub_cat ) {
+					return ! tcb24_wiki_is_category_restricted_for_user( $sub_cat->term_id );
+				}
+			);
 			// Build array of cats to exclude from top level list, if we ever want more subcats
 			// $categories_to_exclude = array();
 			// foreach ( $sub_cats as $sub_cat ) {

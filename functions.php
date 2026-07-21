@@ -212,6 +212,387 @@ function data_fetch() {
 add_action( 'wp_ajax_data_fetch', 'data_fetch' );
 add_action( 'wp_ajax_nopriv_data_fetch', 'data_fetch' );
 
+/**
+ * Wiki access control.
+ *
+ * Access is defined per epkb_post_type_1_category term (via an "allowed_roles" term meta field
+ * managed below), not per article - a category with no allowed_roles configured, or an article
+ * with no category, defaults to officer/administrator only (fails closed). An article assigned
+ * to multiple categories requires the user to qualify for every one of them (most restrictive
+ * wins).
+ */
+
+define( 'TCB24_WIKI_TAXONOMY', 'epkb_post_type_1_category' );
+define( 'TCB24_WIKI_DEFAULT_ALLOWED_ROLES', array( 'officer', 'administrator' ) );
+
+add_action( TCB24_WIKI_TAXONOMY . '_add_form_fields', 'tcb24_wiki_category_allowed_roles_add_field' );
+add_action( TCB24_WIKI_TAXONOMY . '_edit_form_fields', 'tcb24_wiki_category_allowed_roles_edit_field' );
+add_action( 'create_' . TCB24_WIKI_TAXONOMY, 'tcb24_wiki_category_save_allowed_roles' );
+add_action( 'edited_' . TCB24_WIKI_TAXONOMY, 'tcb24_wiki_category_save_allowed_roles' );
+
+/**
+ * Renders the allowed-roles checkboxes on the "Add Category" screen.
+ */
+function tcb24_wiki_category_allowed_roles_add_field() {
+	?>
+	<div class="form-field">
+		<label><?php esc_html_e( 'Allowed Roles', 'tcb24' ); ?></label>
+		<?php tcb24_wiki_category_allowed_roles_checkboxes( array() ); ?>
+		<p class="description"><?php esc_html_e( 'Roles allowed to view wiki articles in this category. Leave all unchecked to restrict to officers/administrators only.', 'tcb24' ); ?></p>
+	</div>
+	<?php
+}
+
+/**
+ * Renders the allowed-roles checkboxes on the "Edit Category" screen.
+ *
+ * @param WP_Term $term The category term being edited.
+ */
+function tcb24_wiki_category_allowed_roles_edit_field( $term ) {
+	$allowed_roles = get_term_meta( $term->term_id, 'allowed_roles', true );
+	$allowed_roles = is_array( $allowed_roles ) ? $allowed_roles : array();
+	?>
+	<tr class="form-field">
+		<th scope="row"><label><?php esc_html_e( 'Allowed Roles', 'tcb24' ); ?></label></th>
+		<td>
+			<?php tcb24_wiki_category_allowed_roles_checkboxes( $allowed_roles ); ?>
+			<p class="description"><?php esc_html_e( 'Roles allowed to view wiki articles in this category. Leave all unchecked to restrict to officers/administrators only.', 'tcb24' ); ?></p>
+		</td>
+	</tr>
+	<?php
+}
+
+/**
+ * Outputs one checkbox per registered WordPress role.
+ *
+ * @param string[] $selected_roles Role slugs already selected for this term.
+ */
+function tcb24_wiki_category_allowed_roles_checkboxes( $selected_roles ) {
+	foreach ( get_editable_roles() as $role_slug => $role_info ) {
+		?>
+		<label style="display:block;">
+			<input type="checkbox" name="tcb24_allowed_roles[]" value="<?php echo esc_attr( $role_slug ); ?>" <?php checked( in_array( $role_slug, $selected_roles, true ) ); ?>>
+			<?php echo esc_html( $role_info['name'] ); ?>
+		</label>
+		<?php
+	}
+}
+
+/**
+ * Saves the allowed-roles term meta. The category add/edit screens already carry WordPress
+ * core's own nonce for term saves, verified before create_/edited_ fire.
+ *
+ * @param int $term_id The category term ID being saved.
+ */
+function tcb24_wiki_category_save_allowed_roles( $term_id ) {
+	if ( empty( $_POST['tcb24_allowed_roles'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		delete_term_meta( $term_id, 'allowed_roles' );
+		return;
+	}
+	$roles = array_map( 'sanitize_key', wp_unslash( $_POST['tcb24_allowed_roles'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	update_term_meta( $term_id, 'allowed_roles', $roles );
+}
+
+/**
+ * Builds a map of every wiki category term ID that has its OWN explicitly configured
+ * allowed_roles. A term with nothing set is simply absent from this map - that distinction
+ * (configured vs. blank) is what lets tcb24_wiki_resolve_effective_roles() tell "explicitly
+ * restricted to these roles" apart from "inherit whatever the parent resolves to". Use
+ * tcb24_wiki_get_effective_category_role_map() for actual permission checks; this is just the
+ * raw, per-term building block for it.
+ *
+ * @return array<int, string[]> Term ID => explicitly configured allowed role slugs.
+ */
+function tcb24_wiki_get_category_role_map() {
+	$terms = get_terms(
+		array(
+			'taxonomy'   => TCB24_WIKI_TAXONOMY,
+			'hide_empty' => false,
+		)
+	);
+	if ( is_wp_error( $terms ) ) {
+		return array();
+	}
+
+	$map = array();
+	foreach ( $terms as $term ) {
+		$allowed_roles = get_term_meta( $term->term_id, 'allowed_roles', true );
+		if ( is_array( $allowed_roles ) && ! empty( $allowed_roles ) ) {
+			$map[ $term->term_id ] = $allowed_roles;
+		}
+	}
+
+	return $map;
+}
+
+/**
+ * Resolves a single wiki category's effective allowed roles, applying the parent-as-ceiling
+ * rule: a category explicitly configured with its own allowed_roles is capped by (intersected
+ * with) its parent's effective roles, so it can never be more open than an ancestor. A category
+ * left blank doesn't fall back to TCB24_WIKI_DEFAULT_ALLOWED_ROLES directly - it inherits its
+ * parent's effective roles outright, so leaving a subcategory blank means "same access as its
+ * parent", not "officer/admin only". Only a term with no parent (or a whole unconfigured chain
+ * up to the root) resolves to the site-wide default. Recursive, with memoization via $cache
+ * since multiple sibling terms share the same ancestor chain.
+ *
+ * @param int   $term_id The category term ID to resolve.
+ * @param array $own_map Term ID => own configured roles, from tcb24_wiki_get_category_role_map().
+ * @param array $cache   Memoization cache, keyed by term ID, passed by reference and filled in as
+ *                        terms are resolved.
+ * @return string[] The effective allowed role slugs for this term.
+ */
+function tcb24_wiki_resolve_effective_roles( $term_id, $own_map, &$cache ) {
+	if ( isset( $cache[ $term_id ] ) ) {
+		return $cache[ $term_id ];
+	}
+
+	$term      = get_term( $term_id, TCB24_WIKI_TAXONOMY );
+	$parent_id = ( $term && ! is_wp_error( $term ) ) ? (int) $term->parent : 0;
+	$has_own   = ! empty( $own_map[ $term_id ] );
+
+	if ( ! $parent_id ) {
+		$effective = $has_own ? $own_map[ $term_id ] : TCB24_WIKI_DEFAULT_ALLOWED_ROLES;
+	} else {
+		$parent_effective = tcb24_wiki_resolve_effective_roles( $parent_id, $own_map, $cache );
+		$effective        = $has_own ? array_intersect( $own_map[ $term_id ], $parent_effective ) : $parent_effective;
+	}
+
+	$cache[ $term_id ] = $effective;
+	return $effective;
+}
+
+/**
+ * Builds a map of every wiki category term ID to its effective allowed roles (see
+ * tcb24_wiki_resolve_effective_roles() for the resolution rules). Memoized for the duration of
+ * the request - the map only depends on the category tree and the current user, neither of
+ * which change mid-request, but this can otherwise be called many times per page (once per
+ * article, plus once per category link in a listing), so it's worth not recomputing it - a
+ * get_terms() call plus a get_term_meta() lookup per category - every time.
+ *
+ * @return array<int, string[]> Term ID => effective allowed role slugs.
+ */
+function tcb24_wiki_get_effective_category_role_map() {
+	static $effective_map = null;
+	if ( null !== $effective_map ) {
+		return $effective_map;
+	}
+
+	$term_ids = get_terms(
+		array(
+			'taxonomy'   => TCB24_WIKI_TAXONOMY,
+			'hide_empty' => false,
+			'fields'     => 'ids',
+		)
+	);
+	if ( is_wp_error( $term_ids ) ) {
+		return array();
+	}
+
+	$own_map       = tcb24_wiki_get_category_role_map();
+	$cache         = array();
+	$effective_map = array();
+	foreach ( $term_ids as $term_id ) {
+		$effective_map[ $term_id ] = tcb24_wiki_resolve_effective_roles( $term_id, $own_map, $cache );
+	}
+
+	return $effective_map;
+}
+
+/**
+ * Determines whether the current user is blocked from a specific wiki category - used to hide
+ * category/subcategory links in navigation (the "Information Centre" hub and category pages)
+ * that the user has no access to, rather than showing a link that leads to an empty or blocked
+ * page.
+ *
+ * @param int $term_id The category term ID.
+ * @return bool True if the current user is blocked from this category.
+ */
+function tcb24_wiki_is_category_restricted_for_user( $term_id ) {
+	// Site administrators always have full access, regardless of what a category or article's
+	// own restriction list says - matches how the Members plugin itself treats admins.
+	if ( current_user_can( 'manage_options' ) ) {
+		return false;
+	}
+
+	$user_roles    = wp_get_current_user()->roles;
+	$category_map  = tcb24_wiki_get_effective_category_role_map();
+	$allowed_roles = isset( $category_map[ $term_id ] ) ? $category_map[ $term_id ] : TCB24_WIKI_DEFAULT_ALLOWED_ROLES;
+
+	return ! array_intersect( $allowed_roles, $user_roles );
+}
+
+/**
+ * Gets the roles explicitly allowed for a specific wiki article via the Members plugin's own
+ * per-post "_members_access_role" meta, if set. This is the old, per-article restriction system
+ * the category-based scheme was meant to replace, but some articles still carry it. Where
+ * present, it applies ON TOP OF the category-based rules as an extra, more restrictive
+ * requirement - it doesn't get overridden by whatever the categories would otherwise allow.
+ *
+ * @param int $post_id The wiki article post ID.
+ * @return string[] Explicitly allowed role slugs, or an empty array if this article has no
+ *                   per-article restriction set.
+ */
+function tcb24_wiki_get_article_own_allowed_roles( $post_id ) {
+	$roles = get_post_meta( $post_id, '_members_access_role', false );
+	return is_array( $roles ) ? array_filter( $roles ) : array();
+}
+
+/**
+ * Determines whether the current user is blocked from a specific wiki article. A per-article
+ * Members-plugin restriction, if set, is checked first and wins outright if it doesn't match -
+ * see tcb24_wiki_get_article_own_allowed_roles(). Otherwise, an article assigned to multiple
+ * categories uses "least restrictive wins": the user only needs to qualify for at least one of
+ * them, not every one.
+ *
+ * @param int $post_id The wiki article post ID.
+ * @return bool True if the current user is blocked from this article.
+ */
+function tcb24_wiki_is_restricted_for_user( $post_id ) {
+	// Site administrators always have full access, regardless of what a category or article's
+	// own restriction list says - matches how the Members plugin itself treats admins.
+	if ( current_user_can( 'manage_options' ) ) {
+		return false;
+	}
+
+	$user_roles = wp_get_current_user()->roles;
+
+	$article_own_roles = tcb24_wiki_get_article_own_allowed_roles( $post_id );
+	if ( $article_own_roles && ! array_intersect( $article_own_roles, $user_roles ) ) {
+		return true;
+	}
+
+	$category_map = tcb24_wiki_get_effective_category_role_map();
+	$terms        = get_the_terms( $post_id, TCB24_WIKI_TAXONOMY );
+
+	if ( ! $terms || is_wp_error( $terms ) ) {
+		// No category assigned - fail closed to the site-wide default.
+		return ! array_intersect( TCB24_WIKI_DEFAULT_ALLOWED_ROLES, $user_roles );
+	}
+
+	foreach ( $terms as $term ) {
+		$allowed_roles = isset( $category_map[ $term->term_id ] ) ? $category_map[ $term->term_id ] : TCB24_WIKI_DEFAULT_ALLOWED_ROLES;
+		if ( array_intersect( $allowed_roles, $user_roles ) ) {
+			// Qualifies via this one category - no need to check the rest.
+			return false;
+		}
+	}
+
+	return true;
+}
+
+add_action( 'pre_get_posts', 'tcb24_wiki_restrict_query' );
+
+/**
+ * Excludes wiki articles the current user isn't allowed to see from any query targeting the
+ * wiki post type - covers the archive, category, and search-page listings, and the data_fetch
+ * AJAX search, in one place rather than needing a separate check in every template. Skipped for
+ * genuine wp-admin screen loads (post list/edit) but NOT for AJAX requests, since admin-ajax.php
+ * requests (including data_fetch, a front-end search) also report is_admin() as true.
+ *
+ * An article assigned to multiple categories uses "least restrictive wins" - a post is included
+ * as soon as it has at least one allowed category, regardless of what its other categories say
+ * (matching tcb24_wiki_is_restricted_for_user()). An uncategorized post is included only if the
+ * user qualifies for the site-wide default. A post carrying the Members plugin's own per-post
+ * "_members_access_role" meta is additionally required to match one of the user's roles there
+ * too - that old, per-article system isn't overridden by the category rules, it's layered under
+ * them (see tcb24_wiki_get_article_own_allowed_roles()).
+ *
+ * @param WP_Query $query The query being filtered.
+ */
+function tcb24_wiki_restrict_query( $query ) {
+	if ( is_admin() && ! wp_doing_ajax() ) {
+		return;
+	}
+	if ( ! in_array( 'epkb_post_type_1', (array) $query->get( 'post_type' ), true ) ) {
+		return;
+	}
+
+	// Site administrators always have full access - don't touch the query for them at all.
+	if ( current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$user_roles = wp_get_current_user()->roles;
+
+	// Per-article Members-plugin restriction, if set on a given post: exclude it unless one of
+	// the user's roles is explicitly listed. Posts with no such meta are untouched here - the
+	// category-based tax_query below is what governs those.
+	$meta_query   = (array) $query->get( 'meta_query' );
+	$meta_query[] = array(
+		'relation' => 'OR',
+		array(
+			'key'     => '_members_access_role',
+			'compare' => 'NOT EXISTS',
+		),
+		array(
+			'key'     => '_members_access_role',
+			'value'   => $user_roles ? $user_roles : array( '' ),
+			'compare' => 'IN',
+		),
+	);
+	$query->set( 'meta_query', $meta_query );
+
+	$allowed_term_ids = array();
+	foreach ( tcb24_wiki_get_effective_category_role_map() as $term_id => $allowed_roles ) {
+		if ( array_intersect( $allowed_roles, $user_roles ) ) {
+			$allowed_term_ids[] = $term_id;
+		}
+	}
+
+	$user_has_default_access = (bool) array_intersect( TCB24_WIKI_DEFAULT_ALLOWED_ROLES, $user_roles );
+
+	$tax_query_or = array( 'relation' => 'OR' );
+	if ( $allowed_term_ids ) {
+		$tax_query_or[] = array(
+			'taxonomy' => TCB24_WIKI_TAXONOMY,
+			'field'    => 'term_id',
+			'terms'    => $allowed_term_ids,
+			'operator' => 'IN',
+		);
+	}
+	if ( $user_has_default_access ) {
+		// Uncategorized posts fail closed to the default too - include them only if this user
+		// actually qualifies for it.
+		$tax_query_or[] = array(
+			'taxonomy' => TCB24_WIKI_TAXONOMY,
+			'operator' => 'NOT EXISTS',
+		);
+	}
+
+	if ( count( $tax_query_or ) <= 1 ) {
+		// No accessible categories and no default access - nothing to show this user.
+		$query->set( 'post__in', array( 0 ) );
+		return;
+	}
+
+	$tax_query   = (array) $query->get( 'tax_query' );
+	$tax_query[] = $tax_query_or;
+	$query->set( 'tax_query', $tax_query );
+}
+
+add_action( 'template_redirect', 'tcb24_wiki_block_restricted_single_article' );
+
+/**
+ * Blocks direct access to a wiki article the current user isn't allowed to see, showing an
+ * access-denied message rather than the article content. tcb24_wiki_restrict_query() already
+ * keeps restricted articles out of listings/search, but a direct URL still needs its own check.
+ */
+function tcb24_wiki_block_restricted_single_article() {
+	if ( ! is_singular( 'epkb_post_type_1' ) ) {
+		return;
+	}
+
+	if ( ! tcb24_wiki_is_restricted_for_user( get_queried_object_id() ) ) {
+		return;
+	}
+
+	wp_die(
+		esc_html__( 'You do not have permission to view this wiki article.', 'tcb24' ),
+		esc_html__( 'Access Denied', 'tcb24' ),
+		array( 'response' => 403 )
+	);
+}
+
 
 
 

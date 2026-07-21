@@ -33,9 +33,13 @@ get_header(); ?>
 			);
 			if ( ! empty( $wikiterms ) && ! is_wp_error( $wikiterms ) ) {
 				foreach ( $wikiterms as $wikiterm ) {
+					// Don't show a category link the user has no access to.
+					if ( tcb24_wiki_is_category_restricted_for_user( $wikiterm->term_id ) ) {
+						continue;
+					}
 					?>
 					<div class="wiki-category four columns padded white">
-						
+
 						<h3><?php echo esc_html( $wikiterm->name ); ?></h3>
 						<?php
 						// var_dump($wikiterm);
@@ -47,6 +51,13 @@ get_header(); ?>
 								'orderby'  => 'name',
 								'parent'   => $wikiterm->term_id,
 							),
+						);
+						// Don't link to subcategories the user has no access to either.
+						$sub_cats = array_filter(
+							$sub_cats,
+							function ( $sub_cat ) {
+								return ! tcb24_wiki_is_category_restricted_for_user( $sub_cat->term_id );
+							}
 						);
 
 						// Build array of cats to exclude from top level list.
