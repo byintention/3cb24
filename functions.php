@@ -326,14 +326,20 @@ function tcb24_wiki_get_category_role_map() {
 }
 
 /**
- * Resolves a single wiki category's effective allowed roles, applying the parent-as-ceiling
- * rule: a category explicitly configured with its own allowed_roles is capped by (intersected
- * with) its parent's effective roles, so it can never be more open than an ancestor. A category
- * left blank doesn't fall back to TCB24_WIKI_DEFAULT_ALLOWED_ROLES directly - it inherits its
- * parent's effective roles outright, so leaving a subcategory blank means "same access as its
- * parent", not "officer/admin only". Only a term with no parent (or a whole unconfigured chain
- * up to the root) resolves to the site-wide default. Recursive, with memoization via $cache
- * since multiple sibling terms share the same ancestor chain.
+ * Resolves a single wiki category's effective allowed roles. A category with its own configured
+ * allowed_roles uses exactly that list - it fully overrides whatever its parent resolves to,
+ * rather than being capped by it, so a subcategory is free to grant access to roles its parent
+ * doesn't (e.g. an officer/SNCO-only subcategory nested under a general member/limited_member
+ * category, kept there purely for menu organisation). This override only applies to
+ * CATEGORY-to-category inheritance - it has no bearing on how an individual article relates to
+ * its own category's roles; a per-article _members_access_role restriction still only ever
+ * narrows access on top of the category's effective roles, never broadens past them (see
+ * tcb24_wiki_is_restricted_for_user()), so the category remains the ceiling for its documents.
+ *
+ * A category left blank inherits its parent's effective roles outright, so leaving a subcategory
+ * blank means "same access as its parent". Only a term with no parent (or a whole unconfigured
+ * chain up to the root) resolves to the site-wide default. Recursive, with memoization via
+ * $cache since multiple sibling terms share the same ancestor chain.
  *
  * @param int   $term_id The category term ID to resolve.
  * @param array $own_map Term ID => own configured roles, from tcb24_wiki_get_category_role_map().
@@ -346,15 +352,12 @@ function tcb24_wiki_resolve_effective_roles( $term_id, $own_map, &$cache ) {
 		return $cache[ $term_id ];
 	}
 
-	$term      = get_term( $term_id, TCB24_WIKI_TAXONOMY );
-	$parent_id = ( $term && ! is_wp_error( $term ) ) ? (int) $term->parent : 0;
-	$has_own   = ! empty( $own_map[ $term_id ] );
-
-	if ( ! $parent_id ) {
-		$effective = $has_own ? $own_map[ $term_id ] : TCB24_WIKI_DEFAULT_ALLOWED_ROLES;
+	if ( ! empty( $own_map[ $term_id ] ) ) {
+		$effective = $own_map[ $term_id ];
 	} else {
-		$parent_effective = tcb24_wiki_resolve_effective_roles( $parent_id, $own_map, $cache );
-		$effective        = $has_own ? array_intersect( $own_map[ $term_id ], $parent_effective ) : $parent_effective;
+		$term      = get_term( $term_id, TCB24_WIKI_TAXONOMY );
+		$parent_id = ( $term && ! is_wp_error( $term ) ) ? (int) $term->parent : 0;
+		$effective = $parent_id ? tcb24_wiki_resolve_effective_roles( $parent_id, $own_map, $cache ) : TCB24_WIKI_DEFAULT_ALLOWED_ROLES;
 	}
 
 	$cache[ $term_id ] = $effective;
