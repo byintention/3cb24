@@ -121,6 +121,20 @@ function sv_cpt_page( $query ) {
 }
 add_action( 'pre_get_posts', 'sv_cpt_page' );
 
+/**
+ * The site's designated "Posts page" (Settings -> Reading) always queries post_type=post by
+ * default via its own main query - registering tcb_news as a CPT has no effect on that, since
+ * it's WordPress's native blog-index behaviour, not something CPT registration touches. Now that
+ * news content has fully migrated off the core "post" type, redirect that query to tcb_news so
+ * the News page isn't permanently empty.
+ */
+function tcb24_news_posts_page_query( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && $query->is_home() ) {
+		$query->set( 'post_type', 'tcb_news' );
+	}
+}
+add_action( 'pre_get_posts', 'tcb24_news_posts_page_query' );
+
 
 /**
  * Pagination for archive, taxonomy, category, tag and search results pages
