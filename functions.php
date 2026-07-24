@@ -113,10 +113,10 @@ add_action( 'admin_menu', 'prefix_remove_comments_tl' );
  * Custom events post type.
  */
 
-// Display 5 posts on event archive page.
+// Display 10 posts on event archive page.
 function sv_cpt_page( $query ) {
 	if ( ! is_admin() && is_post_type_archive( 'tribe_events' ) ) {
-		$query->set( 'posts_per_page', '2' );
+		$query->set( 'posts_per_page', '10' );
 	}
 }
 add_action( 'pre_get_posts', 'sv_cpt_page' );
