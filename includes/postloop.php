@@ -20,7 +20,7 @@ if ( have_posts() ) {
 			<?php the_excerpt(); ?>
 			<hr>
 			<p class="postmetadata clear">
-				<span class="blogcat">Posted in <?php the_category( ', ' ); ?></span> &bull; 
+				<span class="blogcat">Posted in <?php the_terms( get_the_ID(), 'tcb-news-category', '', ', ' ); ?></span> &bull;
 				<span class="blogdate"><?php the_time( 'F jS, Y' ); ?></span>
 			</p>
 		</div>
