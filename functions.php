@@ -24,10 +24,7 @@ add_action( 'after_setup_theme', 'tcb24_theme_setup' );
  * Add theme's CSS file.
  */
 function tcb24_css() {
-	// filemtime(), not a hardcoded version string - a static version never changes the enqueued
-	// URL, so browsers/CDNs keep serving a stale cached style.css after every edit. Tying it to
-	// the file's own modified time busts the cache automatically whenever the CSS actually changes.
-	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
+	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), '1.0' );
 }
 add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-layout-css' );
 
@@ -123,20 +120,6 @@ function sv_cpt_page( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'sv_cpt_page' );
-
-/**
- * The site's designated "Posts page" (Settings -> Reading) always queries post_type=post by
- * default via its own main query - registering tcb_news as a CPT has no effect on that, since
- * it's WordPress's native blog-index behaviour, not something CPT registration touches. Now that
- * news content has fully migrated off the core "post" type, redirect that query to tcb_news so
- * the News page isn't permanently empty.
- */
-function tcb24_news_posts_page_query( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && $query->is_home() ) {
-		$query->set( 'post_type', 'tcb_news' );
-	}
-}
-add_action( 'pre_get_posts', 'tcb24_news_posts_page_query' );
 
 
 /**
@@ -798,177 +781,7 @@ function tcb24_sidebar_widgets_init() {
 }
 add_action( 'widgets_init', 'tcb24_sidebar_widgets_init' );
 
-/**
- * Lists tcb-news-category terms, mirroring the core Categories widget - which can't be pointed
- * at a custom taxonomy, so it shows nothing now that news posts use tcb-news-category instead of
- * the core "category" taxonomy.
- */
-class TCB24_News_Categories_Widget extends WP_Widget {
 
-	/**
-	 * Registers the widget with WordPress.
-	 */
-	public function __construct() {
-		parent::__construct(
-			'tcb24_news_categories_widget',
-			__( 'News Categories', '3cb24' ),
-			array( 'description' => __( 'A list of News categories.', '3cb24' ) )
-		);
-	}
-
-	/**
-	 * Outputs the widget's front-end markup.
-	 *
-	 * @param array $args     Sidebar-supplied before/after widget and title markup.
-	 * @param array $instance Saved widget settings.
-	 */
-	public function widget( $args, $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Categories', '3cb24' );
-
-		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $args['before_title'] . esc_html( $title ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		echo '<ul>';
-		wp_list_categories(
-			array(
-				'taxonomy'   => 'tcb-news-category',
-				'title_li'   => '',
-				'hide_empty' => true,
-			)
-		);
-		echo '</ul>';
-
-		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-
-	/**
-	 * Outputs the widget's admin settings form.
-	 *
-	 * @param array $instance Saved widget settings.
-	 */
-	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Categories', '3cb24' );
-		?>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', '3cb24' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<?php
-	}
-
-	/**
-	 * Sanitizes and saves the widget's admin settings.
-	 *
-	 * @param array $new_instance New settings as submitted by the admin form.
-	 * @param array $old_instance Previously saved settings.
-	 * @return array Settings to save.
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance          = array();
-		$instance['title'] = ! empty( $new_instance['title'] ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		return $instance;
-	}
-}
-
-/**
- * Lists recent tcb_news posts, mirroring the core Recent Posts widget - which is hardcoded to
- * post_type=post with no way to change it, so it shows nothing now that news content has moved
- * to the tcb_news post type.
- */
-class TCB24_News_Recent_Posts_Widget extends WP_Widget {
-
-	/**
-	 * Registers the widget with WordPress.
-	 */
-	public function __construct() {
-		parent::__construct(
-			'tcb24_news_recent_posts_widget',
-			__( 'News Recent Posts', '3cb24' ),
-			array( 'description' => __( 'A list of recent News posts.', '3cb24' ) )
-		);
-	}
-
-	/**
-	 * Outputs the widget's front-end markup.
-	 *
-	 * @param array $args     Sidebar-supplied before/after widget and title markup.
-	 * @param array $instance Saved widget settings.
-	 */
-	public function widget( $args, $instance ) {
-		$title  = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent Posts', '3cb24' );
-		$number = ! empty( $instance['number'] ) ? absint( $instance['number'] ) : 5;
-
-		$recent_posts = new WP_Query(
-			array(
-				'post_type'              => 'tcb_news',
-				'posts_per_page'         => $number,
-				'no_found_rows'          => true,
-				'update_post_meta_cache' => false,
-				'update_post_term_cache' => false,
-			)
-		);
-
-		if ( ! $recent_posts->have_posts() ) {
-			return;
-		}
-
-		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $args['before_title'] . esc_html( $title ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		echo '<ul>';
-		while ( $recent_posts->have_posts() ) {
-			$recent_posts->the_post();
-			echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></li>';
-		}
-		echo '</ul>';
-
-		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		wp_reset_postdata();
-	}
-
-	/**
-	 * Outputs the widget's admin settings form.
-	 *
-	 * @param array $instance Saved widget settings.
-	 */
-	public function form( $instance ) {
-		$title  = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent Posts', '3cb24' );
-		$number = ! empty( $instance['number'] ) ? absint( $instance['number'] ) : 5;
-		?>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', '3cb24' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', '3cb24' ); ?></label>
-			<input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $number ); ?>" size="3">
-		</p>
-		<?php
-	}
-
-	/**
-	 * Sanitizes and saves the widget's admin settings.
-	 *
-	 * @param array $new_instance New settings as submitted by the admin form.
-	 * @param array $old_instance Previously saved settings.
-	 * @return array Settings to save.
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance           = array();
-		$instance['title']  = ! empty( $new_instance['title'] ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['number'] = ! empty( $new_instance['number'] ) ? absint( $new_instance['number'] ) : 5;
-		return $instance;
-	}
-}
-
-add_action(
-	'widgets_init',
-	function () {
-		register_widget( 'TCB24_News_Categories_Widget' );
-		register_widget( 'TCB24_News_Recent_Posts_Widget' );
-	}
-);
 
 /**
  * Load Scripts Properly.
