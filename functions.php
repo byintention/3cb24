@@ -24,7 +24,10 @@ add_action( 'after_setup_theme', 'tcb24_theme_setup' );
  * Add theme's CSS file.
  */
 function tcb24_css() {
-	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), '1.0' );
+	// filemtime(), not a hardcoded version string - a static version never changes the enqueued
+	// URL, so browsers/CDNs keep serving a stale cached style.css after every edit. Tying it to
+	// the file's own modified time busts the cache automatically whenever the CSS actually changes.
+	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 }
 add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-layout-css' );
 
