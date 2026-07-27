@@ -603,6 +603,74 @@ function tcb24_wiki_block_restricted_single_article() {
 
 
 /**
+ * Gets a wiki-application post's current tcb-selection status slug, defaulting to "submission"
+ * (the most restrictive outcome for callers using this to gate access) if the term can't be
+ * determined.
+ *
+ * @param int $post_id The application post ID.
+ * @return string The status term slug.
+ */
+function tcb24_get_application_status_slug( $post_id ) {
+	$terms = wp_get_post_terms( $post_id, 'tcb-selection', array( 'fields' => 'slugs' ) );
+	if ( is_wp_error( $terms ) || empty( $terms ) ) {
+		return 'submission';
+	}
+	return $terms[0];
+}
+
+/**
+ * Hard-enforces, server-side, the same role restrictions that includes/conditional-comments.php
+ * and includes/conditional-comments-application.php use to decide whether to DISPLAY a comment
+ * form on application/report/loa/service-record posts. Those only control what gets rendered -
+ * WordPress's actual comment submission endpoint (wp-comments-post.php) has no knowledge of that
+ * gate at all, so without this, any logged-in user could POST a comment directly at one of these
+ * posts' IDs and bypass the render-time restriction entirely, same as every other
+ * display-gate-isn't-real-access-control issue closed elsewhere in this codebase.
+ *
+ * @param array $commentdata The comment data about to be inserted.
+ * @return array The unmodified comment data, if the current user is allowed to comment here.
+ */
+function tcb24_restrict_confidential_comment_submission( $commentdata ) {
+
+	$post_id   = (int) $commentdata['comment_post_ID'];
+	$post_type = get_post_type( $post_id );
+	$user_roles = wp_get_current_user()->roles;
+
+	// Matches single-report.php / single-loa.php / single-service-record.php's conditional-comments args.
+	$role_lists = array(
+		'report'         => array( 'officer', 'administrator' ),
+		'loa'            => array( 'officer', 'administrator' ),
+		'service-record' => array( 'officer', 'administrator' ),
+	);
+
+	if ( 'application' === $post_type ) {
+		// Matches single-application.php's conditional-comments-application args.
+		$role_list         = array( 'training_admin', 'recruit_admin', 'officer', 'snco', 'administrator' );
+		$role_list_limited = array( 'nco' );
+
+		if ( array_intersect( $role_list, $user_roles ) ) {
+			return $commentdata;
+		}
+
+		if ( array_intersect( $role_list_limited, $user_roles ) ) {
+			$applicant_status = tcb24_get_application_status_slug( $post_id );
+			if ( in_array( $applicant_status, array( 'candidate', 'recruit', 'selection' ), true ) ) {
+				return $commentdata;
+			}
+		}
+
+		wp_die( esc_html__( 'You are not authorised to comment on this application.', '3cb24' ) );
+	}
+
+	if ( isset( $role_lists[ $post_type ] ) && ! array_intersect( $role_lists[ $post_type ], $user_roles ) ) {
+		wp_die( esc_html__( 'You are not authorised to comment on this post.', '3cb24' ) );
+	}
+
+	return $commentdata;
+}
+add_filter( 'preprocess_comment', 'tcb24_restrict_confidential_comment_submission' );
+
+/**
  * Remove link from author name in comments section.
  */
 function tcb24_remove_author_url() {
