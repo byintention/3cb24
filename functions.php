@@ -859,9 +859,10 @@ function tcb24_scripts_method() {
 	wp_register_script( 'fcs-script', get_template_directory_uri() . '/js/fcs-min.js', array( 'jquery' ), 1.0, true );
 	wp_enqueue_script( 'fcs-script' );
 
-	// Show event start times converted to the visitor's own browser timezone.
-	if ( is_singular( 'tribe_events' ) ) {
-		wp_register_script( 'event-local-time', get_template_directory_uri() . '/js/event-local-time.js', array(), 1.0, true );
+	// Show event start times converted to the visitor's own browser timezone - both on a single
+	// event page and on the /events listing's summary cards.
+	if ( is_singular( 'tribe_events' ) || is_post_type_archive( 'tribe_events' ) ) {
+		wp_register_script( 'event-local-time', get_template_directory_uri() . '/js/event-local-time.js', array(), filemtime( get_template_directory() . '/js/event-local-time.js' ), true );
 		wp_enqueue_script( 'event-local-time' );
 	}
 }
