@@ -102,6 +102,18 @@ get_header(); ?>
 		</div>
 		<div class="post white" id="post-<?php the_ID(); ?>" >
 			<div class="entry padded">
+				<h2>In Memoriam</h2>
+				<p>They shall grow not old, as we that are left grow old<br>
+				Age shall not weary them, nor the years condemn<br>
+				At the going down of the sun and in the morning<br>
+				We will remember them.</p>We will remember them</p>
+				<ul>
+					<li>Eldabee</li>
+				</ul>
+			</div>
+		</div>
+		<div class="post white" id="post-<?php the_ID(); ?>" >
+			<div class="entry padded">
 				<?php $is_subscriber = in_array( 'subscriber', wp_get_current_user()->roles, true ); ?>
 				<?php if ( $is_subscriber ) : ?>
 				<p> Further details can be found below, including the full range of administrative duties and responsibilities for each rank.</p>
