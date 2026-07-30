@@ -40,7 +40,7 @@
 				<div id="headerLogin">
 					<?php if ( ! is_user_logged_in() ) { ?>
 					<?php } else { ?>
-						<strong>Welcome</strong> <span class="username"><?php echo esc_html( wp_get_current_user()->user_login ); ?></span> 
+						<strong>Welcome</strong> <span class="username"><?php echo esc_html( wp_get_current_user()->display_name ); ?></span>
 						<span class="userLinks"><a href="/edit-user-profile/">Edit profile</a> &nbsp;
 						<a href="<?php echo wp_logout_url( '/local3cb' ); ?>">Log out</a>
 						</span>
