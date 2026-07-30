@@ -103,10 +103,10 @@ get_header(); ?>
 		<div class="post white" id="post-<?php the_ID(); ?>" >
 			<div class="entry padded">
 				<h2>In Memoriam</h2>
-				<p>They shall grow not old, as we that are left grow old<br>
-				Age shall not weary them, nor the years condemn<br>
-				At the going down of the sun and in the morning<br>
-				We will remember them.</p>We will remember them</p>
+				<p>They shall grow not old, as we that are left grow old.<br>
+				Age shall not weary them, nor the years condemn.<br>
+				At the going down of the sun and in the morning.<br>
+				We will remember them.</p>
 				<ul>
 					<li>Eldabee</li>
 				</ul>
