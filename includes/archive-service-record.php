@@ -49,7 +49,9 @@ if ( ! $posts_->have_posts() ) {
 	return;
 }
 
-echo '<ul>';
+// Display name lives on the WP user, not the service-record post, so it can't be sorted via
+// WP_Query's own orderby - collect it here and sort afterwards instead.
+$roster_entries = array();
 while ( $posts_->have_posts() ) {
 	$posts_->the_post();
 	$post_id_ = get_the_ID();
@@ -58,13 +60,27 @@ while ( $posts_->have_posts() ) {
 	if ( ! $user ) {
 		continue;
 	}
-	$display_name = $user->get( 'display_name' );
+	$roster_entries[] = array(
+		'display_name' => $user->get( 'display_name' ),
+		'permalink'    => get_permalink(),
+	);
+}
+wp_reset_postdata();
+
+usort(
+	$roster_entries,
+	function ( $a, $b ) {
+		return strcasecmp( $a['display_name'], $b['display_name'] );
+	}
+);
+
+echo '<ul>';
+foreach ( $roster_entries as $entry ) {
 	if ( $view_access ) {
 		// User has access to view the service record.
-		echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( $display_name ) . '</a></li>';
+		echo '<li><a href="' . esc_url( $entry['permalink'] ) . '">' . esc_html( $entry['display_name'] ) . '</a></li>';
 	} else {
-		echo '<li>' . esc_html( $display_name ) . '</li>';
+		echo '<li>' . esc_html( $entry['display_name'] ) . '</li>';
 	}
 }
 echo '</ul>';
-wp_reset_postdata();
