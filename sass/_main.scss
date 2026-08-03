@@ -2646,7 +2646,7 @@ html .acf-url i {
 
 // Supporters/Donors list on the donation page - split into two columns rather than one long list.
 .tcb_supporters_donors {
-	.tcb_award ul {
+	.tcb_supporter_group ul {
 		column-count: 2;
 		column-gap: 30px;
 	}
