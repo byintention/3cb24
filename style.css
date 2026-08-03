@@ -3619,3 +3619,9 @@ div.pswp__img--placeholder,
     margin: 0 1rem;
   }
 }
+
+/* Supporters/Donors list on the donation page - split into two columns rather than one long list. */
+.tcb_supporters_donors .tcb_award ul {
+  column-count: 2;
+  column-gap: 30px;
+}
