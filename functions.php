@@ -24,7 +24,7 @@ add_action( 'after_setup_theme', 'tcb24_theme_setup' );
  * Add theme's CSS file.
  */
 function tcb24_css() {
-	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), '1.0' );
+	wp_enqueue_style( 'tcb24_style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 }
 add_action( 'wp_enqueue_scripts', 'tcb24_css', 1000, 'epkb-mp-frontend-category-layout-css' );
 
