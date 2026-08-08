@@ -3392,6 +3392,34 @@ div.pswp__img--placeholder,
   }
 }
 /*
+	Mission briefing (full read-only breakdown) - each major section
+	(Situation/Mission/Execution/Logistics/Command & Signals) is its own
+	.tcb_mission_briefing box, so the gap between boxes shows the page's own
+	background colour as a divider, same as .tcb_briefing above.
+*/
+.tcb_mission_briefing {
+  background: #fff;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+.tcb_mission_briefing h3 {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+.tcb_mission_briefing h4 {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+.tcb_mission_briefing h5 {
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+@media only screen and (min-width: 900px) {
+  .tcb_mission_briefing {
+    padding: 40px;
+  }
+}
+/*
 	Attendance panel
 */
 #attendanceRoster {
