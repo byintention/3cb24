@@ -3601,7 +3601,7 @@ div.pswp__img--placeholder,
     border-bottom: 0;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
   }
-  #slotTool .unit:last-child {
+  #slotTool .unit:last-of-type {
     border: 1px solid #ccc;
   }
 }
