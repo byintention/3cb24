@@ -172,7 +172,8 @@
 		padding: 6px 12px;
 		&.private,
 		&.patrolop,
-		&.miniop {
+		&.miniop,
+		&.privateaction {
 			background: green;
 		}
 		&.publicevent,
@@ -181,6 +182,9 @@
 		}
 		&.jo {
 			background: #c00;
+		}
+		&.training {
+			background: magenta;
 		}
 	}
 }

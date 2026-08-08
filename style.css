@@ -3307,7 +3307,7 @@ div.pswp__img--placeholder,
   font-weight: bold;
   padding: 6px 12px;
 }
-.intention-events-event-type span.private, .intention-events-event-type span.patrolop, .intention-events-event-type span.miniop {
+.intention-events-event-type span.private, .intention-events-event-type span.patrolop, .intention-events-event-type span.miniop, .intention-events-event-type span.privateaction {
   background: green;
 }
 .intention-events-event-type span.publicevent, .intention-events-event-type span.publicaction {
@@ -3315,6 +3315,9 @@ div.pswp__img--placeholder,
 }
 .intention-events-event-type span.jo {
   background: #c00;
+}
+.intention-events-event-type span.training {
+  background: magenta;
 }
 
 .intention-events-listing-navigation {
