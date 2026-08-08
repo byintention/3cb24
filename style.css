@@ -3404,6 +3404,14 @@ div.pswp__img--placeholder,
 .tcb_mission_briefing_page {
   background: #eee;
   padding: 30px 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.tcb_mission_briefing_inner {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0 20px;
 }
 .tcb_mission_briefing {
   background: #fff;
