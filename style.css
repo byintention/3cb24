@@ -3603,6 +3603,7 @@ div.pswp__img--placeholder,
   }
   #slotTool .unit:last-of-type {
     border: 1px solid #ccc;
+    padding-bottom: 0;
   }
 }
 #slotToolButtons {
