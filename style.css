@@ -3395,8 +3395,16 @@ div.pswp__img--placeholder,
 	Mission briefing (full read-only breakdown) - each major section
 	(Situation/Mission/Execution/Logistics/Command & Signals) is its own
 	.tcb_mission_briefing box, so the gap between boxes shows the page's own
-	background colour as a divider, same as .tcb_briefing above.
+	background colour as a divider, same as .tcb_briefing above. Unlike the
+	event details page, this shortcode renders on a plain (white) page
+	template, so .tcb_mission_briefing_page supplies its own grey background
+	(matching #intention-events-single-event) to give the white boxes
+	something to contrast against.
 */
+.tcb_mission_briefing_page {
+  background: #eee;
+  padding: 30px 0;
+}
 .tcb_mission_briefing {
   background: #fff;
   margin-bottom: 30px;
