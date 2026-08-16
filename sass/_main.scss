@@ -2614,8 +2614,9 @@ ul.acf-checkbox-list li {
 		align-items: flex-start;
 		border-bottom: 1px solid #eee;
 		display: flex;
-		gap: 20px;
+		flex-direction: column;
 		padding: 15px 0;
+		text-align: left;
 		&:first-of-type {
 			padding-top: 0;
 		}
@@ -2624,12 +2625,13 @@ ul.acf-checkbox-list li {
 			padding-bottom: 0;
 		}
 		img {
-			flex-shrink: 0;
 			height: 47px;
+			margin-bottom: 0.75rem;
 			width: 175px;
 		}
 	}
 	.tcb_commendation_entry_text {
+		text-align: left;
 		h5 {
 			margin-bottom: 0.25rem;
 		}
