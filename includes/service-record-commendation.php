@@ -32,107 +32,103 @@ if ( $date ) {
 	}
 }
 
-$list_of_ribbons = get_field( 'campaign_medals' );
-if ( $list_of_ribbons ) {
-	echo '<h4>Campaign Medals</h4>';
-	foreach ( $list_of_ribbons as $ribbon ) {
-		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $ribbon['value'] ) . '.png" title="' . esc_attr( $ribbon['label'] ) . '" width="350" height="94"></p>';
-	}
-}
+// Campaign Medals and Community Awards are simple multi-select fields - the field's own value
+// list is exactly what the user has earned.
+tcb24_service_record_commendation_select_group( 'campaign_medals', 'Campaign Medals', $ribbon_path );
 
 $image_translation = array( 1, 4, 16, 64, 256, 1024 );
 
-$mention_in_despatches = array(
-	'combat_medic'     => 'Combat Medic',
-	'weapons_operator' => 'Weapons Operator',
-	'armour_asset'     => 'Armour Asset',
-	'air_asset'        => 'Air Asset',
-	'man_of_the_match' => 'Man of the Match',
-);
-$leadership            = array(
-	'troop'    => 'Troop Leadership',
-	'section'  => 'Section Leadership',
-	'fireteam' => 'Fireteam Leadership',
-	'asset'    => 'Asset Leadership',
-);
-$mission_creation      = array(
-	'mission_author' => 'Mission Author',
-	'zeus'           => 'Zeus',
-);
+// Leadership/Mention in Despatches/Mission Creation are "level" fields - each sub-field holds a
+// count. Display names, order, and descriptions all come from the matching tcb-commendation
+// taxonomy group's child terms (looked up by slug = sub-field name), so a newly added sub-field
+// (e.g. "patrol") is picked up automatically once a matching term exists - no code change
+// needed here, unlike the previous hardcoded per-group lists.
+tcb24_service_record_commendation_level_group( 'leadership', 'leadership_commendations', $ribbon_path, $image_translation );
+tcb24_service_record_commendation_level_group( 'mention_in_despatches', 'mention_in_despatches', $ribbon_path, $image_translation );
+tcb24_service_record_commendation_level_group( 'mission_creation', 'mission_creation', $ribbon_path, $image_translation );
 
-$sub_field     = get_field( 'leadership' );
-$section_title = 'Leadership Commendations';
-if ( $sub_field ) {
-	$print_header = false;
-	foreach ( $leadership as $name => $title_ ) {
-		if ( isset( $sub_field[ $name ] ) ) {
-			$value = intval( $sub_field[ $name ] );
-			if ( $value > 0 ) {
-				if ( ! $print_header ) {
-					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-					$print_header = true;
-				}
-				foreach ( $image_translation as $idx => $img_val ) {
-					if ( $img_val > $value ) {
-						break;
-					}
-				}
-				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
-			}
-		}
+tcb24_service_record_commendation_select_group( 'community_awards', 'Community Awards', $ribbon_path );
+
+/**
+ * Renders a "select"-type commendation group (Campaign Medals/Community Awards) for the current
+ * user - the ACF field already returns exactly the choices they've earned. Tooltip text is the
+ * choice's label plus (if set) the matching tcb-commendation term's description, via the shared
+ * tcbp_public_commendation_tooltip() helper (defined in the tcb-roster plugin).
+ *
+ * @param string $field_name  The ACF field's name.
+ * @param string $heading     The section heading.
+ * @param string $ribbon_path Base URL for ribbon images.
+ */
+function tcb24_service_record_commendation_select_group( $field_name, $heading, $ribbon_path ) {
+	$list_of_ribbons = get_field( $field_name );
+	if ( ! $list_of_ribbons ) {
+		return;
 	}
-}
 
-$sub_field     = get_field( 'mention_in_despatches' );
-$section_title = 'Mention in Despatches';
-if ( $sub_field ) {
-	$print_header = false;
-	foreach ( $mention_in_despatches as $name => $title_ ) {
-		if ( isset( $sub_field[ $name ] ) ) {
-			$value = intval( $sub_field[ $name ] );
-			if ( $value > 0 ) {
-				if ( ! $print_header ) {
-					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-					$print_header = true;
-				}
-				foreach ( $image_translation as $idx => $img_val ) {
-					if ( $img_val > $value ) {
-						break;
-					}
-				}
-				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
-			}
-		}
-	}
-}
-
-$sub_field     = get_field( 'mission_creation' );
-$section_title = 'Mission Creation';
-if ( $sub_field ) {
-	$print_header = false;
-	foreach ( $mission_creation as $name => $title_ ) {
-		if ( isset( $sub_field[ $name ] ) ) {
-			$value = intval( $sub_field[ $name ] );
-			if ( $value > 0 ) {
-				if ( ! $print_header ) {
-					echo '<h4>' . esc_attr( $section_title ) . '</h4>';
-					$print_header = true;
-				}
-				foreach ( $image_translation as $idx => $img_val ) {
-					if ( $img_val > $value ) {
-						break;
-					}
-				}
-				echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $name ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title_ ) . ' x ' . esc_attr( $value ) . '" width="350" height="94"></p>';
-			}
-		}
-	}
-}
-
-$list_of_ribbons = get_field( 'community_awards' );
-if ( $list_of_ribbons ) {
-	echo '<h4>Community Awards</h4>';
+	echo '<h4>' . esc_html( $heading ) . '</h4>';
 	foreach ( $list_of_ribbons as $ribbon ) {
-		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $ribbon['value'] ) . '.png" title="' . esc_attr( $ribbon['label'] ) . '" width="350" height="94"></p>';
+		$title = tcbp_public_commendation_tooltip( $ribbon['label'], $ribbon['value'] );
+		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $ribbon['value'] ) . '.png" title="' . esc_attr( $title ) . '" width="350" height="94"></p>';
+	}
+}
+
+/**
+ * Renders a "level"-type commendation group (Leadership/Mention in Despatches/Mission Creation)
+ * for the current user - each sub-field holds a count, shown once it's > 0. Display name, order,
+ * and tooltip description all come from the matching taxonomy child term (looked up by
+ * slug = sub-field name), via the shared tcbp_public_commendation_tooltip() helper.
+ *
+ * @param string $field_name        The ACF field's name (a group of int sub-fields).
+ * @param string $group_slug        The taxonomy parent term's slug.
+ * @param string $ribbon_path       Base URL for ribbon images.
+ * @param array  $image_translation Level thresholds, lowest first.
+ */
+function tcb24_service_record_commendation_level_group( $field_name, $group_slug, $ribbon_path, $image_translation ) {
+	$sub_field = get_field( $field_name );
+	if ( ! $sub_field ) {
+		return;
+	}
+
+	$parent = get_term_by( 'slug', $group_slug, 'tcb-commendation' );
+	if ( ! $parent || is_wp_error( $parent ) ) {
+		return;
+	}
+
+	$children = get_terms(
+		array(
+			'taxonomy'   => 'tcb-commendation',
+			'parent'     => $parent->term_id,
+			'hide_empty' => false,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		)
+	);
+	if ( ! $children || is_wp_error( $children ) ) {
+		return;
+	}
+
+	$print_header = false;
+	foreach ( $children as $term ) {
+		if ( ! isset( $sub_field[ $term->slug ] ) ) {
+			continue;
+		}
+		$value = intval( $sub_field[ $term->slug ] );
+		if ( $value <= 0 ) {
+			continue;
+		}
+
+		if ( ! $print_header ) {
+			echo '<h4>' . esc_html( $parent->name ) . '</h4>';
+			$print_header = true;
+		}
+
+		foreach ( $image_translation as $idx => $img_val ) {
+			if ( $img_val > $value ) {
+				break;
+			}
+		}
+
+		$title = tcbp_public_commendation_tooltip( $term->name . ' x ' . $value, $term->slug );
+		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $term->slug ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title ) . '" width="350" height="94"></p>';
 	}
 }
