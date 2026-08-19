@@ -28,7 +28,9 @@ if ( $date ) {
 	$served_years = $interval->y;
 	if ( $served_years > 0 ) {
 		echo '<h4>Long Service Medal</h4>';
-		echo '<p><img src="' . esc_attr( $ribbon_path ) . 'service-' . esc_attr( $served_years ) . '.png" title="Service award, year ' . esc_attr( $served_years ) . '" width="350" height="94"></p>';
+		echo '<p>';
+		tcbp_public_commendation_image( $ribbon_path . 'service-' . $served_years . '.png', 'Service award, year ' . $served_years, '', 350, 94 );
+		echo '</p>';
 	}
 }
 
@@ -53,7 +55,7 @@ tcb24_service_record_commendation_select_group( 'community_awards', 'Community A
  * Renders a "select"-type commendation group (Campaign Medals/Community Awards) for the current
  * user - the ACF field already returns exactly the choices they've earned. Tooltip text is the
  * choice's label plus (if set) the matching tcb-commendation term's description, via the shared
- * tcbp_public_commendation_tooltip() helper (defined in the tcb-roster plugin).
+ * tcbp_public_commendation_image() helper (defined in the tcb-roster plugin).
  *
  * @param string $field_name  The ACF field's name.
  * @param string $heading     The section heading.
@@ -67,8 +69,9 @@ function tcb24_service_record_commendation_select_group( $field_name, $heading, 
 
 	echo '<h4>' . esc_html( $heading ) . '</h4>';
 	foreach ( $list_of_ribbons as $ribbon ) {
-		$title = tcbp_public_commendation_tooltip( $ribbon['label'], $ribbon['value'] );
-		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $ribbon['value'] ) . '.png" title="' . esc_attr( $title ) . '" width="350" height="94"></p>';
+		echo '<p>';
+		tcbp_public_commendation_image( $ribbon_path . $ribbon['value'] . '.png', $ribbon['label'], $ribbon['value'], 350, 94 );
+		echo '</p>';
 	}
 }
 
@@ -76,7 +79,8 @@ function tcb24_service_record_commendation_select_group( $field_name, $heading, 
  * Renders a "level"-type commendation group (Leadership/Mention in Despatches/Mission Creation)
  * for the current user - each sub-field holds a count, shown once it's > 0. Display name, order,
  * and tooltip description all come from the matching taxonomy child term (looked up by
- * slug = sub-field name), via the shared tcbp_public_commendation_tooltip() helper.
+ * slug = sub-field name), via the shared tcbp_public_commendation_group_terms() and
+ * tcbp_public_commendation_image() helpers (defined in the tcb-roster plugin).
  *
  * @param string $field_name        The ACF field's name (a group of int sub-fields).
  * @param string $group_slug        The taxonomy parent term's slug.
@@ -89,21 +93,8 @@ function tcb24_service_record_commendation_level_group( $field_name, $group_slug
 		return;
 	}
 
-	$parent = get_term_by( 'slug', $group_slug, 'tcb-commendation' );
-	if ( ! $parent || is_wp_error( $parent ) ) {
-		return;
-	}
-
-	$children = get_terms(
-		array(
-			'taxonomy'   => 'tcb-commendation',
-			'parent'     => $parent->term_id,
-			'hide_empty' => false,
-			'orderby'    => 'name',
-			'order'      => 'ASC',
-		)
-	);
-	if ( ! $children || is_wp_error( $children ) ) {
+	$children = tcbp_public_commendation_group_terms( $group_slug );
+	if ( ! $children ) {
 		return;
 	}
 
@@ -118,7 +109,8 @@ function tcb24_service_record_commendation_level_group( $field_name, $group_slug
 		}
 
 		if ( ! $print_header ) {
-			echo '<h4>' . esc_html( $parent->name ) . '</h4>';
+			$parent = get_term( $term->parent, 'tcb-commendation' );
+			echo '<h4>' . esc_html( $parent && ! is_wp_error( $parent ) ? $parent->name : '' ) . '</h4>';
 			$print_header = true;
 		}
 
@@ -128,7 +120,8 @@ function tcb24_service_record_commendation_level_group( $field_name, $group_slug
 			}
 		}
 
-		$title = tcbp_public_commendation_tooltip( $term->name . ' x ' . $value, $term->slug );
-		echo '<p><img src="' . esc_attr( $ribbon_path ) . esc_attr( $term->slug ) . '-' . esc_attr( $idx ) . '.png" title="' . esc_attr( $title ) . '" width="350" height="94"></p>';
+		echo '<p>';
+		tcbp_public_commendation_image( $ribbon_path . $term->slug . '-' . $idx . '.png', $term->name . ' x ' . $value, $term->slug, 350, 94 );
+		echo '</p>';
 	}
 }

@@ -2597,6 +2597,44 @@ ul.acf-checkbox-list li {
 	}
 
 /*
+	Commendation tooltips - custom-styled replacement for the native browser tooltip a plain
+	title attribute would give, which can't be restyled (font, colour, spacing) at all.
+*/
+
+.tcb_commendation_tooltip {
+	display: inline-block;
+	position: relative;
+	strong {
+		display: block;
+		margin-bottom: 0.25rem;
+	}
+	.tcb_commendation_tooltip_text {
+		background: #fff;
+		border: 1px solid #ddd;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		bottom: 100%;
+		color: inherit;
+		display: none;
+		font-family: inherit;
+		font-size: 1rem;
+		left: 0;
+		line-height: 1.4;
+		margin-bottom: 8px;
+		max-width: 280px;
+		padding: 10px 15px;
+		position: absolute;
+		text-align: left;
+		white-space: normal;
+		width: max-content;
+		z-index: 999;
+	}
+	&:hover .tcb_commendation_tooltip_text,
+	&:focus-within .tcb_commendation_tooltip_text {
+		display: block;
+	}
+}
+
+/*
 	Commendation descriptions
 */
 
