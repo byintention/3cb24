@@ -2532,6 +2532,15 @@ ul.acf-checkbox-list li {
   }
 }
 /*
+	Media news - "Watch on YouTube" icon link
+*/
+.tcb_youtube_icon {
+  height: 17px;
+  margin-right: 6px;
+  vertical-align: middle;
+  width: 24px;
+}
+/*
 	Commendation tooltips - custom-styled replacement for the native browser tooltip a plain
 	title attribute would give, which can't be restyled (font, colour, spacing) at all.
 */
