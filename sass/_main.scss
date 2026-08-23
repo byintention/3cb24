@@ -2597,10 +2597,13 @@ ul.acf-checkbox-list li {
 	}
 
 /*
-	Media news - "Watch on YouTube" icon link
+	Media news - "Watch on YouTube" icon link. Scoped under .entry specifically (rather than
+	just .tcb_youtube_icon alone) to out-specificity the existing ".entry img { width: 100%;
+	height: auto; }" rule above, which otherwise wins regardless of source order since
+	"class + element" beats a single class in CSS specificity.
 */
 
-.tcb_youtube_icon {
+.entry .tcb_youtube_icon {
 	height: 17px;
 	margin-right: 6px;
 	vertical-align: middle;
