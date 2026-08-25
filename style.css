@@ -2580,6 +2580,23 @@ ul.acf-checkbox-list li {
   display: block;
 }
 /*
+	Bulk commendation awards - chip "remove player" control. A small subtle red x rather than
+	a default unstyled <button>, which renders large/bordered/chunky by default.
+*/
+.tcb_award_chip_remove {
+  background: none;
+  border: none;
+  color: #c00;
+  cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1;
+  margin-left: 4px;
+  padding: 0;
+}
+.tcb_award_chip_remove:hover {
+  text-decoration: underline;
+}
+/*
 	Commendation descriptions
 */
 /* display: grid deliberately overrides any column-count/columns layout that might apply to
