@@ -122,7 +122,17 @@ if ( ! $steam_info ) {
 }
 if ( $steam_info ) {
 	foreach ( $steam_info as $key => $value ) {
-		echo '<li><strong>' . esc_html( $key ) . '</strong><br>' . ( $value ? esc_html( $value ) : 'none' ) . '</li><br>';
+		echo '<li><strong>' . esc_html( $key ) . '</strong><br>';
+		if ( ! $value ) {
+			echo 'none';
+		} elseif ( 'ProfileUrl' === $key ) {
+			echo '<a href="' . esc_url( $value ) . '" target="_blank" rel="noopener noreferrer">' . esc_html( $value ) . '</a>';
+		} elseif ( 'Avatar' === $key ) {
+			echo '<img src="' . esc_url( $value ) . '" alt="Steam avatar" width="64" height="64">';
+		} else {
+			echo esc_html( $value );
+		}
+		echo '</li><br>';
 	}
 } else {
 	echo '<p class="negative">No Steam ID</p>';
