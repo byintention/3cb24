@@ -2611,6 +2611,16 @@ ul.acf-checkbox-list li {
 }
 
 /*
+	Application view - Steam avatar. Scoped under .entry for the same reason as
+	.tcb_youtube_icon above - out-specificities ".entry img { width: 100%; height: auto; }".
+*/
+
+.entry .tcb_steam_avatar {
+	height: 64px;
+	width: 64px;
+}
+
+/*
 	Commendation tooltips - custom-styled replacement for the native browser tooltip a plain
 	title attribute would give, which can't be restyled (font, colour, spacing) at all.
 */

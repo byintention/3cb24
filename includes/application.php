@@ -128,7 +128,7 @@ if ( $steam_info ) {
 		} elseif ( 'ProfileUrl' === $key ) {
 			echo '<a href="' . esc_url( $value ) . '" target="_blank" rel="noopener noreferrer">' . esc_html( $value ) . '</a>';
 		} elseif ( 'Avatar' === $key ) {
-			echo '<img src="' . esc_url( $value ) . '" alt="Steam avatar" width="64" height="64">';
+			echo '<img class="tcb_steam_avatar" src="' . esc_url( $value ) . '" alt="Steam avatar" width="64" height="64">';
 		} else {
 			echo esc_html( $value );
 		}
