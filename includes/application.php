@@ -171,6 +171,9 @@ if ( 'rejected' === $applicant_status ) {
 	return;
 }
 
+// A service record is now created automatically as soon as an applicant reaches the Recruit
+// stage - see tcbp_public_sr_create_if_missing() (tcb-roster plugin) - so the manual "Create
+// Service Record" fallback that used to sit here has been removed along with it.
 if ( $service_record_id > 0 ) {
 	$service_record_post = get_post( $service_record_id );
 	if ( ! $service_record_post ) {
@@ -178,8 +181,6 @@ if ( $service_record_id > 0 ) {
 		return;
 	}
 	echo '<p><a href="/service-record/' . esc_attr( $service_record_post->post_name ) . '" class="button button-secondary">View Service Record</a></p>';
-} elseif ( $can_edit ) {
-	echo '<p><a href="/hidden/service-record/?id=' . esc_attr( $applicant_id ) . '" class="button button-secondary">Create Service Record</a></p>';
 }
 
 if ( 'archived' === $applicant_status ) {
