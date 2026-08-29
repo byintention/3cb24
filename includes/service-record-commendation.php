@@ -120,8 +120,15 @@ function tcb24_service_record_commendation_level_group( $field_name, $group_slug
 			}
 		}
 
+		// Title shows the 1-5 level as a Roman numeral (tcbp_public_commendation_award_level()/
+		// tcbp_public_commendation_award_level_roman(), commendations.php - the same level
+		// calculation the commendations archive page uses), not $idx above, which is a separate,
+		// differently-indexed value used only to pick which ribbon image file to show.
+		$level = tcbp_public_commendation_award_level( $value );
+		$title = $term->name . ' - ' . tcbp_public_commendation_award_level_roman( $level );
+
 		echo '<p>';
-		tcbp_public_commendation_image( $ribbon_path . $term->slug . '-' . $idx . '.png', $term->name . ' x ' . $value, $term->slug, 350, 94 );
+		tcbp_public_commendation_image( $ribbon_path . $term->slug . '-' . $idx . '.png', $title, $term->slug, 350, 94, 'Awarded ' . $value . ' times.' );
 		echo '</p>';
 	}
 }
