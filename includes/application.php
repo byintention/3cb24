@@ -183,6 +183,9 @@ if ( $service_record_id > 0 ) {
 }
 
 if ( 'archived' === $applicant_status ) {
-	tcbp_public_sr_check_promotion_to_marine( $applicant_id, $service_record_id );
+	// Kept as a harmless, idempotent fallback - promotion is now reliably triggered as a real
+	// event from both directions (see tcbp_public_sr_promote_to_marine(), service-record.php,
+	// in the tcb-roster plugin) rather than relying solely on this page being viewed.
+	tcbp_public_sr_promote_to_marine( $applicant_id, $service_record_id );
 	return;
 }
