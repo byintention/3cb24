@@ -128,7 +128,7 @@ function tcb24_service_record_commendation_level_group( $field_name, $group_slug
 		$title = $term->name . ' - ' . tcbp_public_commendation_award_level_roman( $level );
 
 		echo '<p>';
-		tcbp_public_commendation_image( $ribbon_path . $term->slug . '-' . $idx . '.png', $title, $term->slug, 350, 94, '<b>Awards: ' . $value . '</b>' );
+		tcbp_public_commendation_image( $ribbon_path . $term->slug . '-' . $idx . '.png', $title, $term->slug, 350, 94, 'Number of awards: ' . $value' );
 		echo '</p>';
 	}
 }
