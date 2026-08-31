@@ -305,6 +305,11 @@
 	h4 {
 		margin-bottom: 1rem;
 		padding-top: 1rem;
+		// Divides consecutive "level 2" sections (1.1, 1.2, etc.) - not applied to the first h4
+		// in a box, so there's no line directly under the h3 above it.
+		&:not(:first-of-type) {
+			border-top: 1px solid #ddd;
+		}
 	}
 	h5 {
 		margin-bottom: 0.5rem;
