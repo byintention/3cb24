@@ -222,8 +222,9 @@ add_action( 'wp_ajax_nopriv_data_fetch', 'data_fetch' );
  * Access is defined per epkb_post_type_1_category term (via an "allowed_roles" term meta field
  * managed below), not per article - a category with no allowed_roles configured, or an article
  * with no category, defaults to officer/administrator only (fails closed). An article assigned
- * to multiple categories requires the user to qualify for every one of them (most restrictive
- * wins).
+ * to multiple categories uses "least restrictive wins" - the user only needs to qualify for one
+ * of them, not every one (see tcb24_wiki_is_restricted_for_user()/tcb24_wiki_restrict_query()
+ * below, which both implement it this way).
  */
 
 define( 'TCB24_WIKI_TAXONOMY', 'epkb_post_type_1_category' );
@@ -598,6 +599,70 @@ function tcb24_wiki_block_restricted_single_article() {
 		esc_html__( 'Access Denied', 'tcb24' ),
 		array( 'response' => 403 )
 	);
+}
+
+add_action( 'admin_menu', 'tcb24_wiki_access_diagnostic_menu' );
+
+/**
+ * Registers a read-only Tools page listing every wiki category's own configured Allowed Roles
+ * alongside its resolved effective roles (after parent inheritance) - lets an admin spot a
+ * category that's unexpectedly fallen back to the officer/administrator-only default (e.g. its
+ * allowed_roles term meta got cleared), without needing direct database access. Since
+ * current_user_can( 'manage_options' ) bypasses every check in this file, an admin browsing the
+ * front end never sees this kind of restriction themselves - this is what makes it visible.
+ * Safe to remove once no longer needed.
+ */
+function tcb24_wiki_access_diagnostic_menu() {
+	add_management_page(
+		'Wiki Access Diagnostic',
+		'Wiki Access Diagnostic',
+		'manage_options',
+		'tcb24-wiki-access-diagnostic',
+		'tcb24_wiki_access_diagnostic_page'
+	);
+}
+
+/**
+ * Renders the Tools > Wiki Access Diagnostic page.
+ */
+function tcb24_wiki_access_diagnostic_page() {
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	echo '<div class="wrap"><h1>Wiki Access Diagnostic</h1>';
+	echo '<p>Every wiki category\'s own configured Allowed Roles ("inherits" = nothing set, falls back to its parent, or the site-wide default if no parent) and what that actually resolves to.</p>';
+
+	$terms = get_terms(
+		array(
+			'taxonomy'   => TCB24_WIKI_TAXONOMY,
+			'hide_empty' => false,
+		)
+	);
+	if ( is_wp_error( $terms ) || ! $terms ) {
+		echo '<p>No wiki categories found.</p></div>';
+		return;
+	}
+
+	$own_map       = tcb24_wiki_get_category_role_map();
+	$effective_map = tcb24_wiki_get_effective_category_role_map();
+
+	echo '<table class="widefat striped"><thead><tr><th>Category</th><th>Parent</th><th>Own Allowed Roles</th><th>Effective Allowed Roles</th><th>Article Count</th></tr></thead><tbody>';
+	foreach ( $terms as $term ) {
+		$parent = $term->parent ? get_term( $term->parent, TCB24_WIKI_TAXONOMY ) : null;
+		$own    = isset( $own_map[ $term->term_id ] ) ? implode( ', ', $own_map[ $term->term_id ] ) : '(inherits)';
+		$eff    = isset( $effective_map[ $term->term_id ] ) ? implode( ', ', $effective_map[ $term->term_id ] ) : implode( ', ', TCB24_WIKI_DEFAULT_ALLOWED_ROLES );
+
+		echo '<tr>';
+		echo '<td>' . esc_html( $term->name ) . '</td>';
+		echo '<td>' . esc_html( $parent && ! is_wp_error( $parent ) ? $parent->name : '—' ) . '</td>';
+		echo '<td>' . esc_html( $own ) . '</td>';
+		echo '<td>' . esc_html( $eff ) . '</td>';
+		echo '<td>' . (int) $term->count . '</td>';
+		echo '</tr>';
+	}
+	echo '</tbody></table></div>';
 }
 
 
