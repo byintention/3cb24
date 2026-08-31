@@ -662,7 +662,48 @@ function tcb24_wiki_access_diagnostic_page() {
 		echo '<td>' . (int) $term->count . '</td>';
 		echo '</tr>';
 	}
-	echo '</tbody></table></div>';
+	echo '</tbody></table>';
+
+	// Article-level detail: every SOPs (and sub-category) article's post_status and the old
+	// per-article _members_access_role meta, which layers ON TOP of the category rules above and
+	// isn't overridden by them (tcb24_wiki_get_article_own_allowed_roles()) - a category being
+	// correctly configured doesn't rule this out as the actual cause.
+	$sops_term = get_term_by( 'name', 'SOPs', TCB24_WIKI_TAXONOMY );
+	if ( $sops_term && ! is_wp_error( $sops_term ) ) {
+		$sops_term_ids = array( $sops_term->term_id );
+		foreach ( get_term_children( $sops_term->term_id, TCB24_WIKI_TAXONOMY ) as $child_id ) {
+			$sops_term_ids[] = $child_id;
+		}
+
+		$articles = get_posts(
+			array(
+				'post_type'      => 'epkb_post_type_1',
+				'posts_per_page' => -1,
+				'post_status'    => 'any',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => TCB24_WIKI_TAXONOMY,
+						'field'    => 'term_id',
+						'terms'    => $sops_term_ids,
+					),
+				),
+			)
+		);
+
+		echo '<h2>SOPs articles - status and per-article restriction</h2>';
+		echo '<table class="widefat striped"><thead><tr><th>Article</th><th>Status</th><th>_members_access_role</th></tr></thead><tbody>';
+		foreach ( $articles as $article ) {
+			$own_roles = tcb24_wiki_get_article_own_allowed_roles( $article->ID );
+			echo '<tr>';
+			echo '<td><a href="' . esc_url( get_edit_post_link( $article->ID ) ) . '">' . esc_html( $article->post_title ) . '</a></td>';
+			echo '<td>' . esc_html( $article->post_status ) . '</td>';
+			echo '<td>' . esc_html( $own_roles ? implode( ', ', $own_roles ) : '(none)' ) . '</td>';
+			echo '</tr>';
+		}
+		echo '</tbody></table>';
+	}
+
+	echo '</div>';
 }
 
 
