@@ -38,11 +38,15 @@ get_header(); ?>
 			?>
 			<ul class="wiki-docs">
 			<?php
-			// Show only posts in this category - not posts from sub categories.
+			// Show only posts in this category - not posts from sub categories. Fetches every
+			// wiki article (filtered down to this category below, in PHP) rather than one query
+			// per category - posts_per_page must stay unlimited (-1), not a fixed cap: a cap here
+			// silently drops the oldest articles site-wide, in every category at once, once the
+			// wiki's total article count grows past it - exactly what happened when this was
+			// hardcoded to 110 and the site's wiki content grew past that.
 			$args  = array(
 				'post_type'      => 'epkb_post_type_1',
-				'posts_per_page' => 110,
-				'fields'         => 'ids, title, link',
+				'posts_per_page' => -1,
 			);
 			$query = new WP_Query( $args );
 			while ( $query->have_posts() ) {
