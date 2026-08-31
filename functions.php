@@ -71,9 +71,13 @@ add_action( 'wp_enqueue_scripts', 'tcb24_remove_unwanted_css', 100 );
 
 
 /**
- * Disable theme editing.
+ * Disable theme editing. Guarded - wp-config.php (or another source outside this repo) may
+ * already define this before the theme loads, and redefining an already-defined constant
+ * triggers a PHP warning.
  */
-define( 'DISALLOW_FILE_EDIT', true );
+if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+	define( 'DISALLOW_FILE_EDIT', true );
+}
 
 /**
  * Remove admin bar.
