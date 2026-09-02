@@ -3495,6 +3495,9 @@ div.pswp__img--placeholder,
 .tcb_briefing .briefing-meta h3 {
   padding-top: 0;
 }
+.tcb_briefing .briefing-meta.tcb_briefing_meta_tight {
+  padding-bottom: 1rem;
+}
 .tcb_briefing .missionRow {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
