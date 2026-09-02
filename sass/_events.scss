@@ -305,13 +305,11 @@
 	h4 {
 		margin-bottom: 1rem;
 		padding-top: 1rem;
-		// "3 spaces" of indent for level 2 items (1.1, 1.2, etc.) - rem rather than ch, deliberately -
-		// ch is sized to *each element's own* font-size, and headings/body paragraphs on this site
-			// don't share one, so ch would give the heading and its content (.tcb_briefing_l2
-			// below) different actual pixel indents even though both specify the same "3ch". rem
-			// is always relative to the root font-size (16px, unset here), so it lines up
-			// regardless of which element's font it's used on.
-		padding-left: 1.5rem;
+		// Indent values are in rem (relative to the root font-size, 16px here) rather than ch,
+		// deliberately - ch is sized to each element's own font-size, and headings/body text on
+		// this site don't share one, so ch would size the same-looking value differently on a
+		// heading vs its content (.tcb_briefing_l2/l3 below).
+		padding-left: 0;
 		// Divides consecutive "level 2" sections (1.1, 1.2, etc.) - not applied to the first h4
 		// in a box, so there's no line directly under the h3 above it.
 		&:not(:first-of-type) {
@@ -321,16 +319,16 @@
 	h5 {
 		margin-bottom: 0.5rem;
 		padding-top: 0.5rem;
-		// Level 3 items (1.2.1, etc.) get level 2's 1.5rem plus another 1.5rem on top.
-		padding-left: 3rem;
-	}
-	// Content under a level 2/3 heading (tcbp_public_briefing_l2()/tcbp_public_briefing_l3(),
-	// mission-briefing.php) - matches its heading's own indent above.
-	.tcb_briefing_l2 {
+		// "Level 3" items (1.2.1, etc.) get their own indent, separate from level 2
 		padding-left: 1.5rem;
 	}
+	// Content under a level 2/3 heading (tcbp_public_briefing_l2()/tcbp_public_briefing_l3(),
+	// mission-briefing.php) - deliberately not the same value as its own heading (h4/h5 above).
+	.tcb_briefing_l2 {
+		padding-left: 0.5rem;
+	}
 	.tcb_briefing_l3 {
-		padding-left: 3rem;
+		padding-left: 2rem;
 	}
 }
 
