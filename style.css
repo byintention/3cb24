@@ -3546,7 +3546,7 @@ div.pswp__img--placeholder,
 .tcb_mission_briefing h4 {
   margin-bottom: 1rem;
   padding-top: 1rem;
-  padding-left: 3ch;
+  padding-left: 1.5rem;
 }
 .tcb_mission_briefing h4:not(:first-of-type) {
   border-top: 1px solid #ddd;
@@ -3554,13 +3554,13 @@ div.pswp__img--placeholder,
 .tcb_mission_briefing h5 {
   margin-bottom: 0.5rem;
   padding-top: 0.5rem;
-  padding-left: 6ch;
+  padding-left: 3rem;
 }
 .tcb_mission_briefing .tcb_briefing_l2 {
-  padding-left: 3ch;
+  padding-left: 1.5rem;
 }
 .tcb_mission_briefing .tcb_briefing_l3 {
-  padding-left: 6ch;
+  padding-left: 3rem;
 }
 @media only screen and (min-width: 900px) {
   .tcb_mission_briefing {
