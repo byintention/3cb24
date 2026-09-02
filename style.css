@@ -3496,6 +3496,7 @@ div.pswp__img--placeholder,
   padding-top: 0;
 }
 .tcb_briefing .briefing-meta.tcb_briefing_meta_tight {
+  padding-top: 0;
   padding-bottom: 1rem;
 }
 .tcb_briefing .missionRow {

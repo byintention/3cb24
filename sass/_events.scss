@@ -247,13 +247,16 @@
 			padding-top: 0;
 		}
 	}
-	// Time/Met row (mission.php) - shares .briefing-meta's column layout, but its own bottom
-	// padding (1.125rem at desktop) was tuned for the Author/Modset/Map row, stacking with the
-	// next heading's own padding-top to deliberately match the Situation paragraph's gap
-	// elsewhere. Time/Met sits directly above a paragraph, not a heading, so that combination
-	// reads as an oversized gap - overridden here to just 1rem, the same size as the Author
-	// heading's own margin-bottom (i.e. the "Author" to "Noodles" gap), at every breakpoint.
+	// Time/Met row (mission.php) - shares .briefing-meta's column layout, but its own top/bottom
+	// padding (1.5rem/1.125rem at desktop) was tuned for the Author/Modset/Map row, which sits
+	// right under the page's h2 with nothing of its own providing spacing above it. Time/Met
+	// instead sits directly under the "Situation" h3, which already supplies its own gap via
+	// margin-bottom (1rem) - the container's own top padding on top of that was pure extra,
+	// stacked space, zeroed out here at every breakpoint. Bottom padding is kept at 1rem
+	// (confirmed via computed styles - matches "Author" to "Noodles" exactly), since that's the
+	// only thing providing the gap before the paragraph that follows.
 	.briefing-meta.tcb_briefing_meta_tight {
+		padding-top: 0;
 		padding-bottom: 1rem;
 	}
 	.missionRow {
