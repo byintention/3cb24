@@ -322,8 +322,11 @@
 		// "Level 3" items (1.2.1, etc.) get their own indent, separate from level 2
 		padding-left: 1.5rem;
 	}
-	// Content under a level 2/3 heading (tcbp_public_briefing_l2()/tcbp_public_briefing_l3(),
-	// mission-briefing.php) - deliberately not the same value as its own heading (h4/h5 above).
+	// Content under an h3/h4/h5 heading (tcbp_public_briefing_l1()/l2()/l3(), mission-briefing.php)
+	// - deliberately not the same value as its own heading (h3 has none, h4/h5 above differ too).
+	.tcb_briefing_l1 {
+		padding-left: 0.5rem;
+	}
 	.tcb_briefing_l2 {
 		padding-left: 0.5rem;
 	}
