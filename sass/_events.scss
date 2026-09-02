@@ -320,6 +320,14 @@
 		// Level 3 items (1.2.1, etc.) get level 2's 3ch plus another 3ch on top.
 		padding-left: 6ch;
 	}
+	// Content under a level 2/3 heading (tcbp_public_briefing_l2()/tcbp_public_briefing_l3(),
+	// mission-briefing.php) - matches its heading's own indent above.
+	.tcb_briefing_l2 {
+		padding-left: 3ch;
+	}
+	.tcb_briefing_l3 {
+		padding-left: 6ch;
+	}
 }
 
 	@media only screen and (min-width: 900px) {

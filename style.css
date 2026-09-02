@@ -3556,6 +3556,12 @@ div.pswp__img--placeholder,
   padding-top: 0.5rem;
   padding-left: 6ch;
 }
+.tcb_mission_briefing .tcb_briefing_l2 {
+  padding-left: 3ch;
+}
+.tcb_mission_briefing .tcb_briefing_l3 {
+  padding-left: 6ch;
+}
 @media only screen and (min-width: 900px) {
   .tcb_mission_briefing {
     padding: 40px;
