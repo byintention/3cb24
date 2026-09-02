@@ -305,6 +305,9 @@
 	h4 {
 		margin-bottom: 1rem;
 		padding-top: 1rem;
+		// "3 spaces" of indent for level 2 items (1.1, 1.2, etc.) - ch is a CSS unit sized to the
+		// current font's "0" character, the closest equivalent to a literal space width.
+		padding-left: 3ch;
 		// Divides consecutive "level 2" sections (1.1, 1.2, etc.) - not applied to the first h4
 		// in a box, so there's no line directly under the h3 above it.
 		&:not(:first-of-type) {
@@ -314,6 +317,8 @@
 	h5 {
 		margin-bottom: 0.5rem;
 		padding-top: 0.5rem;
+		// Level 3 items (1.2.1, etc.) get level 2's 3ch plus another 3ch on top.
+		padding-left: 6ch;
 	}
 }
 
