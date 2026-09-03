@@ -50,6 +50,7 @@ tcb24_service_record_commendation_level_group( 'mention_in_despatches', 'mention
 tcb24_service_record_commendation_level_group( 'mission_creation', 'mission_creation', $ribbon_path, $image_translation );
 
 tcb24_service_record_commendation_select_group( 'community_awards', 'Community Awards', $ribbon_path );
+tcb24_service_record_commendation_select_group( 'meetups', 'Meetups', $ribbon_path );
 
 /**
  * Renders a "select"-type commendation group (Campaign Medals/Community Awards) for the current
