@@ -31,6 +31,22 @@ get_header(); ?>
 					'parent'   => 0,
 				)
 			);
+
+			// Fetched once, up front, and filtered per category below in PHP - rather than
+			// re-querying per category - since posts_per_page has to stay unlimited (-1), not a
+			// fixed cap: a cap here silently drops the oldest articles site-wide, in every
+			// category at once, once the wiki's total article count grows past it (WP_Query's
+			// default order is newest-first by post_date) - same bug already hit and fixed for
+			// taxonomy-epkb_post_type_1_category.php but never carried over to this sibling
+			// template. Running that unbounded query once per top-level category, as this
+			// previously did, would otherwise turn one full-table scan into N of them.
+			$wiki_articles = get_posts(
+				array(
+					'post_type'      => 'epkb_post_type_1',
+					'posts_per_page' => -1,
+				)
+			);
+
 			if ( ! empty( $wikiterms ) && ! is_wp_error( $wikiterms ) ) {
 				foreach ( $wikiterms as $wikiterm ) {
 					// Don't show a category link the user has no access to.
@@ -67,28 +83,21 @@ get_header(); ?>
 						}
 						$excludes = implode( ', ', $categories_to_exclude );
 
-						// Show only posts in this category - not sub categories.
-						$args = array(
-							'post_type'      => 'epkb_post_type_1',
-							'posts_per_page' => 120,
-						);
-
-						$query = new WP_Query( $args );
+						// Show only posts in this category - not sub categories - matched against
+						// the shared $wiki_articles fetched once above.
 						?>
 						<ul class="wiki-docs">
 						<?php
-						while ( $query->have_posts() ) {
-							$query->the_post();
+						foreach ( $wiki_articles as $wiki_article ) {
 
-							$term_list = wp_get_post_terms( $query->post->ID, 'epkb_post_type_1_category', array( 'fields' => 'ids' ) );
+							$term_list = wp_get_post_terms( $wiki_article->ID, 'epkb_post_type_1_category', array( 'fields' => 'ids' ) );
 
 							if ( in_array( $wikiterm->term_id, $term_list, true ) ) {
 								?>
-								<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+								<li><a href="<?php echo esc_url( get_permalink( $wiki_article ) ); ?>"><?php echo esc_html( get_the_title( $wiki_article ) ); ?></a></li>
 								<?php
 							}
 						}
-						wp_reset_postdata();
 						?>
 						</ul>
 						<!-- Sub categories -->
