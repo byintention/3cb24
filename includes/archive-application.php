@@ -63,7 +63,15 @@ foreach ( $terms as $term_ ) {
 	while ( $posts_->have_posts() ) {
 		$posts_->the_post();
 		$post_id_ = get_the_ID();
-		echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a>, posted on ' . esc_html( get_the_date( 'd-m-Y', $post_id_ ) ) . '</li>';
+		// An application's own post title is the applicant's login name (set when the form
+		// creates it) - show their current display name instead, falling back to the title only
+		// if the author can't be resolved. Looked up live rather than stored, so existing
+		// applications pick it up too and a later display name change is reflected.
+		$applicant_name = get_the_author_meta( 'display_name' );
+		if ( ! $applicant_name ) {
+			$applicant_name = get_the_title();
+		}
+		echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( $applicant_name ) . '</a>, posted on ' . esc_html( get_the_date( 'd-m-Y', $post_id_ ) ) . '</li>';
 	}
 	echo '</ul>';
 	wp_reset_postdata();
